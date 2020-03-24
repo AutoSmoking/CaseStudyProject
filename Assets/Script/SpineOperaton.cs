@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoalHitOperation : MonoBehaviour
+public class NeedleOperaton : MonoBehaviour
 {
+    
+    GameObject Bubble;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        Bubble = GameObject.FindGameObjectWithTag("Player");
     }
 
-    void OnTriggerEnter(Collider other)
-    {   //ゴールに接触した時にログを出す
-        if (other.CompareTag("Player"))
+    void OnCollisionEnter(Collision collision)
+    {   
+        if (collision.CompareTag("Player"))
         {
-            Debug.Log("Hit");
+            Destroy(Bubble);
         }
     }
 

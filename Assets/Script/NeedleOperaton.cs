@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoalHitOperation : MonoBehaviour
+public class SpineOperaton : MonoBehaviour
 {
+    
+    GameObject Bubble;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        Bubble = GameObject.Find("Bubble");
     }
 
-    void OnTriggerEnter(Collider other)
-    {   //ゴールに接触した時にログを出す
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("Hit");
-        }
+    void OnCollisionEnter(Collision collision)
+    {//泡と接触した時の処理
+        Destroy(Bubble);
     }
 
     // Update is called once per frame
