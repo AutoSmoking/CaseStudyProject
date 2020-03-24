@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NeedleOperaton : MonoBehaviour
+public class NeedleOperation : MonoBehaviour
 {
-    
     GameObject Bubble;
 
     // Start is called before the first frame update
@@ -13,9 +12,9 @@ public class NeedleOperaton : MonoBehaviour
         Bubble = GameObject.FindGameObjectWithTag("Player");
     }
 
-    void OnCollisionEnter(Collision collision)
-    {   
-        if (collision.CompareTag("Player"))
+    void OnTriggerEnter(Collider other)
+    {   //ゴールに接触した時にログを出す
+        if (other.gameObject.tag == "Player")
         {
             Destroy(Bubble);
         }
@@ -24,6 +23,6 @@ public class NeedleOperaton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

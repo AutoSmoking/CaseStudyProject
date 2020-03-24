@@ -5,16 +5,17 @@ using UnityEngine;
 public class GoalHitOperation : MonoBehaviour
 {
     // Start is called before the first frame update
+
     void Start()
     {
-        
+
     }
 
     void OnTriggerEnter(Collider other)
     {   //ゴールに接触した時にログを出す
-        if (other.CompareTag("Player"))
+        if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Hit");
+            Debug.Log("GoalHit");
         }
     }
 

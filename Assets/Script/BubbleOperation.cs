@@ -20,7 +20,7 @@ public class BubbleOperation : MonoBehaviour
     {   //ゴールに接触した時にログを出す
         if (other.CompareTag("Finish"))
         {
-            Debug.Log("HitHit");
+            FloatAcceleration = 0.001f;
         }
     }
 
@@ -32,9 +32,6 @@ public class BubbleOperation : MonoBehaviour
         {
             floatflag++;
         }
-
-
-
 
         if (floatflag != 0)
         {
