@@ -12,11 +12,18 @@ public class BubbleOperation : MonoBehaviour
     int floatflag = 0;
 
     void Start()
-        {
-        
-        }
+    {
 
-    
+    }
+
+    void OnTriggerEnter(Collider other)
+    {   //ゴールに接触した時にログを出す
+        if (other.CompareTag("Finish"))
+        {
+            FloatAcceleration = 0.001f;
+        }
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -25,7 +32,6 @@ public class BubbleOperation : MonoBehaviour
         {
             floatflag++;
         }
-
 
         if (floatflag != 0)
         {

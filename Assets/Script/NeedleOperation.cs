@@ -2,26 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoalHitOperation : MonoBehaviour
+public class NeedleOperation : MonoBehaviour
 {
-    // Start is called before the first frame update
+    GameObject Bubble;
 
+    // Start is called before the first frame update
     void Start()
     {
-
+        Bubble = GameObject.FindGameObjectWithTag("Player");
     }
 
     void OnTriggerEnter(Collider other)
     {   //ゴールに接触した時にログを出す
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("GoalHit");
+            Destroy(Bubble);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
