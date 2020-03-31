@@ -8,6 +8,10 @@ using UnityEngine;
 
 public class SeaArea : MonoBehaviour
 {
+    [SerializeField, Header("回転の仕様の変更 false:角度で制御　true:距離で制御")]
+    bool rotFlag;
+
+
     [SerializeField, Header("回転方向フラグ false:左　true:右")]
     bool LRFlag;
 
@@ -17,7 +21,7 @@ public class SeaArea : MonoBehaviour
     [SerializeField, Header("ステージの中心座標 SpinObject入れとけばいいかと")]
     Transform AreaCenter;
 
-    [SerializeField, Header("回転速度"), Range(0, 10)]
+    [SerializeField, Header("回転速度"), Range(0, 1000)]
     float spd;
 
     // Start is called before the first frame update
@@ -60,47 +64,52 @@ public class SeaArea : MonoBehaviour
             len = Mathf.Sqrt(X * X + Y * Y);
             theta = Mathf.Atan2(Y, X);
 
-            if(LRFlag)
+            if (rotFlag)
             {
-                theta -= spd * Time.deltaTime;
+                float len2; // 直径
+
+                len2 = len * 2;
+
+                float N;    // 回転数[spm]
+
+                N = (spd * Time.deltaTime) / (Mathf.PI * len2) / 60.0f;
+
+                float rad;
+
+                rad = N * 2 * Mathf.PI;
+
+                if (LRFlag)
+                {
+                    theta -= rad;
+                }
+                else
+                {
+                    theta += rad;
+                }
+
+                pos.x = len * Mathf.Cos(theta) + AreaCenter.position.x;
+                pos.y = len * Mathf.Sin(theta) + AreaCenter.position.y;
+                pos.z = BubbleObj.transform.position.z;
+
+                BubbleObj.transform.position = pos;
             }
             else
             {
-                theta += spd * Time.deltaTime;
+                if (LRFlag)
+                {
+                    theta -= spd * Time.deltaTime;
+                }
+                else
+                {
+                    theta += spd * Time.deltaTime;
+                }
+
+                pos.x = len * Mathf.Cos(theta) + AreaCenter.position.x;
+                pos.y = len * Mathf.Sin(theta) + AreaCenter.position.y;
+                pos.z = BubbleObj.transform.position.z;
+
+                BubbleObj.transform.position = pos;
             }
-
-            pos.x = len * Mathf.Cos(theta) + AreaCenter.position.x;
-            pos.y = len * Mathf.Sin(theta) + AreaCenter.position.y;
-            pos.z = BubbleObj.transform.position.z;
-
-            BubbleObj.transform.position = pos;
-
-            float len2; // 直径
-
-            len2 = len * 2;
-
-            float N;    // 回転数[spm]
-
-            N = (spd * Time.deltaTime) / (Mathf.PI * len2) / 60.0f;
-
-            float rad;
-
-            rad = N * 2 * Mathf.PI;
-
-            if (LRFlag)
-            {
-                theta -= rad;
-            }
-            else
-            {
-                theta += rad;
-            }
-
-            pos.x = len * Mathf.Cos(theta) + AreaCenter.position.x;
-            pos.y = len * Mathf.Sin(theta) + AreaCenter.position.y;
-            pos.z = BubbleObj.transform.position.z;
-
-            BubbleObj.transform.position = pos;
         }
     }
 }
