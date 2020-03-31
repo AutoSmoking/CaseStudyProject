@@ -26,9 +26,9 @@ public class BasicSampleButton : MonoBehaviour {
   /// <summary>
   /// BGM1を再生
   /// </summary>
-  public void PlayBGM1() {
-    PlayBGM(BGMPath.FANTASY15);
-  }
+  //public void PlayBGM1() {
+  //  PlayBGM(BGMPath.FANTASY15);
+  //}
   
   /// <summary>
   /// BGM1を再生
