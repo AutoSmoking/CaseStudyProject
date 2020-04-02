@@ -209,7 +209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43816546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.22, y: -0.23480844, z: -3.16}
+  m_LocalPosition: {x: 2.22, y: -0.23480844, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -450,10 +450,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bd7a627822e6ad4e9693f280ba5395d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotFlag: 0
   LRFlag: 0
   BubbleObj: {fileID: 43816546}
   AreaCenter: {fileID: 1425240984}
-  spd: 1
+  spd: 1000
 --- !u!4 &1425240984
 Transform:
   m_ObjectHideFlags: 0
