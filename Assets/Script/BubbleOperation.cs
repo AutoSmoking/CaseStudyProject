@@ -25,6 +25,7 @@ public class BubbleOperation : MonoBehaviour
     }
 
 
+
     // Update is called once per frame
     void Update()
     {
@@ -32,6 +33,7 @@ public class BubbleOperation : MonoBehaviour
         {
             floatflag++;
         }
+
 
         if (floatflag != 0)
         {
