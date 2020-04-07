@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-[RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
-public class TorusOperation : MonoBehaviour
+public class ArchOperation : MonoBehaviour
 {
     [SerializeField, Header("わっかの大きさ")]
     private float majorRadius = 3f;
@@ -23,23 +21,40 @@ public class TorusOperation : MonoBehaviour
         Mesh mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
 
-        Vector3[] vertices = new Vector3[thetaSegments * phiSegments];
-        int[] triangles = new int[thetaSegments * phiSegments * 2 * 3];
+        Vector3[] vertices = new Vector3[(1 + phiSegments) * 2 + (thetaSegments + 1) * phiSegments];
+        int[] triangles = new int[phiSegments * 3 * 2 + thetaSegments * phiSegments * 2 * 3];
 
         float thetaStep = Mathf.PI * 2.0f / thetaSegments;
         float phiStep = Mathf.PI * 2.0f / phiSegments;
         int vi = 0;
+        int vj = 0;
+        int ti = 0;
+
+        // creates bottom cap
+        vertices[vj++] = new Vector3(0, -1, 0);
+        for (int ai = 0; ai < phiSegments; ai++)
+        {
+            float angle = ai * phiStep;
+            vertices[vj++] = new Vector3(majorRadius + minorRadius * Mathf.Cos(angle), minorRadius * Mathf.Sin(angle),0);
+        }
+        for (int ai = 0; ai < phiSegments; ai++)
+        {
+            triangles[ti++] = 0;
+            triangles[ti++] = ai + 1;
+            triangles[ti++] = ai != phiSegments - 1 ? ai + 2 : 1;
+        }
+        vi += vj;
+
         for (int hi = 0; hi < thetaSegments; hi++)
         {
             Quaternion rot = Quaternion.AngleAxis(hi * thetaStep * Mathf.Rad2Deg, Vector3.up);
             for (int pi = 0; pi < phiSegments; pi++)
             {
                 float phi = pi * phiStep;
-                vertices[vi++] = rot * new Vector3(majorRadius + minorRadius * Mathf.Cos(phi), minorRadius * Mathf.Sin(phi), 0);
+                vertices[vi+vj++] = rot * new Vector3(majorRadius + minorRadius * Mathf.Cos(phi), minorRadius * Mathf.Sin(phi), 0);
             }
         }
-
-        int ti = 0;
+        
         for (int hi = 0; hi < thetaSegments; hi++)
         {
             int hj = hi != thetaSegments - 1 ? hi + 1 : 0;
@@ -53,6 +68,22 @@ public class TorusOperation : MonoBehaviour
                 ti = MakeQuad(triangles, ti, v00, v10, v01, v11);
             }
         }
+        vi += vj;
+
+        // creates top cap
+        vj = 0;
+        for (int ai = 0; ai < phiSegments; ai++)
+        {
+            float angle = ai * phiStep;
+            vertices[vi + vj++] = new Vector3(majorRadius + minorRadius * Mathf.Cos(angle), minorRadius * Mathf.Sin(angle), 0);
+        }
+        vertices[vi + vj++] = new Vector3(0, 1, 0);
+        for (int ai = 0; ai < phiSegments; ai++)
+        {
+            triangles[ti++] = vertices.Length - 1;
+            triangles[ti++] = (ai != phiSegments - 1 ? ai + 1 : 0) + vi;
+            triangles[ti++] = ai + vi;
+        }
 
         mesh.vertices = vertices;
         mesh.triangles = triangles;
@@ -64,13 +95,13 @@ public class TorusOperation : MonoBehaviour
         MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();
         if (!meshRenderer) meshRenderer = gameObject.AddComponent<MeshRenderer>();
 
-        MeshCollider meshCollider = gameObject.GetComponent<MeshCollider>();
-        if (!meshCollider) meshCollider = gameObject.AddComponent<MeshCollider>();
+        //MeshCollider meshCollider = gameObject.GetComponent<MeshCollider>();
+        //if (!meshCollider) meshCollider = gameObject.AddComponent<MeshCollider>();
 
         meshFilter.mesh = mesh;
         meshRenderer.sharedMaterial = material;
-        meshCollider.sharedMesh = mesh;
-        meshCollider.sharedMaterial = physicMaterial;
+        //meshCollider.sharedMesh = mesh;
+        //meshCollider.sharedMaterial = physicMaterial;
     }
 
     private int MakeQuad(int[] triangles, int ti, int v00, int v10, int v01, int v11)
