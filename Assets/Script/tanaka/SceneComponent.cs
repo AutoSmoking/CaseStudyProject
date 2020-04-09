@@ -64,6 +64,7 @@ public class SceneComponent : MonoBehaviour
             SceneComponent instance = GameObject.Find("SceneManager").GetComponent<SceneComponent>();
 
             instance.SceneName = "StageSelect";
+            SceneFlag = true;
         }
     }
 }

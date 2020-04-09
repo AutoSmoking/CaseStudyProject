@@ -121,7 +121,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &231945572
+--- !u!1 &68083980
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,9 +129,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 231945575}
-  - component: {fileID: 231945574}
-  - component: {fileID: 231945573}
+  - component: {fileID: 68083983}
+  - component: {fileID: 68083982}
+  - component: {fileID: 68083981}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -139,32 +139,32 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &231945573
+--- !u!114 &68083981
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 231945572}
+  m_GameObject: {fileID: 68083980}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
+  m_HorizontalAxis: "\u5341\u5B57\u30AD\u30FC\u5DE6\u53F3"
+  m_VerticalAxis: "\u5341\u5B57\u30AD\u30FC\u4E0A\u4E0B"
+  m_SubmitButton: "A\u30DC\u30BF\u30F3"
+  m_CancelButton: "B\u30DC\u30BF\u30F3"
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
---- !u!114 &231945574
+--- !u!114 &68083982
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 231945572}
+  m_GameObject: {fileID: 68083980}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
@@ -173,13 +173,13 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!4 &231945575
+--- !u!4 &68083983
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 231945572}
+  m_GameObject: {fileID: 68083980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -570,6 +570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneName: StageSelect
   SceneFlag: 0
+  GameFrag: 0
 --- !u!4 &1289283296
 Transform:
   m_ObjectHideFlags: 0

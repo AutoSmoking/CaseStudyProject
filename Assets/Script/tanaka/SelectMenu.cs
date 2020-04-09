@@ -24,8 +24,8 @@ public class SelectMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            string name = gameObject.name;
-            Debug.Log(int.Parse(name));
+            //string name = gameObject.name;
+            //Debug.Log(int.Parse(name));
             //SceneComponent instance = GameObject.Find("SceneManager").GetComponent<SceneComponent>();
             //EventSystem eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
 
