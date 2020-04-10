@@ -1,9 +1,36 @@
-﻿using System.Collections;
+﻿
+
+// コントローラー切り替え
+//#define XBOX
+//#define PS4
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SpinOperation : MonoBehaviour
 {
+    // 操作系
+    public enum Controll
+    {
+        Aボタン,Bボタン,Xボタン,Yボタン,
+        L1ボタン,R1ボタン,BACKボタン,HOMEボタン,
+        左スティック押し込み,右スティック押し込み,
+        左スティック左右,左スティック上下,
+        右スティック左右,右スティック上下,
+        L2トリガー,R2トリガー,
+        十字キー左右,十字キー上下
+    }
+
+    [SerializeField, Header("左回転用キー")]
+    Controll LeftSpin;
+
+    [SerializeField, Header("右回転用キー")]
+    Controll RightSpin;
+
+    [SerializeField, Header("スティック系の感度"), Range(0, 1)]
+    float stickSense = 0.5f;
+
     // Start is called before the first frame update
 
     [SerializeField, Header("回転の加速度"), Range(0, 10.0f)]
@@ -27,7 +54,12 @@ public class SpinOperation : MonoBehaviour
 
     void Start()
     {
-        
+#if (XBOX || PS4)
+        if (LeftSpin == RightSpin)
+        {
+            Debug.LogError("左右の回転に同じキーが割り当てられてるよ");
+        }
+#endif
     }
 
     // Update is called once per frame
@@ -35,20 +67,60 @@ public class SpinOperation : MonoBehaviour
     {
         // 回転の挙動
         {
-            if (Input.GetKey(KeyCode.LeftArrow) && SpinSpeed >= 0)
+            if ((SpinSpeed >= 0)
+#if (XBOX || PS4)
+               && (((int)LeftSpin >= 10)
+#endif
+#if XBOX
+                    && (Input.GetAxis(LeftSpin.ToString()) > stickSense)
+#elif PS4
+#else
+#endif
+
+#if (XBOX || PS4)
+               || ((int)LeftSpin >= 0 && (int)LeftSpin < 10)
+#endif
+#if XBOX
+                && (Input.GetButton(LeftSpin.ToString())))
+#elif PS4
+#else
+                 && (Input.GetKey(KeyCode.LeftArrow)))
+#endif
+
             {
                 SpinSpeed += SpinAcceleration * Time.deltaTime;
 
                 t = 0.0f;
                 StopFlg = false;
             }
-            else if (Input.GetKey(KeyCode.RightArrow) && SpinSpeed <= 0)
+
+
+            else if ((SpinSpeed <= 0)
+#if (XBOX || PS4)
+               && (((int)RightSpin >= 10)
+#endif
+#if XBOX
+                    && (Input.GetAxis(RightSpin.ToString()) > stickSense)
+#elif PS4
+#else
+#endif
+
+#if (XBOX || PS4)
+               || ((int)RightSpin >= 0 && (int)RightSpin < 10)
+#endif
+#if XBOX
+                && (Input.GetButton(RightSpin.ToString())))
+#elif PS4
+#else
+                 && (Input.GetKey(KeyCode.RightArrow)))
+#endif
             {
                 SpinSpeed -= SpinAcceleration * Time.deltaTime;
 
                 t = 0.0f;
                 StopFlg = false;
             }
+
             else if (SpinSpeed != 0.0f)
             {
                 if (!StopFlg)
