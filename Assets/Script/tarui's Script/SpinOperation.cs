@@ -28,6 +28,9 @@ public class SpinOperation : MonoBehaviour
     [SerializeField, Header("右回転用キー")]
     Controll RightSpin;
 
+    [SerializeField, Header("回転方向フラグ false:逆回転　true:正回転")]
+    bool LRFlag;
+
     [SerializeField, Header("スティック系の感度"), Range(0, 1)]
     float stickSense = 0.5f;
 
@@ -39,7 +42,7 @@ public class SpinOperation : MonoBehaviour
     [SerializeField, Header("回転速度の最大値"), Range(0, 10.0f)]
     float SpinMaxSpeed;
 
-    [SerializeField, Header("回転停止後の滑る度合"), Range(0, 10.0f)]
+    [SerializeField, Header("回転停止後の滑る度合 大：滑らない　小：めっちゃ滑る"), Range(0.01f, 10.0f)]
     float SpinSlide;
 
     // 回転の現在速度
@@ -67,9 +70,9 @@ public class SpinOperation : MonoBehaviour
     {
         // 回転の挙動
         {
-            if ((SpinSpeed >= 0)
+            if (
 #if (XBOX || PS4)
-               && (((int)LeftSpin >= 10)
+                (((int)LeftSpin >= 10)
 #endif
 #if XBOX
                     && (Input.GetAxis(LeftSpin.ToString()) > stickSense)
@@ -84,20 +87,44 @@ public class SpinOperation : MonoBehaviour
                 && (Input.GetButton(LeftSpin.ToString())))
 #elif PS4
 #else
-                 && (Input.GetKey(KeyCode.LeftArrow)))
+                  (Input.GetKey(KeyCode.LeftArrow)))
 #endif
 
             {
-                SpinSpeed += SpinAcceleration * Time.deltaTime;
+                if (LRFlag)
+                {
+                    if (SpinSpeed >= 0)
+                    {
+                        SpinSpeed += SpinAcceleration * Time.deltaTime;
 
-                t = 0.0f;
-                StopFlg = false;
+                        t = 0.0f;
+                        StopFlg = false;
+                    }
+                    else
+                    {
+                        SlideOpe();
+                    }
+                }
+                else
+                {
+                    if (SpinSpeed <= 0)
+                    {
+                        SpinSpeed -= SpinAcceleration * Time.deltaTime;
+
+                        t = 0.0f;
+                        StopFlg = false;
+                    }
+                    else
+                    {
+                        SlideOpe();
+                    }
+                }
             }
 
 
-            else if ((SpinSpeed <= 0)
+            else if (
 #if (XBOX || PS4)
-               && (((int)RightSpin >= 10)
+                (((int)RightSpin >= 10)
 #endif
 #if XBOX
                     && (Input.GetAxis(RightSpin.ToString()) > stickSense)
@@ -112,27 +139,42 @@ public class SpinOperation : MonoBehaviour
                 && (Input.GetButton(RightSpin.ToString())))
 #elif PS4
 #else
-                 && (Input.GetKey(KeyCode.RightArrow)))
+                  (Input.GetKey(KeyCode.RightArrow)))
 #endif
             {
-                SpinSpeed -= SpinAcceleration * Time.deltaTime;
+                if (LRFlag)
+                {
+                    if (SpinSpeed <= 0)
+                    {
+                        SpinSpeed -= SpinAcceleration * Time.deltaTime;
 
-                t = 0.0f;
-                StopFlg = false;
+                        t = 0.0f;
+                        StopFlg = false;
+                    }
+                    else
+                    {
+                        SlideOpe();
+                    }
+                }
+                else
+                {
+                    if (SpinSpeed >= 0)
+                    {
+                        SpinSpeed += SpinAcceleration * Time.deltaTime;
+
+                        t = 0.0f;
+                        StopFlg = false;
+                    }
+                    else
+                    {
+                        SlideOpe();
+                    }
+                }
             }
 
             else if (SpinSpeed != 0.0f)
             {
-                if (!StopFlg)
-                {
-                    StopSpin = SpinSpeed;
-                }
-
-                StopFlg = true;
-
-                SpinSpeed = Mathf.Lerp(StopSpin, 0.0f, t);
-
-                t += SpinSlide * Time.deltaTime;
+                SlideOpe();
             }
 
             // 速度の制限
@@ -141,5 +183,19 @@ public class SpinOperation : MonoBehaviour
 
         // ワールドのy軸に沿って1秒間に90度回転
         transform.Rotate(new Vector3(0, 0, SpinSpeed), Space.World);
+    }
+
+    void SlideOpe()
+    {
+        if (!StopFlg)
+        {
+            StopSpin = SpinSpeed;
+        }
+
+        StopFlg = true;
+
+        SpinSpeed = Mathf.Lerp(StopSpin, 0.0f, t);
+
+        t += SpinSlide * Time.deltaTime;
     }
 }
