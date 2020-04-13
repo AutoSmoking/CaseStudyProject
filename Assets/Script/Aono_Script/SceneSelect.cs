@@ -31,15 +31,23 @@ public class SceneSelect : MonoBehaviour
        // }
         if (Input.GetKey(KeyCode.Alpha1))
         {
-            SceneManager.LoadScene("Tutorial_1");
+            SceneManager.LoadScene("Stage1_1");
         }
         if (Input.GetKey(KeyCode.Alpha2))
         {
-            SceneManager.LoadScene("Tutorial_2");
+            SceneManager.LoadScene("Stage1_2");
         }
         if (Input.GetKey(KeyCode.Alpha3))
         {
-            SceneManager.LoadScene("Tutorial_3");
+            SceneManager.LoadScene("Stage1_3");
+        }
+        if (Input.GetKey(KeyCode.Alpha4))
+        {
+            SceneManager.LoadScene("Stage1_4");
+        }
+        if (Input.GetKey(KeyCode.Alpha5))
+        {
+            SceneManager.LoadScene("Stage1_5");
         }
         if (Input.GetKey(KeyCode.Escape))
         {
