@@ -16,6 +16,7 @@ public class GoalHitOperation : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("GoalHit");
+            GameObject.Find("SceneManager").GetComponent<SceneComponent>().GameFrag = true;
         }
     }
 
