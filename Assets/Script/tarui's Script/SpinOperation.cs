@@ -11,6 +11,7 @@ using UnityEngine;
 public class SpinOperation : MonoBehaviour
 {
     // 操作系
+#if (XBOX)
     public enum Controll
     {
         Aボタン,Bボタン,Xボタン,Yボタン,
@@ -27,6 +28,13 @@ public class SpinOperation : MonoBehaviour
 
     [SerializeField, Header("右回転用キー")]
     Controll RightSpin;
+#else
+    [SerializeField, Header("左回転用キー")]
+    KeyCode LeftSpin;
+
+    [SerializeField, Header("右回転用キー")]
+    KeyCode RightSpin;
+#endif
 
     [SerializeField, Header("回転方向フラグ false:逆回転　true:正回転")]
     bool LRFlag;
