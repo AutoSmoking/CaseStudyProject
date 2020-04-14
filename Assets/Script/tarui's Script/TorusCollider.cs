@@ -25,14 +25,15 @@ public class TorusCollider : MonoBehaviour
             rigidbody = this.gameObject.AddComponent<Rigidbody>();
         }
         rigidbody.useGravity = false;
-        rigidbody.isKinematic = false;
+        rigidbody.isKinematic = true;
         
         for (int i = 0; i < splitNum; i++) 
         {
             Instantiate(obj,
-                new Vector3(R * Mathf.Cos(360.0f / splitNum * i * Mathf.PI / 180.0f),
-                    R * Mathf.Sin(360.0f / splitNum * i * Mathf.PI / 180.0f), 0),
-                Quaternion.identity,
+                new Vector3((R * Mathf.Cos(360.0f / splitNum * i * Mathf.PI / 180.0f) + this.transform.position.x),
+                    (R * Mathf.Sin(360.0f / splitNum * i * Mathf.PI / 180.0f) + this.transform.position.y),
+                     this.transform.position.z),
+                Quaternion.Euler(0, 0, (360.0f / splitNum * i)),
                 this.transform);
         }
     }
