@@ -5,18 +5,32 @@ using UnityEngine;
 public class NeedleOperation : MonoBehaviour
 {
     GameObject Bubble;
+    GameObject Bubble2;
+    GameObject Bubble3;
 
     // Start is called before the first frame update
     void Start()
     {
-        Bubble = GameObject.FindGameObjectWithTag("Player");
+        Bubble = GameObject.FindGameObjectWithTag("1");
+        Bubble2 = GameObject.FindGameObjectWithTag("2");
+        Bubble3 = GameObject.FindGameObjectWithTag("3");
     }
 
-    void OnTriggerEnter(Collider other)
-    {   //ゴールに接触した時にログを出す
-        if (other.gameObject.tag == "Player")
+    void OnCollisionEnter(Collision other)
+    { 
+        if (other.gameObject.tag == "1")
         {
             Destroy(Bubble);
+        }
+
+        if (other.gameObject.tag == "2")
+        {
+            Destroy(Bubble2);
+        }
+
+        if (other.gameObject.tag == "3")
+        {
+            Destroy(Bubble3);
         }
     }
 
