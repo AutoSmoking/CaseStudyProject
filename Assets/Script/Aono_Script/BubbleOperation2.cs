@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BubbleOperation : MonoBehaviour
+public class BubbleOperation2 : MonoBehaviour
 {
     // Start is called before the first frame update
 
     //////////////////////////////////////////////////
     //readme
-    //Bubble「１」「３」にアタッチしてください
+    //Bubble「2」にアタッチしてください
     //////////////////////////////////////////////////
 
     GameObject Bubble;
@@ -22,8 +22,7 @@ public class BubbleOperation : MonoBehaviour
 
     void Start()
     {
-        Bubble = GameObject.FindGameObjectWithTag("2");
-        Bubble2 = GameObject.FindGameObjectWithTag("3");
+        Bubble = GameObject.FindGameObjectWithTag("1");
     }
 
     void OnTriggerEnter(Collider other)
@@ -33,21 +32,14 @@ public class BubbleOperation : MonoBehaviour
             FloatAcceleration = 0.001f;
         }
 
-        
+
     }
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "2")
-        {
-            Destroy(Bubble);
-            BubbleSize = BubbleSize + 0.06f; ;
-            this.gameObject.transform.localScale = new Vector3(BubbleSize, BubbleSize, 0.6f);
-        }
-
         if (other.gameObject.tag == "3")
         {
-            Destroy(Bubble2);
+            Destroy(Bubble);
             BubbleSize = BubbleSize + 0.06f;
             this.gameObject.transform.localScale = new Vector3(BubbleSize, BubbleSize, 0.6f);
         }
@@ -57,7 +49,7 @@ public class BubbleOperation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
 
         if (Input.GetKey(KeyCode.Space))
         {
