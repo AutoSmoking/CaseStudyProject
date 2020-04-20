@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class TorusCollider : MonoBehaviour
 {
+    enum ColType
+    {
+        Box,
+        Sphere,
+        Capsule,
+    };
+
     // 分割数
     [SerializeField,Header("分割数(SphereColliderの数)"),Range(1,3000)]
     int splitNum;
@@ -11,9 +18,12 @@ public class TorusCollider : MonoBehaviour
     // 半径
     [SerializeField, Header("半径(中心からSphereColliderまでの距離)"), Range(0, 100)]
     float R;
-    
+
+    [SerializeField, Header("空のオブジェクトを入れてください")]
+    GameObject Obj;
+
     [SerializeField]
-    GameObject obj;
+    ColType type;
 
     // Start is called before the first frame update
     void Awake()
@@ -26,15 +36,56 @@ public class TorusCollider : MonoBehaviour
         }
         rigidbody.useGravity = false;
         rigidbody.isKinematic = true;
+
+        GameObject InsObj;
         
         for (int i = 0; i < splitNum; i++) 
         {
-            Instantiate(obj,
+            InsObj = Instantiate(Obj,
                 new Vector3((R * Mathf.Cos(360.0f / splitNum * i * Mathf.PI / 180.0f) + this.transform.position.x),
                     (R * Mathf.Sin(360.0f / splitNum * i * Mathf.PI / 180.0f) + this.transform.position.y),
                      this.transform.position.z),
                 Quaternion.Euler(0, 0, (360.0f / splitNum * i)),
                 this.transform);
+
+            switch(type)
+            {
+                case ColType.Box:
+                    {
+                        BoxCollider box;
+
+                        box = InsObj.AddComponent<BoxCollider>();
+
+                        box.isTrigger = true;
+
+                        break;
+                    }
+
+                case ColType.Capsule:
+                    {
+                        CapsuleCollider capsule;
+
+                        capsule = InsObj.AddComponent<CapsuleCollider>();
+
+                        capsule.isTrigger = true;
+
+                        break;
+                    }
+
+                case ColType.Sphere:
+                    {
+                        SphereCollider sphere;
+
+                        sphere = InsObj.AddComponent<SphereCollider>();
+
+                        sphere.isTrigger = true;
+
+                        break;
+                    }
+
+                default:
+                    break;
+            }
         }
     }
 

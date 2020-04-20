@@ -44,10 +44,10 @@ public class SpinOperation : MonoBehaviour
 
     // Start is called before the first frame update
 
-    [SerializeField, Header("回転の加速度"), Range(0, 10.0f)]
+    [SerializeField, Header("回転の加速度"), Range(0.1f, 10.0f)]
     float SpinAcceleration;
 
-    [SerializeField, Header("回転速度の最大値"), Range(0, 10.0f)]
+    [SerializeField, Header("回転速度の最大値"), Range(0.001f, 1.0f)]
     float SpinMaxSpeed;
 
     [SerializeField, Header("回転停止後の滑る度合 大：滑らない　小：めっちゃ滑る"), Range(0.01f, 10.0f)]
@@ -56,6 +56,15 @@ public class SpinOperation : MonoBehaviour
     // 回転の現在速度
     [SerializeField]
     float SpinSpeed = 0;
+
+    [SerializeField, Header("影響があるオブジェクト 入れないとバグ")]
+    List<GameObject> StageObj = new List<GameObject>() { };
+
+    [SerializeField, Header("泡のオブジェクト専用 入れないとバグ")]
+    List<GameObject> BubbleObj = new List<GameObject>() { };
+
+    [SerializeField, Header("中心の海域の場合はtrueにしてください")]
+    bool CenterFlg;
 
     float StopSpin = 0;
 
@@ -73,12 +82,38 @@ public class SpinOperation : MonoBehaviour
 #endif
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        // 回転の挙動
+        // 操作部分
+        SpinControl();
+    }
+
+    // Update is called once per frame
+    void OnTriggerStay(Collider collider)
+    {
+        // オブジェクトのアップデート
+        SpinUpdate(collider);
+    }
+
+    // 回転が止まる前の滑る部分
+    void SlideOpe()
+    {
+        if (!StopFlg)
         {
-            if (
+            StopSpin = SpinSpeed;
+        }
+
+        StopFlg = true;
+
+        SpinSpeed = Mathf.Lerp(StopSpin, 0.0f, t);
+
+        t += SpinSlide * Time.deltaTime;
+    }
+
+    // 操作部分
+    void SpinControl()
+    {
+        if (
 #if (XBOX || PS4)
                 (((int)LeftSpin >= 10)
 #endif
@@ -95,42 +130,42 @@ public class SpinOperation : MonoBehaviour
                 && (Input.GetButton(LeftSpin.ToString())))
 #elif PS4
 #else
-                  (Input.GetKey(KeyCode.LeftArrow)))
+                  (Input.GetKey(LeftSpin)))
 #endif
 
+        {
+            if (LRFlag)
             {
-                if (LRFlag)
+                if (SpinSpeed >= 0)
                 {
-                    if (SpinSpeed >= 0)
-                    {
-                        SpinSpeed += SpinAcceleration * Time.deltaTime;
+                    SpinSpeed += SpinAcceleration * Time.deltaTime;
 
-                        t = 0.0f;
-                        StopFlg = false;
-                    }
-                    else
-                    {
-                        SlideOpe();
-                    }
+                    t = 0.0f;
+                    StopFlg = false;
                 }
                 else
                 {
-                    if (SpinSpeed <= 0)
-                    {
-                        SpinSpeed -= SpinAcceleration * Time.deltaTime;
-
-                        t = 0.0f;
-                        StopFlg = false;
-                    }
-                    else
-                    {
-                        SlideOpe();
-                    }
+                    SlideOpe();
                 }
             }
+            else
+            {
+                if (SpinSpeed <= 0)
+                {
+                    SpinSpeed -= SpinAcceleration * Time.deltaTime;
+
+                    t = 0.0f;
+                    StopFlg = false;
+                }
+                else
+                {
+                    SlideOpe();
+                }
+            }
+        }
 
 
-            else if (
+        else if (
 #if (XBOX || PS4)
                 (((int)RightSpin >= 10)
 #endif
@@ -147,63 +182,150 @@ public class SpinOperation : MonoBehaviour
                 && (Input.GetButton(RightSpin.ToString())))
 #elif PS4
 #else
-                  (Input.GetKey(KeyCode.RightArrow)))
+                  (Input.GetKey(RightSpin)))
 #endif
+        {
+            if (LRFlag)
             {
-                if (LRFlag)
+                if (SpinSpeed <= 0)
                 {
-                    if (SpinSpeed <= 0)
-                    {
-                        SpinSpeed -= SpinAcceleration * Time.deltaTime;
+                    SpinSpeed -= SpinAcceleration * Time.deltaTime;
 
-                        t = 0.0f;
-                        StopFlg = false;
-                    }
-                    else
-                    {
-                        SlideOpe();
-                    }
+                    t = 0.0f;
+                    StopFlg = false;
                 }
                 else
                 {
-                    if (SpinSpeed >= 0)
-                    {
-                        SpinSpeed += SpinAcceleration * Time.deltaTime;
+                    SlideOpe();
+                }
+            }
+            else
+            {
+                if (SpinSpeed >= 0)
+                {
+                    SpinSpeed += SpinAcceleration * Time.deltaTime;
 
-                        t = 0.0f;
-                        StopFlg = false;
-                    }
-                    else
+                    t = 0.0f;
+                    StopFlg = false;
+                }
+                else
+                {
+                    SlideOpe();
+                }
+            }
+        }
+
+        else if (SpinSpeed != 0.0f)
+        {
+            SlideOpe();
+        }
+
+
+        // 速度の制限
+        SpinSpeed = Mathf.Clamp(SpinSpeed, -SpinMaxSpeed, SpinMaxSpeed);
+    }
+
+    // 適用されてるオブジェクトを回転させる
+    void SpinUpdate(Collider collider)
+    {
+        if (SpinSpeed != 0.0f)
+        {
+            bool BubbleFlg = false;
+
+            foreach(var obj in BubbleObj)
+            {
+                if(obj == collider.gameObject)
+                {
+                    float r = obj.GetComponent<SphereCollider>().radius * Mathf.Max(obj.transform.localScale.x, obj.transform.localScale.y, obj.transform.localScale.z);
+
+                    if (CenterFlg ||
+                        !CircleCollider2D(new Vector2(obj.transform.position.x, obj.transform.position.y),
+                        r,
+                        new Vector2(this.transform.position.x, this.transform.position.y),
+                        (this.GetComponent<SphereCollider>().radius *
+                        Mathf.Max(this.transform.localScale.x, this.transform.localScale.y, this.transform.localScale.z) / 2 - r * 2 + 0.1f)))
                     {
-                        SlideOpe();
+                        SpinMath(obj);
                     }
+
+                    BubbleFlg = true;
+                    break;
                 }
             }
 
-            else if (SpinSpeed != 0.0f)
+            if (!BubbleFlg)
             {
-                SlideOpe();
+                foreach (var obj in StageObj)
+                {
+                    if (obj == collider.gameObject)
+                    {
+                        /* 回転の挙動 */
+                        SpinMath(obj);
+
+                        break;
+                    }
+                }
             }
-
-            // 速度の制限
-            SpinSpeed = Mathf.Clamp(SpinSpeed, -SpinMaxSpeed, SpinMaxSpeed);
         }
-
-        // ワールドのy軸に沿って1秒間に90度回転
-        transform.Rotate(new Vector3(0, 0, SpinSpeed), Space.World);
     }
 
-    void SlideOpe()
+    void SpinMath(GameObject obj)
     {
-        if (!StopFlg)
+        // ステージの中心から対象のオブジェクトまでの長さ
+        float X, Y;
+        float len;
+        // ステージの中心から対象のオブジェクトまでの角度
+        float theta;
+        // 計算結果位置
+        Vector3 pos = new Vector3();
+
+        X = obj.transform.position.x - this.transform.position.x;
+        Y = obj.transform.position.y - this.transform.position.y;
+        len = Mathf.Sqrt(X * X + Y * Y);
+        theta = Mathf.Atan2(Y, X);
+
+
+        //float len2; // 直径
+        //len2 = len * 2;
+
+        //float N;    // 回転数[spm]
+        //N = (SpinSpeed * Time.deltaTime) / (Mathf.PI * len2) / 60.0f;
+
+        //float rad;
+        //rad = N * 2 * Mathf.PI;
+
+        //theta += rad;
+        theta += SpinSpeed;
+
+        pos.x = len * Mathf.Cos(theta) + this.transform.position.x;
+        pos.y = len * Mathf.Sin(theta) + this.transform.position.y;
+        pos.z = obj.transform.position.z;
+
+        obj.transform.position = pos;
+
+
+
+        // ワールドのz軸に沿って SpinSpeed 分回転
+        //obj.transform.Rotate(new Vector3(0, 0, theta));
+
+        obj.transform.Rotate(0, 0, (SpinSpeed * Mathf.Rad2Deg));
+    }
+
+    bool CircleCollider2D(Vector2 posA,float radA,Vector2 posB,float radB)
+    {
+        float a = posA.x - posB.x;
+        float b = posA.y - posB.y;
+        float c = Mathf.Sqrt(a * a + b * b);
+
+        if (c <= radA + radB)
         {
-            StopSpin = SpinSpeed;
+            return true;
+        }
+        else
+        {
+            return false;
         }
 
-        StopFlg = true;
-
-        SpinSpeed = Mathf.Lerp(StopSpin, 0.0f, t);
-
-        t += SpinSlide * Time.deltaTime;
+        return false;
     }
 }

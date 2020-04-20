@@ -46,7 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   splitNum: 200
   R: 7.5
-  obj: {fileID: 6487766680751917205, guid: 9afba594e4b7e0b4f8e024309b910f01, type: 3}
+  Obj: {fileID: 3407966099720994729, guid: c76ce905b8e91af498c08fec87fb5b8a, type: 3}
+  type: 0
 --- !u!54 &8896417594269680293
 Rigidbody:
   m_ObjectHideFlags: 0
