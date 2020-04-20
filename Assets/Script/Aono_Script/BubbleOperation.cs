@@ -41,18 +41,31 @@ public class BubbleOperation : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
+
+        Transform myTransform = this.transform;
+
         if (other.gameObject.tag == "2")
         {
             Destroy(Bubble);
-            BubbleSize = BubbleSize + 1.0f; ;
-            this.gameObject.transform.localScale = new Vector3(BubbleSize, BubbleSize, 0.6f);
+            //BubbleSize = BubbleSize + 1.0f; ;
+            //this.gameObject.transform.localScale = new Vector3(localScale.x + BubbleSize, localScale.y + BubbleSize, 0.6f);
+            Vector3 localScale = myTransform.localScale;
+            localScale.x = localScale.x + BubbleSize;
+            localScale.y = localScale.y + BubbleSize;
+            localScale.z = localScale.z; 
+            myTransform.localScale = localScale;
         }
 
         if (other.gameObject.tag == "3")
         {
             Destroy(Bubble2);
-            BubbleSize = BubbleSize + 0.6f;
-            this.gameObject.transform.localScale = new Vector3(BubbleSize, BubbleSize, 0.6f);
+            //BubbleSize = BubbleSize + 0.6f;
+            //this.gameObject.transform.localScale = new Vector3(BubbleSize, BubbleSize, 0.6f);
+            Vector3 localScale = myTransform.localScale;
+            localScale.x = localScale.x + BubbleSize;
+            localScale.y = localScale.y + BubbleSize;
+            localScale.z = localScale.z;
+            myTransform.localScale = localScale;
         }
     }
 
@@ -60,7 +73,7 @@ public class BubbleOperation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
 
         if (Input.GetKey(KeyCode.Space))
         {
@@ -74,4 +87,5 @@ public class BubbleOperation : MonoBehaviour
             transform.Translate(new Vector3(0, FloatAcceleration, 0), Space.World);
         }
     }
+
 }

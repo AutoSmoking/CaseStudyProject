@@ -505,6 +505,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8353143837347223530, guid: 5e1b68b5dd325d4448bdee5fdfe24f04,
+        type: 3}
+      propertyPath: BubbleSize
+      value: 0.06
+      objectReference: {fileID: 0}
     - target: {fileID: 8353143837347223533, guid: 5e1b68b5dd325d4448bdee5fdfe24f04,
         type: 3}
       propertyPath: m_Name
@@ -1100,6 +1105,9 @@ MonoBehaviour:
   SpinMaxSpeed: 3
   SpinSlide: 3
   SpinSpeed: 0
+  StageObj: []
+  BubbleObj: []
+  CenterFlg: 0
 --- !u!23 &1606772465
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1197,6 +1205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FloatAcceleration: 0
+  BubbleSize: 0
 --- !u!1 &2012151025
 GameObject:
   m_ObjectHideFlags: 0
