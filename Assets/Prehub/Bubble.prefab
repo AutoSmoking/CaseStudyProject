@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FloatAcceleration: 0.03
+  BubbleSize: 1
 --- !u!54 &8353143837347223531
 Rigidbody:
   m_ObjectHideFlags: 0

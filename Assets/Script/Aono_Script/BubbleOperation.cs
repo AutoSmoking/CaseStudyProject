@@ -17,8 +17,10 @@ public class BubbleOperation : MonoBehaviour
     [SerializeField, Header("泡の浮上速度"), Range(0, 0.1f)]
     float FloatAcceleration;
 
+    [SerializeField, Header("結合した泡に加算されるサイズ"), Range(0, 10.0f)]
+    float BubbleSize;
+
     int floatflag = 0;
-    float BubbleSize = 0.06f;
 
     void Start()
     {
@@ -30,7 +32,8 @@ public class BubbleOperation : MonoBehaviour
     {   //ゴールに接触した時にログを出す
         if (other.CompareTag("Finish"))
         {
-            FloatAcceleration = 0.001f;
+                Debug.Log("GoalHit");
+  
         }
 
         
@@ -41,14 +44,14 @@ public class BubbleOperation : MonoBehaviour
         if (other.gameObject.tag == "2")
         {
             Destroy(Bubble);
-            BubbleSize = BubbleSize + 0.06f; ;
+            BubbleSize = BubbleSize + 1.0f; ;
             this.gameObject.transform.localScale = new Vector3(BubbleSize, BubbleSize, 0.6f);
         }
 
         if (other.gameObject.tag == "3")
         {
             Destroy(Bubble2);
-            BubbleSize = BubbleSize + 0.06f;
+            BubbleSize = BubbleSize + 0.6f;
             this.gameObject.transform.localScale = new Vector3(BubbleSize, BubbleSize, 0.6f);
         }
     }
