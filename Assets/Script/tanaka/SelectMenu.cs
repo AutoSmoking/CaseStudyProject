@@ -9,6 +9,7 @@ public class SelectMenu : MonoBehaviour
     [SerializeField, Header("1～10のステージシーン名")]
     public string[] scenenames = new string[10];
     Button button;
+    public GameObject[] a=new GameObject[10];
     // Start is called before the first frame update
     void Start()
     {
@@ -53,9 +54,14 @@ public class SelectMenu : MonoBehaviour
 
     public void MoveSelect(int num)
     {
-        foreach(Transform trans in gameObject.transform)
+        int i = 0;
+        Debug.Log("a");
+        foreach(Transform trans in transform)
         {
-            var go = transform.gameObject;
+            var go = trans.gameObject.GetComponent<Animator>();
+            go.enabled = true;
+            var info = go.GetAnimatorTransitionInfo(0);
+            go.Play(info.nameHash, 0, 0.0f);
         }
         
         switch (num)
