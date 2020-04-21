@@ -37,7 +37,7 @@ public class SceneComponent : MonoBehaviour
     void Update()
     {
 
-        if ((Input.GetKeyDown(KeyCode.Z)|| Input.GetKeyDown(KeyCode.Space)) && SceneFlag == false&& (SceneManager.GetActiveScene().name == "Title Scene"|| SceneManager.GetActiveScene().name == "StageSelect"))
+        if ((Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space)) && SceneFlag == false && (SceneManager.GetActiveScene().name == "Title Scene" || (SceneManager.GetActiveScene().name == "StageSelect" && SceneName != "StageSelect"))) 
         {
 
             SceneFlag = true;
