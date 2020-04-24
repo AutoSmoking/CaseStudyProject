@@ -41,4 +41,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage1/Stage1_10.unity
     guid: 82b249f53b3e00a4fa70854a260291a8
+<<<<<<< Updated upstream
+=======
+  - enabled: 1
+    path: Assets/Scenes/NewStage/Stage4.unity
+    guid: 23967a09db3c89f41a9c93e366f76cf4
+  - enabled: 1
+    path: Assets/Scenes/NewStage/Stage6.unity
+    guid: c089aa55a72fa9642a47c44e6ffc9793
+  - enabled: 1
+    path: Assets/Scenes/NewStage/Stage2.unity
+    guid: c91e3231dc1ed1e4bab8226a35bad074
+>>>>>>> Stashed changes
   m_configObjects: {}
