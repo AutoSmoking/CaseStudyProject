@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1da73597c225aac4fb4ef02fb9b00bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FloatAcceleration: 0.03
+  FloatAcceleration: 1.5
   BubbleSize: 1
 --- !u!54 &8353143837347223531
 Rigidbody:
