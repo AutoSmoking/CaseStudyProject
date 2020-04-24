@@ -44,7 +44,7 @@ public class SpinOperation : MonoBehaviour
 
     // Start is called before the first frame update
 
-    [SerializeField, Header("回転の加速度"), Range(0.1f, 10.0f)]
+    [SerializeField, Header("回転の加速度"), Range(0.001f, 0.1f)]
     float SpinAcceleration;
 
     [SerializeField, Header("回転速度の最大値"), Range(0.001f, 1.0f)]
