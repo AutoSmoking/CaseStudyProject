@@ -54,10 +54,25 @@ public class SelectMenu : MonoBehaviour
 
     public void MoveSelect(int num)
     {
+        GameObject[] stage = new GameObject[3];
+
+        stage[0] = GameObject.Find("1~10");
+        stage[1] = GameObject.Find("11~20");
+        stage[2] = GameObject.Find("21~30");
+
+        for (int t = 0; t < 3; t++)
+        {
+            foreach (Transform obj in stage[t].transform)
+            {
+                obj.gameObject.SetActive(false);
+            }
+        }
+
         int i = 0;
         Debug.Log("a");
         foreach(Transform trans in transform)
         {
+            trans.gameObject.SetActive(true);
             var go = trans.gameObject.GetComponent<Animator>();
             go.enabled = true;
             var info = go.GetAnimatorTransitionInfo(0);
