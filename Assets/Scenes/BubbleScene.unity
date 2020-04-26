@@ -1119,6 +1119,11 @@ PrefabInstance:
       propertyPath: BubbleSize
       value: 0.06
       objectReference: {fileID: 0}
+    - target: {fileID: 8353143837347223530, guid: 5e1b68b5dd325d4448bdee5fdfe24f04,
+        type: 3}
+      propertyPath: _parentTransform
+      value: 
+      objectReference: {fileID: 1626715107}
     - target: {fileID: 8353143837347223533, guid: 5e1b68b5dd325d4448bdee5fdfe24f04,
         type: 3}
       propertyPath: m_Name
@@ -1466,6 +1471,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FloatAcceleration: 0
   BubbleSize: 0
+  _parentTransform: {fileID: 1626715107}
+--- !u!4 &1626715107 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8353143837347223529, guid: 5e1b68b5dd325d4448bdee5fdfe24f04,
+    type: 3}
+  m_PrefabInstance: {fileID: 1389500084}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1779387442 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5893850529046376366, guid: 600868b31058e4d438fd42a6ce82857f,
@@ -1828,27 +1840,27 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 8353143837079343186}
     m_Modifications:
     - target: {fileID: 2285134586244720667, guid: 01dc5cc76a54ebb42af0159590fb14df,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.03
+      value: -0.059999317
       objectReference: {fileID: 0}
     - target: {fileID: 2285134586244720667, guid: 01dc5cc76a54ebb42af0159590fb14df,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.52
+      value: -0.07500076
       objectReference: {fileID: 0}
     - target: {fileID: 2285134586244720667, guid: 01dc5cc76a54ebb42af0159590fb14df,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 3.9149995
       objectReference: {fileID: 0}
     - target: {fileID: 2285134586244720667, guid: 01dc5cc76a54ebb42af0159590fb14df,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2285134586244720667, guid: 01dc5cc76a54ebb42af0159590fb14df,
         type: 3}
@@ -1868,7 +1880,7 @@ PrefabInstance:
     - target: {fileID: 2285134586244720667, guid: 01dc5cc76a54ebb42af0159590fb14df,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2285134586244720667, guid: 01dc5cc76a54ebb42af0159590fb14df,
         type: 3}
@@ -1885,16 +1897,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2285134586244720667, guid: 01dc5cc76a54ebb42af0159590fb14df,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2285134586244720667, guid: 01dc5cc76a54ebb42af0159590fb14df,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2285134586244720667, guid: 01dc5cc76a54ebb42af0159590fb14df,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 749.99994
+      objectReference: {fileID: 0}
     - target: {fileID: 3021128187192384008, guid: 01dc5cc76a54ebb42af0159590fb14df,
         type: 3}
       propertyPath: m_Name
       value: taru
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01dc5cc76a54ebb42af0159590fb14df, type: 3}
 --- !u!1 &8353143837079343180 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 329591330455023547, guid: 0b96ce45d477db840a2f95efd020e2d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 8610501513230057463}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8353143837079343186 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 329591330455023551, guid: 0b96ce45d477db840a2f95efd020e2d6,
     type: 3}
   m_PrefabInstance: {fileID: 8610501513230057463}
   m_PrefabAsset: {fileID: 0}
@@ -1910,6 +1947,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bubble
       objectReference: {fileID: 0}
+    - target: {fileID: 329591330455023548, guid: 0b96ce45d477db840a2f95efd020e2d6,
+        type: 3}
+      propertyPath: _parentTransform
+      value: 
+      objectReference: {fileID: 8353143837079343186}
     - target: {fileID: 329591330455023551, guid: 0b96ce45d477db840a2f95efd020e2d6,
         type: 3}
       propertyPath: m_LocalPosition.x
