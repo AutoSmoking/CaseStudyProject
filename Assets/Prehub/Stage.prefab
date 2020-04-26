@@ -112,8 +112,8 @@ MonoBehaviour:
   LRFlag: 0
   stickSense: 0.5
   SpinAcceleration: 0.015
-  SpinMaxSpeed: 0.02
-  SpinSlide: 3
+  SpinMaxSpeed: 0.04
+  SpinSlide: 2
   SpinSpeed: 0
   StageObj: []
   BubbleObj: []
