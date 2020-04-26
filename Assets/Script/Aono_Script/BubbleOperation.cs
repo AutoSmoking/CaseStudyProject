@@ -20,6 +20,8 @@ public class BubbleOperation : MonoBehaviour
     [SerializeField, Header("結合した泡に加算されるサイズ"), Range(0, 10.0f)]
     float BubbleSize;
 
+    [SerializeField] private Transform _parentTransform;
+
     int floatflag = 0;
 
     
@@ -79,6 +81,12 @@ public class BubbleOperation : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             floatflag++;
+
+            foreach (Transform childTransform in _parentTransform)
+            {
+                Destroy(childTransform.gameObject);
+
+            }
         }
     }
 
