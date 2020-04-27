@@ -110,7 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FloatAcceleration: 1.5
   BubbleSize: 0.5
-  _parentTransform: {fileID: 8381912061350597283}
+  _parentTransform: {fileID: 8353143837347223529}
 --- !u!54 &8353143837347223531
 Rigidbody:
   m_ObjectHideFlags: 0
