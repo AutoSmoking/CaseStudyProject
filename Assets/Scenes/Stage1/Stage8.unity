@@ -11889,6 +11889,11 @@ PrefabInstance:
       propertyPath: StageObj.Array.data[3]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: LRFlag
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1719330673378087602, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
       propertyPath: m_Name
