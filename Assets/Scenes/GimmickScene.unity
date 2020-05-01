@@ -437,6 +437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 861215158}
   WaitTime: 3
+  WarpTime: 3
   objList:
   - {fileID: 479437905}
 --- !u!1 &1301357024
