@@ -9,7 +9,8 @@ public class SelectMenu : MonoBehaviour
     [SerializeField, Header("1～10のステージシーン名")]
     public string[] scenenames = new string[10];
     Button button;
-    public GameObject[] a=new GameObject[10];
+    public GameObject[] stage=new GameObject[3];
+    public Animator[] anim = new Animator[3];
     // Start is called before the first frame update
     void Start()
     {
@@ -18,13 +19,31 @@ public class SelectMenu : MonoBehaviour
         //ボタンが選択された状態になる
 
         button.Select();
+
+        //ボタンを消す
+
+        stage[0] = GameObject.Find("1~10");
+        stage[1] = GameObject.Find("11~20");
+        stage[2] = GameObject.Find("21~30");
+
+        for (int t = 0; t < stage.Length; t++)
+        {
+            anim[t] = stage[t].GetComponent<Animator>();
+            anim[t].enabled = false;
+            foreach (Transform obj in stage[t].transform)
+            {
+                obj.gameObject.SetActive(false);
+            }
+        }
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
+
             //string name = gameObject.name;
             //Debug.Log(int.Parse(name));
             //SceneComponent instance = GameObject.Find("SceneManager").GetComponent<SceneComponent>();
@@ -54,12 +73,6 @@ public class SelectMenu : MonoBehaviour
 
     public void MoveSelect(int num)
     {
-        GameObject[] stage = new GameObject[3];
-
-        stage[0] = GameObject.Find("1~10");
-        stage[1] = GameObject.Find("11~20");
-        stage[2] = GameObject.Find("21~30");
-
         for (int t = 0; t < 3; t++)
         {
             foreach (Transform obj in stage[t].transform)

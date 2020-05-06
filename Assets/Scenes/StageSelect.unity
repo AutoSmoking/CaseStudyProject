@@ -1168,6 +1168,7 @@ GameObject:
   - component: {fileID: 400006207}
   - component: {fileID: 400006205}
   - component: {fileID: 400006206}
+  - component: {fileID: 400006210}
   m_Layer: 5
   m_Name: 11~20
   m_TagString: Untagged
@@ -1201,7 +1202,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9.3000145, y: 48}
+  m_AnchoredPosition: {x: -9.3000145, y: 26.4}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &400006205
@@ -1227,7 +1228,14 @@ MonoBehaviour:
   - Stage8
   - Stage9
   - Stage10
-  a: []
+  stage:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  anim:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!223 &400006206
 Canvas:
   m_ObjectHideFlags: 0
@@ -1339,6 +1347,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 400006203}
   m_CullTransparentMesh: 0
+--- !u!95 &400006210
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400006203}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 79eada3c8bd0b85409c30efe008d0382, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &424574801
 GameObject:
   m_ObjectHideFlags: 0
@@ -3429,6 +3456,7 @@ GameObject:
   - component: {fileID: 1064071982}
   - component: {fileID: 1064071980}
   - component: {fileID: 1064071981}
+  - component: {fileID: 1064071985}
   m_Layer: 5
   m_Name: 21~30
   m_TagString: Untagged
@@ -3462,7 +3490,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 110.999985, y: 48}
+  m_AnchoredPosition: {x: 76, y: 27}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1064071980
@@ -3488,7 +3516,14 @@ MonoBehaviour:
   - Stage8
   - Stage9
   - Stage10
-  a: []
+  stage:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  anim:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!223 &1064071981
 Canvas:
   m_ObjectHideFlags: 0
@@ -3600,6 +3635,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1064071978}
   m_CullTransparentMesh: 0
+--- !u!95 &1064071985
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064071978}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e1702e60115291742bd4511d026b80af, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1076195866
 GameObject:
   m_ObjectHideFlags: 0
@@ -4281,6 +4335,7 @@ GameObject:
   - component: {fileID: 1180549748}
   - component: {fileID: 1180549747}
   - component: {fileID: 1180549751}
+  - component: {fileID: 1180549752}
   m_Layer: 5
   m_Name: 1~10
   m_TagString: Untagged
@@ -4314,7 +4369,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -119, y: 48}
+  m_AnchoredPosition: {x: -88, y: 27}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1180549747
@@ -4340,7 +4395,14 @@ MonoBehaviour:
   - Stage8
   - Stage9
   - Stage10
-  a: []
+  stage:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  anim:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &1180549748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4452,6 +4514,25 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 2
   m_TargetDisplay: 0
+--- !u!95 &1180549752
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180549745}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 466eabba30fbbe74aa81346860afd3d6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1253941516
 GameObject:
   m_ObjectHideFlags: 0
@@ -4562,6 +4643,7 @@ MonoBehaviour:
   SceneName: StageSelect
   SceneFlag: 0
   GameFrag: 0
+  StageNameInstance: {fileID: 0}
 --- !u!4 &1289283296
 Transform:
   m_ObjectHideFlags: 0
@@ -4588,10 +4670,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f49fc62ee907d9749909e0f4fdcfa40d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Nama: []
+  StageSceneNama:
+  - Stage1
+  - Stage2
+  - Stage3
+  - Stage4
+  - Stage5
+  - Stage6
+  - Stage7
+  - Stage8
+  - Stage9
+  - Stage10
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   TitleName: 
   SceneScript: {fileID: 0}
   NowSceneName: 
+  NextSceneName: 
 --- !u!1 &1312603613
 GameObject:
   m_ObjectHideFlags: 0
@@ -6404,7 +6517,14 @@ MonoBehaviour:
   - 
   - 
   - 
-  a: []
+  stage:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  anim:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1595087744
 GameObject:
   m_ObjectHideFlags: 0
