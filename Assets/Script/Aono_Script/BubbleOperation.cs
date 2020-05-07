@@ -35,7 +35,7 @@ public class BubbleOperation : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {   //ゴールに接触した時にログを出す
-        if (other.CompareTag("Finish") && !DeathFlg)
+        if (other.CompareTag("Finish") && !DeathFlg && Bubble == null && Bubble2 == null) // ここ変更
         {
             Debug.Log("GoalHit");
             GameObject.Find("SceneManager").GetComponent<SceneComponent>().GameFrag = true;
