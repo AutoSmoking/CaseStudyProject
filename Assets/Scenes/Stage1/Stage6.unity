@@ -4601,6 +4601,11 @@ PrefabInstance:
       propertyPath: SpinMaxSpeed
       value: 0.04
       objectReference: {fileID: 0}
+    - target: {fileID: 7837262783028762519, guid: ec0d53c6111d0ab4da4f79f3705d4755,
+        type: 3}
+      propertyPath: LRFlag
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8728859256344052791, guid: ec0d53c6111d0ab4da4f79f3705d4755,
         type: 3}
       propertyPath: m_Name

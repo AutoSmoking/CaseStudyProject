@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KanKikuchi.AudioManager;
 
 public class NeedleOperation : MonoBehaviour
 {
@@ -20,16 +21,19 @@ public class NeedleOperation : MonoBehaviour
     { 
         if (other.gameObject.tag == "1")
         {
+            SEManager.Instance.Play(SEPath.BUBBLE_DEATH);
             Destroy(Bubble);
         }
 
         if (other.gameObject.tag == "2")
         {
+            SEManager.Instance.Play(SEPath.BUBBLE_DEATH);
             Destroy(Bubble2);
         }
 
         if (other.gameObject.tag == "3")
         {
+            SEManager.Instance.Play(SEPath.BUBBLE_DEATH);
             Destroy(Bubble3);
         }
     }
