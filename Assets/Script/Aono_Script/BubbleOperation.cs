@@ -84,7 +84,7 @@ public class BubbleOperation : MonoBehaviour
             floatflag++;
 
             // ここで音を鳴らす
-            SEManager.Instance.Play(SEPath.BUBBLE_BIRTH);
+            SEManager.Instance.Play("SE/Bubble_Birth");
 
             foreach (Transform childTransform in _parentTransform)
             {
