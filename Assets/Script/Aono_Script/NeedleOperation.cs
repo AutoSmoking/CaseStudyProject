@@ -23,18 +23,48 @@ public class NeedleOperation : MonoBehaviour
         {
             SEManager.Instance.Play("SE/Bubble_Death");
             Destroy(Bubble);
+
+            // 勝手に追加
+            if (Bubble2 != null) 
+            {
+                Bubble2.GetComponent<BubbleOperation>().DeathFlg = true;
+            }
+            if (Bubble3 != null)
+            {
+                Bubble3.GetComponent<BubbleOperation>().DeathFlg = true;
+            }
         }
 
         if (other.gameObject.tag == "2")
         {
             SEManager.Instance.Play("SE/Bubble_Death");
             Destroy(Bubble2);
+
+            // 勝手に追加
+            if (Bubble != null)
+            {
+                Bubble.GetComponent<BubbleOperation>().DeathFlg = true;
+            }
+            if (Bubble3 != null)
+            {
+                Bubble3.GetComponent<BubbleOperation>().DeathFlg = true;
+            }
         }
 
         if (other.gameObject.tag == "3")
         {
             SEManager.Instance.Play("SE/Bubble_Death");
             Destroy(Bubble3);
+
+            // 勝手に追加
+            if (Bubble2 != null)
+            {
+                Bubble2.GetComponent<BubbleOperation>().DeathFlg = true;
+            }
+            if (Bubble != null)
+            {
+                Bubble.GetComponent<BubbleOperation>().DeathFlg = true;
+            }
         }
     }
 
