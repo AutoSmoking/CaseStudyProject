@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KanKikuchi.AudioManager;
 
 public class BubbleOperation : MonoBehaviour
 {
@@ -81,6 +82,9 @@ public class BubbleOperation : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             floatflag++;
+
+            // ここで音を鳴らす
+            SEManager.Instance.Play(SEPath.BUBBLE_BIRTH);
 
             foreach (Transform childTransform in _parentTransform)
             {
