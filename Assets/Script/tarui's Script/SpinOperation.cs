@@ -37,7 +37,7 @@ public class SpinOperation : MonoBehaviour
 #endif
 
     [SerializeField, Header("回転方向フラグ false:逆回転　true:正回転")]
-    bool LRFlag;
+    bool LRFlag = false;
 
     [SerializeField, Header("スティック系の感度"), Range(0, 1)]
     float stickSense = 0.5f;
@@ -45,13 +45,13 @@ public class SpinOperation : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField, Header("回転の加速度"), Range(0.001f, 0.1f)]
-    float SpinAcceleration;
+    float SpinAcceleration = 0.001f;
 
     [SerializeField, Header("回転速度の最大値"), Range(0.001f, 1.0f)]
-    float SpinMaxSpeed;
+    float SpinMaxSpeed = 0.001f;
 
     [SerializeField, Header("回転停止後の滑る度合 大：滑らない　小：めっちゃ滑る"), Range(0.01f, 10.0f)]
-    float SpinSlide;
+    float SpinSlide = 0.01f;
 
     // 回転の現在速度
     [SerializeField]
@@ -325,7 +325,5 @@ public class SpinOperation : MonoBehaviour
         {
             return false;
         }
-
-        return false;
     }
 }
