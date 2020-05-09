@@ -23,7 +23,7 @@ public class TorusCollider : MonoBehaviour
     GameObject Obj;
 
     [SerializeField]
-    ColType type;
+    ColType type = ColType.Box;
 
     // Start is called before the first frame update
     void Awake()
