@@ -79,18 +79,14 @@ public class BubbleOperation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && floatflag == 0)
         {
             floatflag++;
 
             // ここで音を鳴らす
             SEManager.Instance.Play("SE/Bubble_Birth");
 
-            foreach (Transform childTransform in _parentTransform)
-            {
-                Destroy(childTransform.gameObject);
-
-            }
+            Destroy(gameObject.transform.FindChild("taru").gameObject);
         }
     }
 
