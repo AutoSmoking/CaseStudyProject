@@ -66,9 +66,16 @@ public class SpinOperation : MonoBehaviour
     [SerializeField, Header("中心の海域の場合はtrueにしてください")]
     bool CenterFlg;
 
+    [SerializeField, Header("回転中に止めるオブジェクト")]
+    List<GameObject> stopObj = new List<GameObject>() { };
+
     float StopSpin = 0;
 
-    bool StopFlg = false;
+    bool SlideFlg = false;
+
+    // オブジェクトの停止用フラグ
+    bool stopFlg = false;
+    bool onceFlg = false;
 
     float t = 0.0f;
 
@@ -82,7 +89,7 @@ public class SpinOperation : MonoBehaviour
 #endif
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         // 操作部分
         SpinControl();
@@ -98,12 +105,12 @@ public class SpinOperation : MonoBehaviour
     // 回転が止まる前の滑る部分
     void SlideOpe()
     {
-        if (!StopFlg)
+        if (!SlideFlg)
         {
             StopSpin = SpinSpeed;
         }
 
-        StopFlg = true;
+        SlideFlg = true;
 
         SpinSpeed = Mathf.Lerp(StopSpin, 0.0f, t);
 
@@ -134,6 +141,13 @@ public class SpinOperation : MonoBehaviour
 #endif
 
         {
+            // 最初に停止フラグを初期化
+            if (stopFlg)
+            {
+                stopFlg = false;
+                onceFlg = true;
+            }
+
             if (LRFlag)
             {
                 if (SpinSpeed >= 0)
@@ -141,7 +155,7 @@ public class SpinOperation : MonoBehaviour
                     SpinSpeed += SpinAcceleration * Time.deltaTime;
 
                     t = 0.0f;
-                    StopFlg = false;
+                    SlideFlg = false;
                 }
                 else
                 {
@@ -155,7 +169,7 @@ public class SpinOperation : MonoBehaviour
                     SpinSpeed -= SpinAcceleration * Time.deltaTime;
 
                     t = 0.0f;
-                    StopFlg = false;
+                    SlideFlg = false;
                 }
                 else
                 {
@@ -185,6 +199,13 @@ public class SpinOperation : MonoBehaviour
                   (Input.GetKey(RightSpin)))
 #endif
         {
+            // 最初に停止フラグを初期化
+            if (stopFlg)
+            {
+                stopFlg = false;
+                onceFlg = true;
+            }
+
             if (LRFlag)
             {
                 if (SpinSpeed <= 0)
@@ -192,7 +213,7 @@ public class SpinOperation : MonoBehaviour
                     SpinSpeed -= SpinAcceleration * Time.deltaTime;
 
                     t = 0.0f;
-                    StopFlg = false;
+                    SlideFlg = false;
                 }
                 else
                 {
@@ -206,7 +227,7 @@ public class SpinOperation : MonoBehaviour
                     SpinSpeed += SpinAcceleration * Time.deltaTime;
 
                     t = 0.0f;
-                    StopFlg = false;
+                    SlideFlg = false;
                 }
                 else
                 {
@@ -217,12 +238,65 @@ public class SpinOperation : MonoBehaviour
 
         else if (SpinSpeed != 0.0f)
         {
+            // 最初に停止フラグを初期化
+            if (stopFlg)
+            {
+                stopFlg = false;
+                onceFlg = true;
+            }
+
             SlideOpe();
+        }
+
+        else if (SpinSpeed <= 0.01f && SpinSpeed >= -0.01f && stopFlg == false) 
+        {
+            stopFlg = true;
+            onceFlg = true;
         }
 
 
         // 速度の制限
         SpinSpeed = Mathf.Clamp(SpinSpeed, -SpinMaxSpeed, SpinMaxSpeed);
+
+
+        // 停止している間はスクリプトを実行する
+        if(stopFlg && onceFlg)
+        {
+            foreach(var obj in stopObj)
+            {
+                foreach(var mono in obj.GetComponents<MonoBehaviour>())
+                {
+                    mono.enabled = true;
+                }
+
+                if (obj.GetComponent<Rigidbody>() != null)
+                {
+                    obj.GetComponent<Rigidbody>().isKinematic = false;
+                }
+            }
+
+            // 一度だけ実行させる()
+            onceFlg = false;
+        }
+        // 動いている間はスクリプトを実行しない
+        else if (onceFlg)
+        {
+            foreach (var obj in stopObj)
+            {
+                foreach (var mono in obj.GetComponents<MonoBehaviour>())
+                {
+                    mono.enabled = false;
+                }
+
+                if (obj.GetComponent<Rigidbody>() != null)
+                {
+                    obj.GetComponent<Rigidbody>().isKinematic = true;
+                }
+            }
+
+            // 一度だけ実行させる
+            onceFlg = false;
+        }
     }
 
     // 適用されてるオブジェクトを回転させる

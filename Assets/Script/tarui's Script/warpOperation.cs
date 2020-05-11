@@ -13,8 +13,11 @@ public class warpOperation : MonoBehaviour
     [SerializeField, Header("ワープ中のの待ち時間"), Range(0.0f, 5.0f)]
     float WarpTime;
 
-    [SerializeField, Header("")]
+    [SerializeField, Header("ワープ対象のオブジェクト")]
     List<GameObject> objList = new List<GameObject>() { };
+
+    [SerializeField, Header("ワープ中に止める対象のオブジェクト")]
+    List<GameObject> stopList = new List<GameObject>() { };
 
     // ワープ中の待ち時間用
     bool WaitFlg = false;
@@ -50,6 +53,20 @@ public class warpOperation : MonoBehaviour
 
                     // ワープが終わったらオブジェクトを出現させる
                     Object.SetActive(true);
+
+                    // 止めていたスクリプトを再起動
+                    foreach (var stopObj in stopList)
+                    {
+                        foreach (var com in stopObj.GetComponents<MonoBehaviour>())
+                        {
+                            com.enabled = true;
+                        }
+
+                        if (stopObj.GetComponent<Rigidbody>() != null)
+                        {
+                            stopObj.GetComponent<Rigidbody>().isKinematic = false;
+                        }
+                    }
                 }
                 else
                 {
@@ -64,12 +81,6 @@ public class warpOperation : MonoBehaviour
                     percent = 0;
                     //WarpFlg = false;
                     WaitFlg = true;
-
-                    // 止めていたスクリプトを再起動
-                    foreach (var com in Object.GetComponent<GetComOperation>().com)
-                    {
-                        com.enabled = true;
-                    }
 
                     // ワープ中はオブジェクトは消す
                     Object.SetActive(false);
@@ -99,10 +110,21 @@ public class warpOperation : MonoBehaviour
 
                 firstPos = obj.transform.position;
 
-                foreach(var com in obj.GetComponent<GetComOperation>().com)
+                foreach (var stopObj in stopList)
                 {
-                    com.enabled = false;
+                    foreach (var com in stopObj.GetComponents<MonoBehaviour>())
+                    {
+                        com.enabled = false;
+                    }
+
+                    if(stopObj.GetComponent<Rigidbody>() != null)
+                    {
+                        stopObj.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                        stopObj.GetComponent<Rigidbody>().isKinematic = true;
+                    }
                 }
+
+                break;
             }
         }
     }
