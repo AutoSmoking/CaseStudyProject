@@ -4394,6 +4394,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2267886859567542972, guid: 8e779debe9711584284706adb5d34090,
         type: 3}
+      propertyPath: stopObj.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267886859567542972, guid: 8e779debe9711584284706adb5d34090,
+        type: 3}
       propertyPath: StageObj.Array.data[0]
       value: 
       objectReference: {fileID: 605182138}
@@ -4447,6 +4452,16 @@ PrefabInstance:
       propertyPath: SpinMaxSpeed
       value: 0.04
       objectReference: {fileID: 0}
+    - target: {fileID: 2267886859567542972, guid: 8e779debe9711584284706adb5d34090,
+        type: 3}
+      propertyPath: stop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267886859567542972, guid: 8e779debe9711584284706adb5d34090,
+        type: 3}
+      propertyPath: stopObj.Array.data[0]
+      value: 
+      objectReference: {fileID: 1785147093}
     - target: {fileID: 7497224430841196230, guid: 8e779debe9711584284706adb5d34090,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4578,6 +4593,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7837262783028762519, guid: ec0d53c6111d0ab4da4f79f3705d4755,
         type: 3}
+      propertyPath: stopObj.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7837262783028762519, guid: ec0d53c6111d0ab4da4f79f3705d4755,
+        type: 3}
       propertyPath: StageObj.Array.data[0]
       value: 
       objectReference: {fileID: 820998025}
@@ -4606,6 +4626,16 @@ PrefabInstance:
       propertyPath: LRFlag
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7837262783028762519, guid: ec0d53c6111d0ab4da4f79f3705d4755,
+        type: 3}
+      propertyPath: stop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7837262783028762519, guid: ec0d53c6111d0ab4da4f79f3705d4755,
+        type: 3}
+      propertyPath: stopObj.Array.data[0]
+      value: 
+      objectReference: {fileID: 1785147093}
     - target: {fileID: 8728859256344052791, guid: ec0d53c6111d0ab4da4f79f3705d4755,
         type: 3}
       propertyPath: m_Name
