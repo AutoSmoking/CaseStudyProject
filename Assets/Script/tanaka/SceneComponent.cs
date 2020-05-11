@@ -2,15 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+[RequireComponent(typeof(PauseComponent))]
 public class SceneComponent : MonoBehaviour
 {
     [SerializeField, Header("今のシーン名")]
     public string SceneName;
 
     public bool SceneFlag;
+
+    [SerializeField, Header("ゴール時にtrueにする")]
     public bool GameFrag;
     static public SceneComponent instance;
     public SceneName StageNameInstance;
+    public bool PauseFlag = false;
+
     void Awake()
     {
         if (instance == null)
@@ -38,14 +44,32 @@ public class SceneComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (SceneName != "Title Scene" && SceneName != "StageSelect")
+        {
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                if (PauseFlag == true)
+                {
+                    PauseFlag = false;
+                    PauseComponent.Resume();
+                }
+                else
+                {
+                    PauseFlag = true;
+                    PauseComponent.Pause();
+                }
+            }
+
+        }
+
         //リセットキー入力
-        if(Input.GetKeyDown(KeyCode.R)&&SceneName!= "Title Scene"&&SceneName!= "StageSelect")
+        if (Input.GetKeyDown(KeyCode.R) && SceneName != "Title Scene" && SceneName != "StageSelect" && GameFrag == false) 
         {
             ResetStage();
         }
 
         //ステージセレクト移動
-        if (Input.GetKeyDown(KeyCode.T) && SceneName != "Title Scene" && SceneName != "StageSelect")
+        if (Input.GetKeyDown(KeyCode.T) && SceneName != "Title Scene" && SceneName != "StageSelect" && GameFrag == false) 
         {
             SelectTransition();
         }
@@ -76,19 +100,36 @@ public class SceneComponent : MonoBehaviour
                 }
             }
 
+            // イベントにイベントハンドラーを追加
+            SceneManager.sceneLoaded += SceneLoaded;
             //シーン読み込み
             LoadScene(SceneName);
         }
 
         //ゲームクリア時
-        if ((SceneManager.GetActiveScene().name != "Title Scene" && SceneManager.GetActiveScene().name != "StageSelect") && GameFrag == true) 
-        {
-            SceneName = StageNameInstance.NextSceneName;
-            SceneFlag = true;
-            GameFrag = false;
-        }
+        //if ((SceneManager.GetActiveScene().name != "Title Scene" && SceneManager.GetActiveScene().name != "StageSelect") && GameFrag == true) 
+        //{
+        //    SceneName = StageNameInstance.NextSceneName;
+        //    SceneFlag = true;
+        //    GameFrag = false;
+        //}
     }
 
+    // イベントハンドラー（イベント発生時に動かしたい処理）
+    void SceneLoaded(Scene nextScene, LoadSceneMode mode)
+    {
+        if (SceneName != "Title Scene" && SceneName != "StageSelect")
+        {
+            foreach (GameObject obj in UnityEngine.Object.FindObjectsOfType(typeof(GameObject)))
+            {
+                // シーン上に存在するオブジェクトならば処理.
+                if (obj.activeInHierarchy && obj.name != "SceneManager") 
+                {
+                   // obj.AddComponent<PauseComponent>();
+                }
+            }
+        }
+    }
     //シーン読み込み
     void LoadScene(string name)
     {
@@ -96,7 +137,7 @@ public class SceneComponent : MonoBehaviour
         SceneFlag = false;
     }
     //ステージセレクトへ
-    void SelectTransition()
+    public void SelectTransition()
     {
         GameFrag = false;
         SceneName = "StageSelect";
