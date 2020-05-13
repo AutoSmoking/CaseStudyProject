@@ -73,12 +73,8 @@ public class SpinOperation : MonoBehaviour
 
     bool SlideFlg = false;
 
-    //// オブジェクトの停止用フラグ
-    //bool stopFlg = false;
-    //bool onceFlg = false;
-
-    //[SerializeField ,Header("true:泡が止まる　false:止まらない")]
-    //bool stop = false;
+    // 回転の停止を検知する
+    public bool stopFlg = false;
 
     float t = 0.0f;
 
@@ -144,12 +140,10 @@ public class SpinOperation : MonoBehaviour
 #endif
 
         {
-            //// 最初に停止フラグを初期化
-            //if (stopFlg && stop)
-            //{
-            //    stopFlg = false;
-            //    onceFlg = true;
-            //}
+            if (stopFlg)
+            {
+                stopFlg = false;
+            }
 
             if (LRFlag)
             {
@@ -202,12 +196,11 @@ public class SpinOperation : MonoBehaviour
                   (Input.GetKey(RightSpin)))
 #endif
         {
-            //// 最初に停止フラグを初期化
-            //if (stopFlg && stop)
-            //{
-            //    stopFlg = false;
-            //    onceFlg = true;
-            //}
+
+            if (stopFlg)
+            {
+                stopFlg = false;
+            }
 
             if (LRFlag)
             {
@@ -241,78 +234,23 @@ public class SpinOperation : MonoBehaviour
 
         else if (SpinSpeed != 0.0f)
         {
-            //// 最初に停止フラグを初期化
-            //if (stopFlg && stop)
-            //{
-            //    stopFlg = false;
-            //    onceFlg = true;
-            //}
+
+            if (stopFlg)
+            {
+                stopFlg = false;
+            }
 
             SlideOpe();
         }
 
-        //else if (SpinSpeed <= 0.01f && SpinSpeed >= -0.01f && stopFlg == false && stop) 
-        //{
-        //    stopFlg = true;
-        //    onceFlg = true;
-        //}
+        else if (SpinSpeed <= 0.01f && SpinSpeed >= -0.01f && stopFlg == false)
+        {
+            stopFlg = true;
+        }
 
 
         // 速度の制限
         SpinSpeed = Mathf.Clamp(SpinSpeed, -SpinMaxSpeed, SpinMaxSpeed);
-
-
-        //if (stop)
-        //{
-        //    // 停止している間はスクリプトを実行する
-        //    if (stopFlg && onceFlg)
-        //    {
-        //        foreach (var obj in stopObj)
-        //        {
-        //            if (obj == null)
-        //            {
-        //                continue;
-        //            }
-
-        //            foreach (var mono in obj.GetComponents<MonoBehaviour>())
-        //            {
-        //                mono.enabled = true;
-        //            }
-
-        //            if (obj.GetComponent<Rigidbody>() != null)
-        //            {
-        //                obj.GetComponent<Rigidbody>().isKinematic = false;
-        //            }
-        //        }
-
-        //        // 一度だけ実行させる()
-        //        onceFlg = false;
-        //    }
-        //    // 動いている間はスクリプトを実行しない
-        //    else if (onceFlg)
-        //    {
-        //        foreach (var obj in stopObj)
-        //        {
-        //            if (obj == null)
-        //            {
-        //                continue;
-        //            }
-
-        //            foreach (var mono in obj.GetComponents<MonoBehaviour>())
-        //            {
-        //                mono.enabled = false;
-        //            }
-
-        //            if (obj.GetComponent<Rigidbody>() != null)
-        //            {
-        //                obj.GetComponent<Rigidbody>().isKinematic = true;
-        //            }
-        //        }
-
-        //        // 一度だけ実行させる
-        //        onceFlg = false;
-        //    }
-        //}
     }
 
     // 適用されてるオブジェクトを回転させる
