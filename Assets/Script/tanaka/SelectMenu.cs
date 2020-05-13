@@ -11,9 +11,12 @@ public class SelectMenu : MonoBehaviour
     Button button;
     public GameObject[] stage=new GameObject[3];
     public Animator[] anim = new Animator[3];
+    public SceneName AllNameScript;
     // Start is called before the first frame update
     void Start()
     {
+        AllNameScript = GameObject.Find("SceneManager").GetComponent<SceneName>();
+
         button = GameObject.Find("Canvas/1~10").GetComponent<Button>();
 
         //ボタンが選択された状態になる
@@ -36,6 +39,19 @@ public class SelectMenu : MonoBehaviour
             }
         }
 
+        switch (gameObject.name)
+        {
+            case "1~10":
+                SetStageName(0);
+                break;
+            case "11~20":
+                SetStageName(10);
+                break;
+            case "21~30":
+                SetStageName(20);
+                break;
+
+        }
     }
 
     // Update is called once per frame
@@ -54,6 +70,15 @@ public class SelectMenu : MonoBehaviour
             //    OnClick(int.Parse(gameObject.name) + 1);
             //}
 
+        }
+    }
+
+    //ステージ名をセット
+    void SetStageName(int startNumber)
+    {
+        for (int i = 0; i < scenenames.Length; i++) 
+        {
+            scenenames[i] = AllNameScript.StageSceneNama[i + startNumber];
         }
     }
 

@@ -16,7 +16,7 @@ public class SceneComponent : MonoBehaviour
     static public SceneComponent instance;
     public SceneName StageNameInstance;
     public bool PauseFlag = false;
-
+    public PauseManager PauseManager;
     void Awake()
     {
         if (instance == null)
@@ -39,6 +39,7 @@ public class SceneComponent : MonoBehaviour
         SceneFlag = false;
         GameFrag = false;
         StageNameInstance = instance.GetComponent<SceneName>();
+        PauseManager = GameObject.Find("PauseManager").GetComponent<PauseManager>();
     }
 
     // Update is called once per frame
@@ -120,14 +121,17 @@ public class SceneComponent : MonoBehaviour
     {
         if (SceneName != "Title Scene" && SceneName != "StageSelect")
         {
-            foreach (GameObject obj in UnityEngine.Object.FindObjectsOfType(typeof(GameObject)))
-            {
-                // シーン上に存在するオブジェクトならば処理.
-                if (obj.activeInHierarchy && obj.name != "SceneManager") 
-                {
-                   // obj.AddComponent<PauseComponent>();
-                }
-            }
+            //シーン読み込み完了後
+            PauseManager.GetPauseObject();
+
+            //foreach (GameObject obj in UnityEngine.Object.FindObjectsOfType(typeof(GameObject)))
+            //{
+            //    // シーン上に存在するオブジェクトならば処理.
+            //    if (obj.activeInHierarchy && obj.name != "SceneManager") 
+            //    {
+            //       // obj.AddComponent<PauseComponent>();
+            //    }
+            //}
         }
     }
     //シーン読み込み

@@ -91,7 +91,7 @@ public class PauseComponent : MonoBehaviour
     }
 
     // ポーズされたとき
-    void OnPause()
+    public void OnPause()
     {
         if (pauseBehavs != null)
         {
@@ -127,7 +127,7 @@ public class PauseComponent : MonoBehaviour
     }
 
     // ポーズ解除されたとき
-    void OnResume()
+    public void OnResume()
     {
         if (pauseBehavs == null)
         {

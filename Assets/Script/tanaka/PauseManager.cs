@@ -28,7 +28,7 @@ public class PauseManager : MonoBehaviour
     {
         if (instance == null)
         {
-
+            Debug.Log("set");
             instance = GetComponent<PauseManager>();
             DontDestroyOnLoad(gameObject);
         }
@@ -106,17 +106,19 @@ public class PauseManager : MonoBehaviour
             }
         }
 
+        //SpinOparationのSpinSpeedを0にしてステージを止める
+
         //Stageのレイヤーの中にあるStageObjの取得
-        foreach(GameObject obj in StageLayerObjList)
-        {
-            if (obj.GetComponent<SpinOperation>() != null)
-            {
-                foreach(GameObject targetobj in obj.GetComponent<SpinOperation>().StageObj)
-                {
-                    TargetObj.Add(targetobj);
-                }
-            }
-        }
+        //foreach(GameObject obj in StageLayerObjList)
+        //{
+        //    if (obj.GetComponent<SpinOperation>() != null)
+        //    {
+        //        foreach(GameObject targetobj in obj.GetComponent<SpinOperation>().StageObj)
+        //        {
+        //            TargetObj.Add(targetobj);
+        //        }
+        //    }
+        //}
 
         //Pause対象のオブジェクトにPauseComponentの付与
         foreach (GameObject obj in TargetObj)

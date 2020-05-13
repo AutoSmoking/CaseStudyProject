@@ -386,7 +386,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.381}
-  m_AnchoredPosition: {x: 191, y: 5.000046}
+  m_AnchoredPosition: {x: 191, y: 5.000061}
   m_SizeDelta: {x: -302, y: -69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &203825247
@@ -683,10 +683,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 372405066}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00185b00c8e8caf4791c441fb5a03758, type: 3}
+  m_Script: {fileID: 11500000, guid: b759778a3ebe3b643a907aba369f3f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PauseFlag: 0
+  StageLayerNumber: 9
+  BubbleLayerNumber: 8
+  StageLayerObjList: []
+  TargetObj: []
+  a: 0
+  SpinOp: {fileID: 0}
 --- !u!4 &372405068
 Transform:
   m_ObjectHideFlags: 0
@@ -1207,7 +1212,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.381}
-  m_AnchoredPosition: {x: -177, y: 5.000046}
+  m_AnchoredPosition: {x: -177, y: 5.000061}
   m_SizeDelta: {x: -302, y: -69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1656532033
