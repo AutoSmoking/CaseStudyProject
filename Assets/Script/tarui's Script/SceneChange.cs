@@ -9,7 +9,7 @@ public class SceneChange : MonoBehaviour
     KeyCode key = KeyCode.Alpha1;
 
     [SerializeField, Header("切り替え先シーン名(ここに名前を書いてね)")]
-    string scene;
+    string scene = null;
 
     // Start is called before the first frame update
     void Start()
