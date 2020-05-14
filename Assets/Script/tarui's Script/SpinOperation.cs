@@ -66,9 +66,15 @@ public class SpinOperation : MonoBehaviour
     [SerializeField, Header("中心の海域の場合はtrueにしてください")]
     bool CenterFlg;
 
+    [SerializeField, Header("回転中に止めるオブジェクト")]
+    List<GameObject> stopObj = new List<GameObject>() { };
+
     float StopSpin = 0;
 
-    bool StopFlg = false;
+    bool SlideFlg = false;
+
+    // 回転の停止を検知する
+    public bool stopFlg = false;
 
     float t = 0.0f;
 
@@ -82,7 +88,7 @@ public class SpinOperation : MonoBehaviour
 #endif
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         // 操作部分
         SpinControl();
@@ -98,12 +104,12 @@ public class SpinOperation : MonoBehaviour
     // 回転が止まる前の滑る部分
     void SlideOpe()
     {
-        if (!StopFlg)
+        if (!SlideFlg)
         {
             StopSpin = SpinSpeed;
         }
 
-        StopFlg = true;
+        SlideFlg = true;
 
         SpinSpeed = Mathf.Lerp(StopSpin, 0.0f, t);
 
@@ -134,6 +140,11 @@ public class SpinOperation : MonoBehaviour
 #endif
 
         {
+            if (stopFlg)
+            {
+                stopFlg = false;
+            }
+
             if (LRFlag)
             {
                 if (SpinSpeed >= 0)
@@ -141,7 +152,7 @@ public class SpinOperation : MonoBehaviour
                     SpinSpeed += SpinAcceleration * Time.deltaTime;
 
                     t = 0.0f;
-                    StopFlg = false;
+                    SlideFlg = false;
                 }
                 else
                 {
@@ -155,7 +166,7 @@ public class SpinOperation : MonoBehaviour
                     SpinSpeed -= SpinAcceleration * Time.deltaTime;
 
                     t = 0.0f;
-                    StopFlg = false;
+                    SlideFlg = false;
                 }
                 else
                 {
@@ -185,6 +196,12 @@ public class SpinOperation : MonoBehaviour
                   (Input.GetKey(RightSpin)))
 #endif
         {
+
+            if (stopFlg)
+            {
+                stopFlg = false;
+            }
+
             if (LRFlag)
             {
                 if (SpinSpeed <= 0)
@@ -192,7 +209,7 @@ public class SpinOperation : MonoBehaviour
                     SpinSpeed -= SpinAcceleration * Time.deltaTime;
 
                     t = 0.0f;
-                    StopFlg = false;
+                    SlideFlg = false;
                 }
                 else
                 {
@@ -206,7 +223,7 @@ public class SpinOperation : MonoBehaviour
                     SpinSpeed += SpinAcceleration * Time.deltaTime;
 
                     t = 0.0f;
-                    StopFlg = false;
+                    SlideFlg = false;
                 }
                 else
                 {
@@ -217,7 +234,18 @@ public class SpinOperation : MonoBehaviour
 
         else if (SpinSpeed != 0.0f)
         {
+
+            if (stopFlg)
+            {
+                stopFlg = false;
+            }
+
             SlideOpe();
+        }
+
+        else if (SpinSpeed <= 0.01f && SpinSpeed >= -0.01f && stopFlg == false)
+        {
+            stopFlg = true;
         }
 
 

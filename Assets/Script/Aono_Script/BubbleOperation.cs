@@ -86,7 +86,7 @@ public class BubbleOperation : MonoBehaviour
             // ここで音を鳴らす
             SEManager.Instance.Play("SE/Bubble_Birth");
 
-            Destroy(gameObject.transform.FindChild("taru").gameObject);
+            Destroy(gameObject.transform.Find("taru").gameObject);
         }
     }
 
