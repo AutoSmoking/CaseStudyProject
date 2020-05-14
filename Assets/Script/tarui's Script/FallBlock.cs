@@ -5,10 +5,10 @@ using UnityEngine;
 public class FallBlock : MonoBehaviour
 {
     [SerializeField, Header("↓向きを示す場所")]
-    Transform UnderPos;
+    Transform UnderPos = null;
 
     [SerializeField, Header("速度(0～1までの比率)"),Range(0, 1)]
-    float spd;
+    float spd = 0.0f;
 
     // 加速度的な
     float t;

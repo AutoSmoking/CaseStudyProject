@@ -9,20 +9,20 @@ using UnityEngine;
 public class SeaArea : MonoBehaviour
 {
     [SerializeField, Header("回転の仕様の変更 false:角度で制御　true:距離で制御")]
-    bool rotFlag;
+    bool rotFlag = true;
 
 
     [SerializeField, Header("回転方向フラグ false:左　true:右")]
-    bool LRFlag;
+    bool LRFlag = false;
 
     [SerializeField, Header("影響があるオブジェクト(多分泡かな) 入れないとバグ")]
     List<GameObject> BubbleObj = new List<GameObject>() { };
 
     [SerializeField, Header("ステージの中心座標 SpinObject入れとけばいいかと")]
-    Transform AreaCenter;
+    Transform AreaCenter = null;
 
-    [SerializeField, Header("回転速度"), Range(0, 1000)]
-    float spd;
+    [SerializeField, Header("回転速度"), Range(1, 1000)]
+    float spd = 1.0f;
 
     // 動作フラグ
     public bool DoFlg = false;

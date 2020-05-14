@@ -13,14 +13,14 @@ public class TorusCollider : MonoBehaviour
 
     // 分割数
     [SerializeField,Header("分割数(SphereColliderの数)"),Range(1,3000)]
-    int splitNum;
+    int splitNum = 1;
 
     // 半径
     [SerializeField, Header("半径(中心からSphereColliderまでの距離)"), Range(0, 100)]
-    float R;
+    float R = 0.0f;
 
     [SerializeField, Header("空のオブジェクトを入れてください")]
-    GameObject Obj;
+    GameObject Obj = null;
 
     [SerializeField]
     ColType type = ColType.Box;

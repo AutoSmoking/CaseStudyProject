@@ -7,11 +7,11 @@ public class warpOperation : MonoBehaviour
     [SerializeField, Header("ワープ先")]
     public GameObject next;
 
-    [SerializeField, Header("ワープまでの待ち時間"),Range(0.0f,5.0f)]
-    float WaitTime;
+    [SerializeField, Header("ワープまでの待ち時間"),Range(0.01f,5.0f)]
+    float WaitTime = 0.01f;
 
-    [SerializeField, Header("ワープ中のの待ち時間"), Range(0.0f, 5.0f)]
-    float WarpTime;
+    [SerializeField, Header("ワープ中のの待ち時間"), Range(0.01f, 5.0f)]
+    float WarpTime = 0.01f;
 
     [SerializeField, Header("ワープ対象のオブジェクト")]
     List<GameObject> objList = new List<GameObject>() { };

@@ -6,11 +6,11 @@ public class RotObject : MonoBehaviour
 {
     // 中心座標
     [SerializeField]
-    Transform Center;
+    Transform Center = null;
 
     // 回転速度
     [SerializeField]
-    float spd;
+    float spd = 0.01f;
 
     // Start is called before the first frame update
     void Start()

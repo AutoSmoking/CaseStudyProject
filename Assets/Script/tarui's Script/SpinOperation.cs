@@ -30,10 +30,10 @@ public class SpinOperation : MonoBehaviour
     Controll RightSpin;
 #else
     [SerializeField, Header("左回転用キー")]
-    KeyCode LeftSpin;
+    KeyCode LeftSpin = KeyCode.LeftArrow;
 
     [SerializeField, Header("右回転用キー")]
-    KeyCode RightSpin;
+    KeyCode RightSpin = KeyCode.RightArrow;
 #endif
 
     [SerializeField, Header("回転方向フラグ false:逆回転　true:正回転")]
@@ -64,7 +64,7 @@ public class SpinOperation : MonoBehaviour
     List<GameObject> BubbleObj = new List<GameObject>() { };
 
     [SerializeField, Header("中心の海域の場合はtrueにしてください")]
-    bool CenterFlg;
+    bool CenterFlg = false;
 
     [SerializeField, Header("回転中に止めるオブジェクト")]
     List<GameObject> stopObj = new List<GameObject>() { };
