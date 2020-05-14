@@ -55,7 +55,7 @@ public class SpinOperation : MonoBehaviour
 
     // 回転の現在速度
     [SerializeField]
-    float SpinSpeed = 0;
+    public　float SpinSpeed = 0;
 
     [SerializeField, Header("影響があるオブジェクト 入れないとバグ")]
     List<GameObject> StageObj = new List<GameObject>() { };
