@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8427892193027247447}
-  - component: {fileID: 8427892193027247446}
+  - component: {fileID: 7198691386920850296}
   m_Layer: 0
   m_Name: BGMManager
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8427892193027247446
+--- !u!114 &7198691386920850296
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,7 +40,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8427892193027247445}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8172335b7a61d1a46b2686f46ec7975c, type: 3}
+  m_Script: {fileID: 11500000, guid: c2d9065c7e6244dddaffda63eb37d64b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 6db0e37abb24849a69b697b62d8776e4, type: 3}
+  _audioClip: {fileID: 8300000, guid: 9103071ab9fcf6e4e93f28a103ecfabc, type: 3}
+  _isAutoPlay: 1
+  _volumeRate: 0.7
+  _delay: 0
+  _pitch: 1
+  _fadeInDuration: 0
+  _fadeOutDuration: 0
+  _isLoop: 1
+  _isAutoStop: 1

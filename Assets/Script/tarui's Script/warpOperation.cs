@@ -63,16 +63,23 @@ public class warpOperation : MonoBehaviour
                 {
                     percent = 0;
                     WarpFlg = false;
+                    WaitFlg = false;
                     // 自身のオブジェクトをワープの出口に切り替える
                     GoalFlg = true;
 
                     // ワープが終わったらオブジェクトを出現させる
                     Object.SetActive(true);
+                    Object = null;
 
                     // 止めていたスクリプトを再起動
                     foreach (var stopObj in stopList)
                     {
                         foreach (var com in stopObj.GetComponents<MonoBehaviour>())
+                        {
+                            com.enabled = true;
+                        }
+
+                        foreach (var com in stopObj.GetComponents<Collider>())
                         {
                             com.enabled = true;
                         }
@@ -148,6 +155,11 @@ public class warpOperation : MonoBehaviour
                     foreach (var stopObj in stopList)
                     {
                         foreach (var com in stopObj.GetComponents<MonoBehaviour>())
+                        {
+                            com.enabled = false;
+                        }
+
+                        foreach (var com in stopObj.GetComponents<Collider>())
                         {
                             com.enabled = false;
                         }

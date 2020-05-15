@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 12dfc0b3f981d2b4a839566dd382cebe, type: 2}
+  - {fileID: 2100000, guid: 81804fa987f0ad448ac68d1fa23de75c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,12 +112,13 @@ MonoBehaviour:
   LRFlag: 0
   stickSense: 0.5
   SpinAcceleration: 0.015
-  SpinMaxSpeed: 0.04
+  SpinMaxSpeed: 0.02
   SpinSlide: 2
-  SpinSpeed: 0
   StageObj: []
   BubbleObj: []
   CenterFlg: 0
+  stopObj: []
+  stopFlg: 0
 --- !u!54 &2054420758720026392
 Rigidbody:
   m_ObjectHideFlags: 0

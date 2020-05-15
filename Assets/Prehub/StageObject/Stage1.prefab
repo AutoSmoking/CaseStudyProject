@@ -10,12 +10,12 @@ PrefabInstance:
     - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
       propertyPath: BubbleObj.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
       propertyPath: StageObj.Array.size
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
@@ -130,7 +130,7 @@ PrefabInstance:
     - target: {fileID: 1719330673378087602, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
       propertyPath: m_Name
-      value: Stage
+      value: Stage1
       objectReference: {fileID: 0}
     - target: {fileID: 2379126191017742575, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}

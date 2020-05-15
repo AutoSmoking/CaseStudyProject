@@ -54,7 +54,6 @@ public class SpinOperation : MonoBehaviour
     float SpinSlide = 0.01f;
 
     // 回転の現在速度
-    [SerializeField]
     float SpinSpeed = 0;
 
     [SerializeField, Header("影響があるオブジェクト 入れないとバグ")]
@@ -66,14 +65,12 @@ public class SpinOperation : MonoBehaviour
     [SerializeField, Header("中心の海域の場合はtrueにしてください")]
     bool CenterFlg = false;
 
-    [SerializeField, Header("回転中に止めるオブジェクト")]
-    List<GameObject> stopObj = new List<GameObject>() { };
-
     float StopSpin = 0;
 
     bool SlideFlg = false;
 
     // 回転の停止を検知する
+    [System.NonSerialized]
     public bool stopFlg = false;
 
     float t = 0.0f;
@@ -256,7 +253,7 @@ public class SpinOperation : MonoBehaviour
     // 適用されてるオブジェクトを回転させる
     void SpinUpdate(Collider collider)
     {
-        if (SpinSpeed != 0.0f)
+        if (SpinSpeed != 0.0f && this.enabled)
         {
             bool BubbleFlg = false;
 
