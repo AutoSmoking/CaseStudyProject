@@ -15,7 +15,7 @@ public class SceneComponent : MonoBehaviour
     public bool GameFrag;
     static public SceneComponent instance;
     public SceneName StageNameInstance;
-    public bool PauseFlag = false;
+    //public bool PauseFlag = false;
     public PauseManager PauseManager;
     void Awake()
     {
@@ -45,35 +45,22 @@ public class SceneComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneName != "Title Scene" && SceneName != "StageSelect")
-        {
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                if (PauseFlag == true)
-                {
-                    PauseFlag = false;
-                    PauseComponent.Resume();
-                }
-                else
-                {
-                    PauseFlag = true;
-                    PauseComponent.Pause();
-                }
-            }
+        //if (SceneName != "Title Scene" && SceneName != "StageSelect")
+        //{
 
-        }
+        //}
 
-        //リセットキー入力
-        if (Input.GetKeyDown(KeyCode.R) && SceneName != "Title Scene" && SceneName != "StageSelect" && GameFrag == false) 
-        {
-            ResetStage();
-        }
+        ////リセットキー入力
+        //if (Input.GetKeyDown(KeyCode.R) && SceneName != "Title Scene" && SceneName != "StageSelect" && GameFrag == false) 
+        //{
+        //    ResetStage();
+        //}
 
-        //ステージセレクト移動
-        if (Input.GetKeyDown(KeyCode.T) && SceneName != "Title Scene" && SceneName != "StageSelect" && GameFrag == false) 
-        {
-            SelectTransition();
-        }
+        ////ステージセレクト移動
+        //if (Input.GetKeyDown(KeyCode.T) && SceneName != "Title Scene" && SceneName != "StageSelect" && GameFrag == false) 
+        //{
+        //    SelectTransition();
+        //}
 
             //キー入力(タイトル、ステージセレクト時)
             if ((Input.GetKeyDown(KeyCode.Z) ||
@@ -149,7 +136,7 @@ public class SceneComponent : MonoBehaviour
     }
 
     //ステージのリセット
-    void ResetStage()
+    public void ResetStage()
     {
         SceneManager.LoadScene(SceneName);
     }

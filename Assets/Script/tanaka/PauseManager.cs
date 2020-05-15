@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
 {
@@ -20,8 +21,11 @@ public class PauseManager : MonoBehaviour
     Behaviour[] pauseBehavs = null;
     GameObject[] obj = null;
     static public PauseManager instance;
-    public bool a = false;
+    public bool PauseFlag = false;
     public SpinOperation SpinOp;
+    public GameObject canvas;
+    public Button button;
+    public SceneComponent Scene;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +41,12 @@ public class PauseManager : MonoBehaviour
 
             Destroy(gameObject);
         }
+
+        PauseFlag = false;
+        canvas = transform.FindChild("Canvas").gameObject;
+        button = transform.FindChild("Canvas/Back").GetComponent<Button>();
+        canvas.SetActive(false);
+        Scene = GameObject.Find("SceneManager").GetComponent<SceneComponent>();
     }
 
     // Update is called once per frame
@@ -44,42 +54,33 @@ public class PauseManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-
-            foreach (GameObject obj in TargetObj)
+            if (PauseFlag == false)
             {
-                if (a == false && obj.GetComponent<PauseComponent>() != null)
-                {
-                    obj.GetComponent<PauseComponent>().OnPause();
-                    Debug.Log("on");
-                }
-                else if (a == true && obj.GetComponent<PauseComponent>() != null)
-                {
-                    obj.GetComponent<PauseComponent>().OnResume();
-                    Debug.Log("off");
-                }
-            }
+                StopStage();
+                PauseFlag = true;
+                canvas.SetActive(true);
+                button.Select();
 
-            if (a == true)
-            {
-                a = false;
             }
             else
             {
-                a = true;
+                StartStage();
+                PauseFlag = false;
+                canvas.SetActive(false);
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            GameObject[] go = GameObject.FindObjectsOfType<GameObject>();
-            foreach (GameObject obj in go)
-            {
-                if (obj.layer == 9 || obj.layer == 8)
-                {
-                    TargetObj.Add(obj);
-                }
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.G))
+        //{
+        //    GameObject[] go = GameObject.FindObjectsOfType<GameObject>();
+        //    foreach (GameObject obj in go)
+        //    {
+        //        if (obj.layer == 9 || obj.layer == 8)
+        //        {
+        //            TargetObj.Add(obj);
+        //        }
+        //    }
+        //}
     }
 
     public void GetPauseObject()
@@ -87,7 +88,7 @@ public class PauseManager : MonoBehaviour
         Debug.Log("GetPauseObject");
         StageLayerObjList.Clear();
         TargetObj.Clear();
-        a = false;
+        PauseFlag = false;
         //全てのオブジェクト取得
         GameObject[] AllObj = GameObject.FindObjectsOfType<GameObject>();
 
@@ -126,6 +127,61 @@ public class PauseManager : MonoBehaviour
             if (obj.GetComponent<PauseComponent>() == null)
             {
                 obj.AddComponent<PauseComponent>();
+            }
+        }
+    }
+
+    public void PauseMenu(int num)
+    {
+        switch (num)
+        {
+            case 0:
+                StartStage();
+                break;
+
+            case 1:
+                Scene.ResetStage();
+                break;
+
+            case 2:
+                Scene.SelectTransition();
+                break;
+        }
+
+        PauseFlag = false;
+        canvas.SetActive(false);
+
+    }
+    //ステージ上のオブジェクトを止める
+    public void StopStage()
+    {
+        foreach (GameObject obj in TargetObj)
+        {
+            if (obj.GetComponent<SpinOperation>() != null)
+            {
+                obj.GetComponent<SpinOperation>().SpinSpeed = 0.0f;
+            }
+            if (PauseFlag == false && obj.GetComponent<PauseComponent>() != null)
+            {
+                obj.GetComponent<PauseComponent>().OnPause();
+                Debug.Log("on");
+            }
+        }
+    }
+
+    //ステージ上のオブジェクトの停止解除
+    public void StartStage()
+    {
+        foreach (GameObject obj in TargetObj)
+        {
+            if (obj.GetComponent<SpinOperation>() != null)
+            {
+                obj.GetComponent<SpinOperation>().SpinSpeed = 0.0f;
+            }
+            if (PauseFlag == true && obj.GetComponent<PauseComponent>() != null)
+            {
+                obj.GetComponent<PauseComponent>().OnResume();
+                Debug.Log("off");
             }
         }
     }

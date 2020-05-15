@@ -9,7 +9,8 @@ public class ResultComponent : MonoBehaviour
     SceneComponent scene;
     public Button button;
     public GameObject canvas;
-    public bool buttonflag = false; 
+    public bool buttonflag = false;
+    public PauseManager PauseManager;
 
     void Awake()
     {
@@ -30,12 +31,12 @@ public class ResultComponent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        button = GameObject.Find("Canvas/Button").GetComponent<Button>();
+        button = GameObject.Find("Canvas/StageSelect").GetComponent<Button>();
         //canvas = GameObject.GetComponentInChildren<GameObject>();
         button.Select();
         canvas.SetActive(false);
         scene = GameObject.Find("SceneManager").GetComponent<SceneComponent>();
-
+        PauseManager = GameObject.Find("PauseManager").GetComponent<PauseManager>();
     }
 
     // Update is called once per frame
@@ -50,6 +51,7 @@ public class ResultComponent : MonoBehaviour
             canvas.SetActive(true);
             button.Select();
             buttonflag = true;
+            PauseManager.StopStage();
         }
     }
 
