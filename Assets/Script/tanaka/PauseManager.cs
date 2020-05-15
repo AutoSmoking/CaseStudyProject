@@ -22,7 +22,6 @@ public class PauseManager : MonoBehaviour
     GameObject[] obj = null;
     static public PauseManager instance;
     public bool PauseFlag = false;
-    public SpinOperation SpinOp;
     public GameObject canvas;
     public Button button;
     public SceneComponent Scene;
@@ -157,10 +156,10 @@ public class PauseManager : MonoBehaviour
     {
         foreach (GameObject obj in TargetObj)
         {
-            if (obj.GetComponent<SpinOperation>() != null)
-            {
-                obj.GetComponent<SpinOperation>().SpinSpeed = 0.0f;
-            }
+            //if (obj.GetComponent<SpinOperation>() != null)
+            //{
+            //    obj.GetComponent<SpinOperation>().SpinSpeed = 0.0f;
+            //}
             if (PauseFlag == false && obj.GetComponent<PauseComponent>() != null)
             {
                 obj.GetComponent<PauseComponent>().OnPause();
@@ -174,10 +173,10 @@ public class PauseManager : MonoBehaviour
     {
         foreach (GameObject obj in TargetObj)
         {
-            if (obj.GetComponent<SpinOperation>() != null)
-            {
-                obj.GetComponent<SpinOperation>().SpinSpeed = 0.0f;
-            }
+            //if (obj.GetComponent<SpinOperation>() != null)
+            //{
+            //    obj.GetComponent<SpinOperation>().SpinSpeed = 0.0f;
+            //}
             if (PauseFlag == true && obj.GetComponent<PauseComponent>() != null)
             {
                 obj.GetComponent<PauseComponent>().OnResume();

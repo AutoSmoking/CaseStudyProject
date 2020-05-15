@@ -201,6 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NowSelectObj: {fileID: 0}
+  SceneCom: {fileID: 0}
 --- !u!1 &184873248
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,7 +409,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+    m_SelectedColor: {r: 0.9811321, g: 0.93580544, b: 0.36561054, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -683,7 +684,6 @@ MonoBehaviour:
   StageLayerObjList: []
   TargetObj: []
   PauseFlag: 0
-  SpinOp: {fileID: 0}
   canvas: {fileID: 0}
   button: {fileID: 0}
   Scene: {fileID: 0}
@@ -1721,7 +1721,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+    m_SelectedColor: {r: 0.9811321, g: 0.93580544, b: 0.36561054, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1989,6 +1989,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141729657}
   m_CullTransparentMesh: 0
+--- !u!4 &402754947889417748
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402754947889417750}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.5224493, y: -3.8633928, z: -10.344972}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &402754947889417749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402754947889417750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8172335b7a61d1a46b2686f46ec7975c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 74c88fde9f7f0cf479d08d2676f50225, type: 3}
+--- !u!1 &402754947889417750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 402754947889417748}
+  - component: {fileID: 402754947889417749}
+  m_Layer: 0
+  m_Name: 'BGMManager '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1001 &4328000579428973574
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2001,6 +2045,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4328000580566162137, guid: 38000fd02b96202489e03cb351103f5d,
+        type: 3}
+      propertyPath: EnterClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a774f9cb087314de6aebf390dd78fcd5, type: 3}
     - target: {fileID: 4328000580566162150, guid: 38000fd02b96202489e03cb351103f5d,
         type: 3}
       propertyPath: m_LocalPosition.x

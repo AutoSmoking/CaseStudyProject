@@ -17,6 +17,9 @@ public class SceneComponent : MonoBehaviour
     public SceneName StageNameInstance;
     //public bool PauseFlag = false;
     public PauseManager PauseManager;
+    public AudioClip CursorClip;
+    public AudioClip EnterClip;
+
     void Awake()
     {
         if (instance == null)
