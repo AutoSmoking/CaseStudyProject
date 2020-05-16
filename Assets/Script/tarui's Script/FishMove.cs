@@ -155,7 +155,7 @@ public class FishMove : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other && !TurnFlag && WaitTime > ColStopTime)
+        if (other.tag == "Block" && !TurnFlag && WaitTime > ColStopTime)
         {
             TurnFlag = true;
             FirstAngle = this.transform.eulerAngles;

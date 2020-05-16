@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2714915495571293545}
   m_Layer: 0
   m_Name: "165\xB0-R12.5"
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

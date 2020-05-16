@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5709078086471481985}
   m_Layer: 0
   m_Name: "285\xB0-R10.5"
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
