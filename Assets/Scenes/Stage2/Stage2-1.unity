@@ -399,6 +399,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec0d53c6111d0ab4da4f79f3705d4755, type: 3}
+--- !u!1 &363672928 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8728859256344052791, guid: ec0d53c6111d0ab4da4f79f3705d4755,
+    type: 3}
+  m_PrefabInstance: {fileID: 363672927}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &394173421
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1195,6 +1201,11 @@ PrefabInstance:
       propertyPath: BubbleObj.Array.data[1]
       value: 
       objectReference: {fileID: 864359303}
+    - target: {fileID: 2267886859567542972, guid: 8e779debe9711584284706adb5d34090,
+        type: 3}
+      propertyPath: smallSeaArea
+      value: 
+      objectReference: {fileID: 363672928}
     - target: {fileID: 7497224430841196230, guid: 8e779debe9711584284706adb5d34090,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1817,7 +1828,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3878
+  m_Name: pb_Mesh14814
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

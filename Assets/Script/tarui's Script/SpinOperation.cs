@@ -65,6 +65,9 @@ public class SpinOperation : MonoBehaviour
     [SerializeField, Header("中心の海域の場合はtrueにしてください")]
     bool CenterFlg = false;
 
+    [SerializeField, Header("中心の海域でない場合は一つ下の海域をセットしてください。")]
+    GameObject smallSeaArea = null;
+
     float StopSpin = 0;
 
     bool SlideFlg = false;
@@ -83,6 +86,12 @@ public class SpinOperation : MonoBehaviour
             Debug.LogError("左右の回転に同じキーが割り当てられてるよ");
         }
 #endif
+
+        // 中心の海域でないときに海域をセットしてないとバグ
+        if(!CenterFlg && smallSeaArea == null)
+        {
+            Debug.LogError(this.name + "に一つ下の海域をセットしてください。");
+        }
     }
 
     private void FixedUpdate()
@@ -261,14 +270,15 @@ public class SpinOperation : MonoBehaviour
             {
                 if(obj == collider.gameObject)
                 {
-                    float r = obj.GetComponent<SphereCollider>().radius * Mathf.Max(obj.transform.localScale.x, obj.transform.localScale.y, obj.transform.localScale.z);
+                    float r = obj.GetComponent<SphereCollider>().radius * 
+                        Mathf.Max(obj.transform.localScale.x, obj.transform.localScale.y, obj.transform.localScale.z);
 
                     if (CenterFlg ||
                         !CircleCollider2D(new Vector2(obj.transform.position.x, obj.transform.position.y),
                         r,
-                        new Vector2(this.transform.position.x, this.transform.position.y),
-                        (this.GetComponent<SphereCollider>().radius *
-                        Mathf.Max(this.transform.localScale.x, this.transform.localScale.y, this.transform.localScale.z) / 2 - r * 2 + 0.1f)))
+                        new Vector2(smallSeaArea.transform.position.x, smallSeaArea.transform.position.y),
+                        (Mathf.Max(smallSeaArea.transform.localScale.x, smallSeaArea.transform.localScale.y,
+                        smallSeaArea.transform.localScale.z) / 2 - r + 0.1f)))
                     {
                         SpinMath(obj);
                     }

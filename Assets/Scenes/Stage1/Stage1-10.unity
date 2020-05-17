@@ -2205,6 +2205,11 @@ PrefabInstance:
       propertyPath: StageObj.Array.data[8]
       value: 
       objectReference: {fileID: 1732536761}
+    - target: {fileID: 2267886859567542972, guid: 8e779debe9711584284706adb5d34090,
+        type: 3}
+      propertyPath: smallSeaArea
+      value: 
+      objectReference: {fileID: 1951607526}
     - target: {fileID: 7497224430841196230, guid: 8e779debe9711584284706adb5d34090,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2534,6 +2539,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec0d53c6111d0ab4da4f79f3705d4755, type: 3}
+--- !u!1 &1951607526 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8728859256344052791, guid: ec0d53c6111d0ab4da4f79f3705d4755,
+    type: 3}
+  m_PrefabInstance: {fileID: 1946715414}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1967863382
 PrefabInstance:
   m_ObjectHideFlags: 0
