@@ -112,7 +112,7 @@ public class FishMove : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(TurnFlag)
         {
@@ -131,8 +131,82 @@ public class FishMove : MonoBehaviour
 
                 float Wait = percent / TurnTime;
 
-                this.transform.RotateAround(this.transform.position, this.transform.up, 180.0f * Time.deltaTime / TurnTime);
+                Vector3 endAngle = Vector3.zero;
 
+                // ステージの中心から対象のオブジェクトまでの長さ
+                float X, Y;
+                // ステージの中心から対象のオブジェクトまでの角度
+                float theta;
+
+                if (MoveAxis == Axis.X軸)
+                {
+                    X = this.transform.position.y - centerPos.position.y;
+                    Y = this.transform.position.z - centerPos.position.z;
+                }
+                else if (MoveAxis == Axis.Y軸)
+                {
+                    X = this.transform.position.z - centerPos.position.z;
+                    Y = this.transform.position.x - centerPos.position.x;
+                }
+                else
+                {
+                    X = this.transform.position.x - centerPos.position.x;
+                    Y = this.transform.position.y - centerPos.position.y;
+                }
+                
+                theta = Mathf.Atan2(Y, X);
+                
+                float rot;
+
+                if (!LRFlag)
+                {
+                    float angle = theta * Mathf.Rad2Deg;
+                    rot = Mathf.Lerp(angle, angle + 180.0f, 0.5f);
+                }
+                else
+                {
+                    float angle = theta * Mathf.Rad2Deg;
+                    rot = Mathf.Lerp(angle, angle - 180.0f, 0.5f);
+                }
+
+
+                if (MoveAxis == Axis.X軸)
+                {
+                    if (!LRFlag)
+                    {
+                        endAngle = new Vector3(180, 90, -rot - 90);
+                    }
+                    else
+                    {
+                        endAngle = new Vector3(0, 90, rot + 90);
+                    }
+                }
+                else if (MoveAxis == Axis.Y軸)
+                {
+                    if (!LRFlag)
+                    {
+                        endAngle = new Vector3(90, rot - 90.0f, 0);
+                    }
+                    else
+                    {
+                        endAngle = new Vector3(-90, rot - 90.0f, 0);
+                    }
+                }
+                else
+                {
+                    if (!LRFlag)
+
+                    {
+                        endAngle = new Vector3(180, 0, -rot);
+                    }
+                    else
+                    {
+                        endAngle = new Vector3(0, 0, rot);
+                    }
+                }
+
+
+                this.transform.eulerAngles = Vector3.Slerp(FirstAngle, endAngle, Wait);
             }
         }
         else

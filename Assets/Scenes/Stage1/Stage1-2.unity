@@ -939,7 +939,7 @@ PrefabInstance:
     - target: {fileID: 763792040803279132, guid: 8e779debe9711584284706adb5d34090,
         type: 3}
       propertyPath: m_Name
-      value: Stage1
+      value: StageM
       objectReference: {fileID: 0}
     - target: {fileID: 2267886859567542972, guid: 8e779debe9711584284706adb5d34090,
         type: 3}

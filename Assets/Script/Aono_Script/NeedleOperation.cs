@@ -17,7 +17,7 @@ public class NeedleOperation : MonoBehaviour
         Bubble3 = GameObject.FindGameObjectWithTag("3");
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     { 
         if (other.gameObject.tag == "1")
         {
