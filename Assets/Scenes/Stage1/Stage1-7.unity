@@ -145,6 +145,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2267886859567542972, guid: 8e779debe9711584284706adb5d34090,
         type: 3}
+      propertyPath: smallSeaArea.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267886859567542972, guid: 8e779debe9711584284706adb5d34090,
+        type: 3}
       propertyPath: BubbleObj.Array.data[0]
       value: 
       objectReference: {fileID: 148361996}
@@ -201,6 +206,11 @@ PrefabInstance:
     - target: {fileID: 2267886859567542972, guid: 8e779debe9711584284706adb5d34090,
         type: 3}
       propertyPath: smallSeaArea
+      value: 
+      objectReference: {fileID: 1185177768}
+    - target: {fileID: 2267886859567542972, guid: 8e779debe9711584284706adb5d34090,
+        type: 3}
+      propertyPath: smallSeaArea.Array.data[0]
       value: 
       objectReference: {fileID: 1185177768}
     - target: {fileID: 7497224430841196230, guid: 8e779debe9711584284706adb5d34090,

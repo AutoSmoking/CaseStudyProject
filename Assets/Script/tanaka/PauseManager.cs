@@ -42,8 +42,8 @@ public class PauseManager : MonoBehaviour
         }
 
         PauseFlag = false;
-        canvas = transform.FindChild("Canvas").gameObject;
-        button = transform.FindChild("Canvas/Back").GetComponent<Button>();
+        canvas = transform.Find("Canvas").gameObject;
+        button = transform.Find("Canvas/Back").GetComponent<Button>();
         canvas.SetActive(false);
         Scene = GameObject.Find("SceneManager").GetComponent<SceneComponent>();
     }

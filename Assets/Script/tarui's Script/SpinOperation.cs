@@ -66,7 +66,7 @@ public class SpinOperation : MonoBehaviour
     bool CenterFlg = false;
 
     [SerializeField, Header("中心の海域でない場合は一つ下の海域をセットしてください。")]
-    GameObject smallSeaArea = null;
+    List<GameObject> smallSeaArea = new List<GameObject>() { };
 
     float StopSpin = 0;
 
@@ -270,17 +270,44 @@ public class SpinOperation : MonoBehaviour
             {
                 if(obj == collider.gameObject)
                 {
-                    float r = obj.GetComponent<SphereCollider>().radius * 
+                    float r = 0.5f * 
                         Mathf.Max(obj.transform.localScale.x, obj.transform.localScale.y, obj.transform.localScale.z);
 
-                    if (CenterFlg ||
-                        !CircleCollider2D(new Vector2(obj.transform.position.x, obj.transform.position.y),
-                        r,
-                        new Vector2(smallSeaArea.transform.position.x, smallSeaArea.transform.position.y),
-                        (Mathf.Max(smallSeaArea.transform.localScale.x, smallSeaArea.transform.localScale.y,
-                        smallSeaArea.transform.localScale.z) / 2 - r + 0.1f)))
+                    // 中心の海域ならそのまま処理させる
+                    if (CenterFlg)
                     {
                         SpinMath(obj);
+                    }
+                    // それ以外なら当たり判定を取って、
+                    // 中に入っている時に処理させる
+                    else
+                    {
+                        // 中の海域に当たっていたらfalse
+                        bool HitFlg = false;
+
+                        foreach (var seaArea in smallSeaArea)
+                        {
+                            if (CircleCollider2D(new Vector2(obj.transform.position.x, obj.transform.position.y),
+                            r,
+                            new Vector2(seaArea.transform.position.x, seaArea.transform.position.y),
+                            ((Mathf.Max(seaArea.transform.localScale.x, seaArea.transform.localScale.y,
+                            seaArea.transform.localScale.z)) / 2 - r * 2 + 0.1f)))
+                            {
+                                HitFlg = false;
+
+                                // 終了させないと処理が重複してしまう(バグ)
+                                break;
+                            }
+                            else
+                            {
+                                HitFlg = true;
+                            }
+                        }
+
+                        if(HitFlg)
+                        {
+                            SpinMath(obj);
+                        }
                     }
 
                     BubbleFlg = true;
@@ -350,9 +377,11 @@ public class SpinOperation : MonoBehaviour
     {
         float a = posA.x - posB.x;
         float b = posA.y - posB.y;
-        float c = Mathf.Sqrt(a * a + b * b);
+        float c = a * a + b * b;
+        float d = radA + radB;
+        float r = d * d;
 
-        if (c <= radA + radB)
+        if (c <= r)
         {
             return true;
         }

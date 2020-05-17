@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2109306350172107694
+--- !u!1001 &7998227033604150917
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,63 +9,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
-      propertyPath: BubbleObj.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
-        type: 3}
       propertyPath: StageObj.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
+      propertyPath: BubbleObj.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
       propertyPath: LeftSpin
-      value: 276
+      value: 97
       objectReference: {fileID: 0}
     - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
       propertyPath: RightSpin
-      value: 275
-      objectReference: {fileID: 0}
-    - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
-        type: 3}
-      propertyPath: BubbleObj.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
-        type: 3}
-      propertyPath: BubbleObj.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
-        type: 3}
-      propertyPath: BubbleObj.Array.data[2]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
-        type: 3}
-      propertyPath: BubbleObj.Array.data[3]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
-        type: 3}
-      propertyPath: BubbleObj.Array.data[4]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
-        type: 3}
-      propertyPath: BubbleObj.Array.data[5]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
-        type: 3}
-      propertyPath: BubbleObj.Array.data[6]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
-        type: 3}
-      propertyPath: BubbleObj.Array.data[7]
-      value: 
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
@@ -84,42 +44,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
-      propertyPath: StageObj.Array.data[3]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
-        type: 3}
-      propertyPath: StageObj.Array.data[4]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
-        type: 3}
-      propertyPath: StageObj.Array.data[5]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
-        type: 3}
-      propertyPath: StageObj.Array.data[6]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
-        type: 3}
-      propertyPath: StageObj.Array.data[7]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
-        type: 3}
       propertyPath: SpinMaxSpeed
       value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
-      propertyPath: StageObj.Array.data[8]
+      propertyPath: StageObj.Array.data[3]
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
-      propertyPath: LRFlag
+      propertyPath: BubbleObj.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: CenterFlg
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 614473026802649741, guid: 34b5b79874185494dba4a2d0e8bc79db,
@@ -130,7 +70,17 @@ PrefabInstance:
     - target: {fileID: 1719330673378087602, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
       propertyPath: m_Name
-      value: Stage1
+      value: StageS
+      objectReference: {fileID: 0}
+    - target: {fileID: 2379126191017742575, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2379126191017742575, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2379126191017742575, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
@@ -141,7 +91,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 81804fa987f0ad448ac68d1fa23de75c, type: 2}
+      objectReference: {fileID: 2100000, guid: b605f45721f4bc344acf214f907c257d, type: 2}
     - target: {fileID: 8066858331338459818, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
       propertyPath: m_Mesh
@@ -149,18 +99,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8066858331338459818, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
-      propertyPath: m_IsTrigger
+      propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8066858331338459818, guid: 34b5b79874185494dba4a2d0e8bc79db,
-        type: 3}
-      propertyPath: m_Convex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8066858331338459818, guid: 34b5b79874185494dba4a2d0e8bc79db,
-        type: 3}
-      propertyPath: m_CookingOptions
-      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8452903655955275112, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
@@ -175,7 +115,7 @@ PrefabInstance:
     - target: {fileID: 8452903655955275112, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8452903655955275112, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
@@ -215,6 +155,21 @@ PrefabInstance:
     - target: {fileID: 8452903655955275112, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452903655955275112, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452903655955275112, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9123442796894380179, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
