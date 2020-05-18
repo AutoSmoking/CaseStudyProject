@@ -109,7 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1da73597c225aac4fb4ef02fb9b00bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FloatAcceleration: 1.5
+  MoveAcceleration: 1.5
+  StopAcceleration: 1.5
   BubbleSize: 0.5
   _parentTransform: {fileID: 8353143837347223529}
   DeathFlg: 0
