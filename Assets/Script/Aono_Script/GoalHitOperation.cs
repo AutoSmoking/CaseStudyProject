@@ -62,7 +62,7 @@ public class GoalHitOperation : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(GoalFlg && other.gameObject.layer.ToString() == "Bubble")
+        if(GoalFlg && other.gameObject.layer == LayerMask.NameToLayer("Bubble"))
         {
             GameFlg = SceneManager.GetComponent<SceneComponent>().GameFrag;
 
