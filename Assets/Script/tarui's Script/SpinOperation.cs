@@ -59,7 +59,7 @@ public class SpinOperation : MonoBehaviour
     [SerializeField, Header("影響があるオブジェクト 入れないとバグ")]
     List<GameObject> StageObj = new List<GameObject>() { };
 
-    [SerializeField, Header("泡のオブジェクト専用 入れないとバグ")]
+    [SerializeField, Header("動くオブジェクト専用 入れないとバグ")]
     List<GameObject> BubbleObj = new List<GameObject>() { };
 
     [SerializeField, Header("中心の海域の場合はtrueにしてください")]
