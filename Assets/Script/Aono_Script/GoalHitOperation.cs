@@ -10,7 +10,11 @@ public class GoalHitOperation : MonoBehaviour
     GameObject bubble2 = null;
     GameObject bubble3 = null;
 
+    GameObject SceneManager = null;
+
     bool OpenFlg = false;
+
+    bool GameFlg = false;
 
     // ゴールできるようになったらtrue
     [System.NonSerialized]
@@ -27,6 +31,8 @@ public class GoalHitOperation : MonoBehaviour
         bubble1 = GameObject.FindGameObjectWithTag("1");
         bubble2 = GameObject.FindGameObjectWithTag("2");
         bubble3 = GameObject.FindGameObjectWithTag("3");
+
+        SceneManager = GameObject.Find("SceneManager");
     }
 
     //void OnTriggerEnter(Collider other)
@@ -58,8 +64,13 @@ public class GoalHitOperation : MonoBehaviour
     {
         if(GoalFlg && other.gameObject.layer.ToString() == "Bubble")
         {
-            Debug.Log("GoalHit");
-            GameObject.Find("SceneManager").GetComponent<SceneComponent>().GameFrag = true;
+            GameFlg = SceneManager.GetComponent<SceneComponent>().GameFrag;
+
+            if (!GameFlg)
+            {
+                Debug.Log("GoalHit");
+                SceneManager.GetComponent<SceneComponent>().GameFrag = true;
+            }
         }
     }
 }
