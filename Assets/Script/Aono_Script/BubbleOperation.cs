@@ -43,17 +43,6 @@ public class BubbleOperation : MonoBehaviour
 
     }
 
-    void OnTriggerStay(Collider other)
-    {   //ゴールに接触した時にログを出す
-        if (other.CompareTag("Finish") && !DeathFlg && Bubble == null && Bubble2 == null) // ここ変更
-        {
-            Debug.Log("GoalHit");
-            GameObject.Find("SceneManager").GetComponent<SceneComponent>().GameFrag = true;
-        }
-
-
-    }
-
     void OnCollisionEnter(Collision other)
     {
 
