@@ -564,6 +564,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 472465131}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &516240173 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1719330673378087602, guid: 34b5b79874185494dba4a2d0e8bc79db,
+    type: 3}
+  m_PrefabInstance: {fileID: 460777513}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &640444918
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1364,6 +1370,26 @@ PrefabInstance:
     - target: {fileID: 8353143837347223530, guid: 5e1b68b5dd325d4448bdee5fdfe24f04,
         type: 3}
       propertyPath: FloatAcceleration
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8353143837347223530, guid: 5e1b68b5dd325d4448bdee5fdfe24f04,
+        type: 3}
+      propertyPath: stopFlg
+      value: 
+      objectReference: {fileID: 516240173}
+    - target: {fileID: 8353143837347223530, guid: 5e1b68b5dd325d4448bdee5fdfe24f04,
+        type: 3}
+      propertyPath: PlusAcceleration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8353143837347223530, guid: 5e1b68b5dd325d4448bdee5fdfe24f04,
+        type: 3}
+      propertyPath: MoveAcceleration
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8353143837347223530, guid: 5e1b68b5dd325d4448bdee5fdfe24f04,
+        type: 3}
+      propertyPath: StopAcceleration
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8353143837347223533, guid: 5e1b68b5dd325d4448bdee5fdfe24f04,
