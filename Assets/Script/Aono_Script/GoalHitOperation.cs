@@ -12,6 +12,10 @@ public class GoalHitOperation : MonoBehaviour
 
     bool OpenFlg = false;
 
+    // ゴールできるようになったらtrue
+    [System.NonSerialized]
+    public bool GoalFlg = false;
+
     // Start is called before the first frame update
 
     void Start()
@@ -42,6 +46,20 @@ public class GoalHitOperation : MonoBehaviour
             OpenFlg = true;
 
             ani.enabled = true;
+        }
+
+        if(!GoalFlg && ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+        {
+            GoalFlg = true;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(GoalFlg && other.gameObject.layer.ToString() == "Bubble")
+        {
+            Debug.Log("GoalHit");
+            GameObject.Find("SceneManager").GetComponent<SceneComponent>().GameFrag = true;
         }
     }
 }
