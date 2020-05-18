@@ -15,8 +15,13 @@ public class BubbleOperation : MonoBehaviour
     GameObject Bubble;
     GameObject Bubble2;
 
-    [SerializeField, Header("泡の浮上速度"), Range(0, 5.0f)]
     float FloatAcceleration;
+
+    [SerializeField, Header("泡の浮上速度"), Range(0, 5.0f)]
+    float MoveAcceleration;
+
+    [SerializeField, Header("ステージが止まっている時の泡の浮上速度"), Range(0, 5.0f)]
+    float StopAcceleration;
 
     [SerializeField, Header("結合した泡に加算されるサイズ"), Range(0, 10.0f)]
     float BubbleSize;
@@ -27,13 +32,18 @@ public class BubbleOperation : MonoBehaviour
 
     public bool DeathFlg = false;
 
+    bool BubbleStopFlg;
+
     void Start()
     {
         Bubble = GameObject.FindGameObjectWithTag("2");
         Bubble2 = GameObject.FindGameObjectWithTag("3");
+
+        //SFlag = SpinOperation.stopFlg;
+
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {   //ゴールに接触した時にログを出す
         if (other.CompareTag("Finish") && !DeathFlg && Bubble == null && Bubble2 == null) // ここ変更
         {
@@ -65,13 +75,13 @@ public class BubbleOperation : MonoBehaviour
         if (other.gameObject.tag == "3")
         {
             Destroy(Bubble2);
-            BubbleSize = BubbleSize + 0.6f;
-            this.gameObject.transform.localScale = new Vector3(BubbleSize, BubbleSize, 0.6f);
-            //Vector3 localScale = myTransform.localScale;
-            //localScale.x = localScale.x + BubbleSize;
-            //localScale.y = localScale.y + BubbleSize;
-            //localScale.z = localScale.z;
-            //myTransform.localScale = localScale;
+            transform.Translate(new Vector3(0, -BubbleSize, 0), Space.World);
+
+            gameObject.transform.localScale = new Vector3(
+            gameObject.transform.localScale.x + BubbleSize,
+            gameObject.transform.localScale.y + BubbleSize,
+            gameObject.transform.localScale.z
+            );
         }
     }
 
@@ -79,6 +89,8 @@ public class BubbleOperation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        BubbleStopFlg=SpinOperation.GetstopFlg();
+
         if (Input.GetKey(KeyCode.Space) && floatflag == 0)
         {
             floatflag++;
@@ -88,6 +100,18 @@ public class BubbleOperation : MonoBehaviour
 
             Destroy(gameObject.transform.Find("taru").gameObject);
         }
+
+        if (BubbleStopFlg == true)
+        {
+            FloatAcceleration = StopAcceleration;
+            Debug.Log("StageStopNow");
+        }
+        else
+        {
+            FloatAcceleration = MoveAcceleration;
+            Debug.Log("StageMoveNow");
+        }
+        
     }
 
     void FixedUpdate()

@@ -74,7 +74,7 @@ public class SpinOperation : MonoBehaviour
     bool SlideFlg = false;
 
     // 回転の停止を検知する
-    public bool stopFlg = false;
+    public static bool stopFlg = false;
 
     float t = 0.0f;
 
@@ -353,5 +353,11 @@ public class SpinOperation : MonoBehaviour
         {
             return false;
         }
+    }
+
+    //勝手に追加しました
+    public static bool GetstopFlg()
+    {
+        return stopFlg;
     }
 }
