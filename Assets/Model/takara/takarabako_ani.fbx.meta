@@ -5,10 +5,10 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: takarabako_ani
+    second: takarabako_openFBX
   - first:
       74: -998496362607748373
-    second: takarabako_close
+    second: takarabako_closeFBX
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -38,7 +38,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: takarabako_ani
+      name: takarabako_openFBX
       takeName: Take 001
       internalID: 0
       firstFrame: 1
@@ -67,7 +67,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: takarabako_close
+      name: takarabako_closeFBX
       takeName: Take 001
       internalID: 0
       firstFrame: 26

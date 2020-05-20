@@ -66,8 +66,8 @@ public class SpinOperation : MonoBehaviour
     [SerializeField, Header("中心の海域の場合はtrueにしてください")]
     bool CenterFlg = false;
 
-    [SerializeField, Header("回転中に止めるオブジェクト")]
-    List<GameObject> stopObj = new List<GameObject>() { };
+    //[SerializeField, Header("回転中に止めるオブジェクト")]
+    //List<GameObject> stopObj = new List<GameObject>() { };
 
     float StopSpin = 0;
 
@@ -264,13 +264,14 @@ public class SpinOperation : MonoBehaviour
             {
                 if(obj == collider.gameObject)
                 {
-                    float r = obj.GetComponent<SphereCollider>().radius * Mathf.Max(obj.transform.localScale.x, obj.transform.localScale.y, obj.transform.localScale.z);
+                    float r;
+                    r = 0.5f * Mathf.Max(obj.transform.localScale.x, obj.transform.localScale.y, obj.transform.localScale.z);
 
                     if (CenterFlg ||
                         !CircleCollider2D(new Vector2(obj.transform.position.x, obj.transform.position.y),
                         r,
                         new Vector2(this.transform.position.x, this.transform.position.y),
-                        (this.GetComponent<SphereCollider>().radius *
+                        (0.5f *
                         Mathf.Max(this.transform.localScale.x, this.transform.localScale.y, this.transform.localScale.z) / 2 - r * 2 + 0.1f)))
                     {
                         SpinMath(obj);

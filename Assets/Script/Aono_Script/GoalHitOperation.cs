@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GoalHitOperation : MonoBehaviour
 {
-    Animator ani;
+    Animation ani;
 
     GameObject bubble1 = null;
     GameObject bubble2 = null;
@@ -24,9 +24,7 @@ public class GoalHitOperation : MonoBehaviour
 
     void Start()
     {
-        ani = this.GetComponentInChildren<Animator>();
-
-        ani.enabled = false;
+        ani = this.GetComponentInChildren<Animation>();
 
         bubble1 = GameObject.FindGameObjectWithTag("1");
         bubble2 = GameObject.FindGameObjectWithTag("2");
@@ -51,10 +49,10 @@ public class GoalHitOperation : MonoBehaviour
         {
             OpenFlg = true;
 
-            ani.enabled = true;
+            ani.Play("takarabako_open");
         }
 
-        if(!GoalFlg && ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+        if(!GoalFlg && OpenFlg && !ani.IsPlaying("takarabako_open"))
         {
             GoalFlg = true;
         }
