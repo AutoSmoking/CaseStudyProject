@@ -7,13 +7,9 @@ public class BubbleOperation : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    //////////////////////////////////////////////////
-    //readme
-    //Bubble「１」「３」にアタッチしてください
-    //////////////////////////////////////////////////
-
     GameObject Bubble;
     GameObject Bubble2;
+    GameObject Bubble3;
 
     float FloatAcceleration;
 
@@ -34,12 +30,15 @@ public class BubbleOperation : MonoBehaviour
 
     bool BubbleStopFlg;
 
+    public static bool DeathBubble3 = false;
+
+    bool DB3;
+
     void Start()
     {
-        Bubble = GameObject.FindGameObjectWithTag("2");
-        Bubble2 = GameObject.FindGameObjectWithTag("3");
-
-        //SFlag = SpinOperation.stopFlg;
+        Bubble = GameObject.FindGameObjectWithTag("1");
+        Bubble2 = GameObject.FindGameObjectWithTag("2");
+        Bubble3 = GameObject.FindGameObjectWithTag("3");
 
     }
 
@@ -48,38 +47,86 @@ public class BubbleOperation : MonoBehaviour
 
         Transform myTransform = this.transform;
 
-        if (other.gameObject.tag == "2")
+        //1の処理
+        if (this.gameObject.CompareTag("1"))
         {
-            Destroy(Bubble);
-    
-            transform.Translate(new Vector3(0, -BubbleSize, 0), Space.World);
+            //2と衝突した場合
+            if (other.gameObject.tag == "2")
+            {
+                Destroy(Bubble2);
 
-            gameObject.transform.localScale = new Vector3(
-            gameObject.transform.localScale.x + BubbleSize,
-            gameObject.transform.localScale.y + BubbleSize,
-            gameObject.transform.localScale.z
-            );
+                DB3 = BubbleOperation.GetDB3Flag();
+
+                if (DB3 == true)
+                {
+                    BubbleSize += 0.5f;
+                }
+
+                transform.Translate(new Vector3(0, -BubbleSize, 0), Space.World);
+
+                gameObject.transform.localScale = new Vector3(
+                gameObject.transform.localScale.x + BubbleSize,
+                gameObject.transform.localScale.y + BubbleSize,
+                gameObject.transform.localScale.z
+                );
+            }
+
+            //3と衝突した場合
+            if (other.gameObject.tag == "3")
+            {
+                Destroy(Bubble3);
+
+                DB3 = BubbleOperation.GetDB3Flag();
+
+                if (DeathBubble3 == true)
+                {
+                    BubbleSize += 0.5f;
+                }
+
+                transform.Translate(new Vector3(0, -BubbleSize, 0), Space.World);
+
+                gameObject.transform.localScale = new Vector3(
+                gameObject.transform.localScale.x + BubbleSize,
+                gameObject.transform.localScale.y + BubbleSize,
+                gameObject.transform.localScale.z
+                );
+            }
         }
 
-        if (other.gameObject.tag == "3")
+        //2の処理
+        if (this.gameObject.CompareTag("2"))
         {
-            Destroy(Bubble2);
-            transform.Translate(new Vector3(0, -BubbleSize, 0), Space.World);
+            //3と衝突した場合
+            if (other.gameObject.tag == "3")
+            {
+                Destroy(Bubble3);
+                transform.Translate(new Vector3(0, -BubbleSize, 0), Space.World);
 
-            gameObject.transform.localScale = new Vector3(
-            gameObject.transform.localScale.x + BubbleSize,
-            gameObject.transform.localScale.y + BubbleSize,
-            gameObject.transform.localScale.z
-            );
+                gameObject.transform.localScale = new Vector3(
+                gameObject.transform.localScale.x + BubbleSize,
+                gameObject.transform.localScale.y + BubbleSize,
+                gameObject.transform.localScale.z
+                );
+
+                DeathBubble3 = true;
+            }
         }
+    }
+
+    //ゲッター
+    public static bool GetDB3Flag()
+    {
+        return DeathBubble3;
     }
 
 
     // Update is called once per frame
     void Update()
     {
+        //stopFlgを取得
         BubbleStopFlg=SpinOperation.GetstopFlg();
 
+        //スペースを押したときの処理（１回きり）
         if (Input.GetKey(KeyCode.Space) && floatflag == 0)
         {
             floatflag++;
@@ -105,6 +152,7 @@ public class BubbleOperation : MonoBehaviour
 
     void FixedUpdate()
     {
+        //泡の上昇部分の処理
         if (floatflag != 0)
         {
             Rigidbody rb = this.transform.GetComponent<Rigidbody>();
