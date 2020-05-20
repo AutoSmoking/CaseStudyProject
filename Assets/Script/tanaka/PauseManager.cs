@@ -160,7 +160,7 @@ public class PauseManager : MonoBehaviour
             //{
             //    obj.GetComponent<SpinOperation>().SpinSpeed = 0.0f;
             //}
-            if (PauseFlag == false && obj.GetComponent<PauseComponent>() != null)
+            if (obj!=null&&PauseFlag == false && obj.GetComponent<PauseComponent>() != null)
             {
                 obj.GetComponent<PauseComponent>().OnPause();
                 Debug.Log("on");
@@ -177,7 +177,7 @@ public class PauseManager : MonoBehaviour
             //{
             //    obj.GetComponent<SpinOperation>().SpinSpeed = 0.0f;
             //}
-            if (PauseFlag == true && obj.GetComponent<PauseComponent>() != null)
+            if (obj!=null&&PauseFlag == true && obj.GetComponent<PauseComponent>() != null)
             {
                 obj.GetComponent<PauseComponent>().OnResume();
                 Debug.Log("off");
