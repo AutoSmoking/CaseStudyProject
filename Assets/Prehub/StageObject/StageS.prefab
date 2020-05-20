@@ -62,6 +62,16 @@ PrefabInstance:
       propertyPath: CenterFlg
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: LeftSpinX
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: RightSpinX
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 614473026802649741, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
       propertyPath: m_Mesh

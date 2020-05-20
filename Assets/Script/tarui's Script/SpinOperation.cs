@@ -1,8 +1,10 @@
 ﻿
 
 // コントローラー切り替え
-//#define XBOX
+#define XBOX
 //#define PS4
+
+#define DEBUG
 
 using System.Collections;
 using System.Collections.Generic;
@@ -24,11 +26,20 @@ public class SpinOperation : MonoBehaviour
     }
 
     [SerializeField, Header("左回転用キー")]
-    Controll LeftSpin;
+    Controll LeftSpinX = Controll.L1ボタン;
 
     [SerializeField, Header("右回転用キー")]
-    Controll RightSpin;
+    Controll RightSpinX = Controll.R1ボタン;
+
 #else
+    [SerializeField, Header("左回転用キー")]
+    KeyCode LeftSpin = KeyCode.LeftArrow;
+
+    [SerializeField, Header("右回転用キー")]
+    KeyCode RightSpin = KeyCode.RightArrow;
+#endif
+
+#if DEBUG
     [SerializeField, Header("左回転用キー")]
     KeyCode LeftSpin = KeyCode.LeftArrow;
 
@@ -121,22 +132,27 @@ public class SpinOperation : MonoBehaviour
     {
         if (
 #if (XBOX || PS4)
-                (((int)LeftSpin >= 10)
+                (((int)LeftSpinX >= 10)
 #endif
 #if XBOX
-                    && (Input.GetAxis(LeftSpin.ToString()) > stickSense)
+                    && (Input.GetAxis(LeftSpinX.ToString()) > stickSense))
 #elif PS4
 #else
 #endif
 
 #if (XBOX || PS4)
-               || ((int)LeftSpin >= 0 && (int)LeftSpin < 10)
+               || (((int)LeftSpinX >= 0 && (int)LeftSpinX < 10)
 #endif
 #if XBOX
-                && (Input.GetButton(LeftSpin.ToString())))
+                && (Input.GetButton(LeftSpinX.ToString())))
 #elif PS4
+
 #else
                   (Input.GetKey(LeftSpin)))
+#endif
+
+#if DEBUG
+                || (Input.GetKey(LeftSpin)))
 #endif
 
         {
@@ -178,22 +194,26 @@ public class SpinOperation : MonoBehaviour
 
         else if (
 #if (XBOX || PS4)
-                (((int)RightSpin >= 10)
+                (((int)RightSpinX >= 10)
 #endif
 #if XBOX
-                    && (Input.GetAxis(RightSpin.ToString()) > stickSense)
+                    && (Input.GetAxis(RightSpinX.ToString()) > stickSense))
 #elif PS4
 #else
 #endif
 
 #if (XBOX || PS4)
-               || ((int)RightSpin >= 0 && (int)RightSpin < 10)
+               || (((int)RightSpinX >= 0 && (int)RightSpinX < 10)
 #endif
 #if XBOX
-                && (Input.GetButton(RightSpin.ToString())))
+                && (Input.GetButton(RightSpinX.ToString())))
 #elif PS4
 #else
                   (Input.GetKey(RightSpin)))
+#endif
+
+#if DEBUG
+                || (Input.GetKey(RightSpin)))
 #endif
         {
 
