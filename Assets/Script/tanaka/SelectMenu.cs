@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using KanKikuchi.AudioManager;
 
 public class SelectMenu : MonoBehaviour
 {
@@ -12,10 +13,12 @@ public class SelectMenu : MonoBehaviour
     public GameObject[] stage=new GameObject[3];
     public Animator[] anim = new Animator[3];
     public SceneName AllNameScript;
+    public SceneComponent Scene;
     // Start is called before the first frame update
     void Start()
     {
         AllNameScript = GameObject.Find("SceneManager").GetComponent<SceneName>();
+        Scene = GameObject.Find("SceneManager").GetComponent<SceneComponent>();
 
         button = GameObject.Find("Canvas/1~10").GetComponent<Button>();
 
@@ -98,7 +101,9 @@ public class SelectMenu : MonoBehaviour
 
     public void MoveSelect(int num)
     {
-        for (int t = 0; t < 3; t++)
+        SEManager.Instance.Play(Scene.EnterClip);
+
+        for (int t = 0; t < 3; t++) 
         {
             foreach (Transform obj in stage[t].transform)
             {
