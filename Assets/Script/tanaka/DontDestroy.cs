@@ -33,7 +33,6 @@ public class DontDestroy : MonoBehaviour
     {
         if (instance.currentSelectedGameObject != NowSelectObj)
         {
-            Debug.Log("se");
             NowSelectObj = instance.currentSelectedGameObject;
             SEManager.Instance.Play(SceneCom.EnterClip);
         }
