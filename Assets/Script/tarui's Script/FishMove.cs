@@ -37,7 +37,11 @@ public class FishMove : MonoBehaviour
 
     float percent = 0;
     
-    Vector3 FirstAngle;
+    Vector3 FirstCAngle;
+    Vector3 EndCAngle;
+
+    // ターン用の子オブジェクト
+    Transform child = null;
 
     // 当たり判定のバグ取り用
     float WaitTime = 0;
@@ -109,6 +113,9 @@ public class FishMove : MonoBehaviour
                 this.transform.eulerAngles = new Vector3(0, 0, rot);
             }
         }
+
+        // 子オブジェクトを取得
+        child = this.transform.GetChild(0);
     }
 
     // Update is called once per frame
@@ -120,8 +127,11 @@ public class FishMove : MonoBehaviour
             {
                 percent = 0;
                 TurnFlag = false;
-                FirstAngle = new Vector3();
+                FirstCAngle = new Vector3();
+                EndCAngle = new Vector3();
                 WaitTime = 0;
+
+                if (LRFlag) child.transform.localEulerAngles = Vector3.zero;
 
                 LRFlag = !LRFlag;
             }
@@ -206,7 +216,10 @@ public class FishMove : MonoBehaviour
                 }
 
 
-                this.transform.eulerAngles = Vector3.Slerp(FirstAngle, endAngle, Wait);
+                this.transform.eulerAngles = endAngle;
+
+                child.transform.localEulerAngles =
+                    Vector3.Lerp(Vector3.zero, new Vector3(0, 180.0f), Wait);
             }
         }
         else
@@ -227,12 +240,13 @@ public class FishMove : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Block" && !TurnFlag && WaitTime > ColStopTime)
         {
             TurnFlag = true;
-            FirstAngle = this.transform.eulerAngles;
+            FirstCAngle = child.transform.localEulerAngles;
+            EndCAngle = new Vector3(FirstCAngle.x, FirstCAngle.y + 180.0f, FirstCAngle.z);
         }
     }
 
@@ -333,7 +347,7 @@ public class FishMove : MonoBehaviour
             }
             else
             {
-                this.transform.eulerAngles = new Vector3(0, 0, rot);
+                this.transform.eulerAngles = new Vector3(0, 180, -rot);
             }
         }
 
