@@ -34,6 +34,8 @@ public class BubbleOperation : MonoBehaviour
 
     bool DB3;
 
+    Controll AButton = Controol.Aボタン;
+
     void Start()
     {
         Bubble = GameObject.FindGameObjectWithTag("1");
@@ -128,6 +130,17 @@ public class BubbleOperation : MonoBehaviour
 
         //スペースを押したときの処理（１回きり）
         if (Input.GetKey(KeyCode.Space) && floatflag == 0)
+        {
+            floatflag++;
+
+            // ここで音を鳴らす
+            SEManager.Instance.Play("SE/Bubble_Birth");
+
+            Destroy(gameObject.transform.Find("taru").gameObject);
+        }
+
+        //Aボタンを押したときの処理（１回きり）
+        if (Input.GetButton(AButton.ToString()) && floatflag == 0)
         {
             floatflag++;
 
