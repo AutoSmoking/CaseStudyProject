@@ -14,17 +14,7 @@ public class SpinOperation : MonoBehaviour
 {
     // 操作系
 #if (XBOX)
-    public enum Controll
-    {
-        Aボタン,Bボタン,Xボタン,Yボタン,
-        L1ボタン,R1ボタン,BACKボタン,HOMEボタン,
-        左スティック押し込み,右スティック押し込み,
-        左スティック左右,左スティック上下,
-        右スティック左右,右スティック上下,
-        L2トリガー,R2トリガー,
-        十字キー左右,十字キー上下
-    }
-
+    
     [SerializeField, Header("左回転用キー")]
     Controll LeftSpinX = Controll.L1ボタン;
 
