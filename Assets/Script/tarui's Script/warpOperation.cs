@@ -25,6 +25,9 @@ public class warpOperation : MonoBehaviour
     [SerializeField, Header("ゴールかどうか")]
     bool GoalFlg = false;
 
+    [SerializeField, Header("ワープ中に停止させるか TRUE:させる")]
+    bool StopFlg = false;
+
     // ワープ中の待ち時間用
     bool WaitFlg = false;
     // ワープ中を表すフラグ
@@ -49,7 +52,7 @@ public class warpOperation : MonoBehaviour
             Debug.LogError("ワープする対象がないです。");
         }
 
-        if(next == null)
+        if(next == null && !GoalFlg)
         {
             Debug.LogError("ワープ先がないです。");
         }
@@ -84,7 +87,12 @@ public class warpOperation : MonoBehaviour
 
                     // ワープが終わったらオブジェクトを出現させる
                     Object.SetActive(true);
-                    Object = null;
+
+                    // 対象オブジェクトをワープ先まで移動
+                    Object.transform.position = next.transform.position;
+
+                    // 対象のオブジェクトをもとの大きさに戻す
+                    Object.transform.localScale = firstScale;
 
                     // 開くアニメーション(ワープ先のオブジェクト)
                     next.GetComponentInChildren<Animation>().Play("shako_open");
@@ -96,40 +104,64 @@ public class warpOperation : MonoBehaviour
                     }
 
                     // 止めていたスクリプトを再起動
-                    foreach (var stopObj in objList)
+
+                    if (StopFlg)
                     {
-                        foreach (var com in stopObj.GetComponents<MonoBehaviour>())
+                        foreach (var stopObj in objList)
                         {
-                            com.enabled = true;
-                        }
+                            foreach (var com in stopObj.GetComponents<MonoBehaviour>())
+                            {
+                                com.enabled = true;
+                            }
 
-                        foreach (var com in stopObj.GetComponents<Collider>())
-                        {
-                            com.enabled = true;
-                        }
+                            foreach (var com in stopObj.GetComponents<Collider>())
+                            {
+                                com.enabled = true;
+                            }
 
-                        if (stopObj.GetComponent<Rigidbody>() != null)
+                            if (stopObj.GetComponent<Rigidbody>() != null)
+                            {
+                                stopObj.GetComponent<Rigidbody>().isKinematic = false;
+                            }
+                        }
+                        foreach (var stopObj in stopList)
                         {
-                            stopObj.GetComponent<Rigidbody>().isKinematic = false;
+                            foreach (var com in stopObj.GetComponents<MonoBehaviour>())
+                            {
+                                com.enabled = true;
+                            }
+
+                            foreach (var com in stopObj.GetComponents<Collider>())
+                            {
+                                com.enabled = true;
+                            }
+
+                            if (stopObj.GetComponent<Rigidbody>() != null)
+                            {
+                                stopObj.GetComponent<Rigidbody>().isKinematic = false;
+                            }
                         }
                     }
-                    foreach (var stopObj in stopList)
+                    else
                     {
-                        foreach (var com in stopObj.GetComponents<MonoBehaviour>())
+                        foreach (var com in Object.GetComponents<MonoBehaviour>())
                         {
                             com.enabled = true;
                         }
 
-                        foreach (var com in stopObj.GetComponents<Collider>())
+                        foreach (var com in Object.GetComponents<Collider>())
                         {
                             com.enabled = true;
                         }
 
-                        if (stopObj.GetComponent<Rigidbody>() != null)
+                        if (Object.GetComponent<Rigidbody>() != null)
                         {
-                            stopObj.GetComponent<Rigidbody>().isKinematic = false;
+                            Object.GetComponent<Rigidbody>().isKinematic = false;
                         }
                     }
+
+                    // 保持しているゲームオブジェクトを初期化
+                    Object = null;
                 }
                 // ワープしている間は待つ
                 else
@@ -144,12 +176,6 @@ public class warpOperation : MonoBehaviour
                 // 中心に移動しきったらワープさせる
                 if (percent >= WaitTime)
                 {
-                    // 対象オブジェクトをワープ先まで移動
-                    Object.transform.position = next.transform.position;
-
-                    // 対象のオブジェクトをもとの大きさに戻す
-                    Object.transform.localScale = firstScale;
-
                     // ワープ先に現在ワープしているオブジェクトを設定
                     next.GetComponent<warpOperation>().Object = Object;
 
@@ -222,41 +248,63 @@ public class warpOperation : MonoBehaviour
 
                     // ワープしている間は位置が変わるオブジェクトや
                     // 操作するオブジェクトは停止する
-                    foreach(var stopObj in objList)
+
+                    if (StopFlg)
                     {
-                        foreach (var com in stopObj.GetComponents<MonoBehaviour>())
+                        foreach (var stopObj in objList)
                         {
-                            com.enabled = false;
+                            foreach (var com in stopObj.GetComponents<MonoBehaviour>())
+                            {
+                                com.enabled = false;
+                            }
+
+                            foreach (var com in stopObj.GetComponents<Collider>())
+                            {
+                                com.enabled = false;
+                            }
+
+                            if (stopObj.GetComponent<Rigidbody>() != null)
+                            {
+                                stopObj.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                                stopObj.GetComponent<Rigidbody>().isKinematic = true;
+                            }
                         }
 
-                        foreach (var com in stopObj.GetComponents<Collider>())
+                        foreach (var stopObj in stopList)
                         {
-                            com.enabled = false;
-                        }
+                            foreach (var com in stopObj.GetComponents<MonoBehaviour>())
+                            {
+                                com.enabled = false;
+                            }
 
-                        if (stopObj.GetComponent<Rigidbody>() != null)
-                        {
-                            stopObj.GetComponent<Rigidbody>().velocity = Vector3.zero;
-                            stopObj.GetComponent<Rigidbody>().isKinematic = true;
+                            foreach (var com in stopObj.GetComponents<Collider>())
+                            {
+                                com.enabled = false;
+                            }
+
+                            if (stopObj.GetComponent<Rigidbody>() != null)
+                            {
+                                stopObj.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                                stopObj.GetComponent<Rigidbody>().isKinematic = true;
+                            }
                         }
                     }
-
-                    foreach (var stopObj in stopList)
+                    else
                     {
-                        foreach (var com in stopObj.GetComponents<MonoBehaviour>())
+                        foreach (var com in obj.GetComponents<MonoBehaviour>())
                         {
                             com.enabled = false;
                         }
 
-                        foreach (var com in stopObj.GetComponents<Collider>())
+                        foreach (var com in obj.GetComponents<Collider>())
                         {
                             com.enabled = false;
                         }
 
-                        if (stopObj.GetComponent<Rigidbody>() != null)
+                        if (obj.GetComponent<Rigidbody>() != null)
                         {
-                            stopObj.GetComponent<Rigidbody>().velocity = Vector3.zero;
-                            stopObj.GetComponent<Rigidbody>().isKinematic = true;
+                            obj.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                            obj.GetComponent<Rigidbody>().isKinematic = true;
                         }
                     }
 

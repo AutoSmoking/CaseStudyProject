@@ -80,7 +80,9 @@ MonoBehaviour:
   WarpTime: 0.5
   objList: []
   stopList: []
+  warpObj: []
   GoalFlg: 0
+  StopFlg: 0
 --- !u!1001 &1546840377645635975
 PrefabInstance:
   m_ObjectHideFlags: 0
