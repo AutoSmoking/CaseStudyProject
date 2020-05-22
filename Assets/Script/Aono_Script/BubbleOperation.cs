@@ -34,7 +34,7 @@ public class BubbleOperation : MonoBehaviour
 
     bool DB3;
 
-    Controll AButton = Controol.Aボタン;
+    Controll AButton = Controll.Aボタン;
 
     void Start()
     {
@@ -139,7 +139,7 @@ public class BubbleOperation : MonoBehaviour
             Destroy(gameObject.transform.Find("taru").gameObject);
         }
 
-        //Aボタンを押したときの処理（１回きり）
+        //Aボタンを押した
         if (Input.GetButton(AButton.ToString()) && floatflag == 0)
         {
             floatflag++;
