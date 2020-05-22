@@ -13,7 +13,15 @@ public enum Controll
     十字キー左右, 十字キー上下
 }
 
-public class XBOXConEnum : MonoBehaviour
+public enum PS4Con
+{
+    四角, バツ, 丸, 三角, PSL1, PSR1, PSL2, PSR2,
+    Share, Option, PSL3, PSR3, PSボタン, Pad,
+    LスティックLR, LスティックUD, RスティックLR, RスティックUD,
+    CrossキーLR, CrossキーUD, analogL2, analogR2
+}
+
+public class ControllEnum : MonoBehaviour
 {
     //// Start is called before the first frame update
     //void Start()
