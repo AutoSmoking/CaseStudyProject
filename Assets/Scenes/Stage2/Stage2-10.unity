@@ -559,6 +559,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5893850529046376367, guid: 600868b31058e4d438fd42a6ce82857f,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.1079795
+      objectReference: {fileID: 0}
+    - target: {fileID: 5893850529046376367, guid: 600868b31058e4d438fd42a6ce82857f,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.0000000047846016
+      objectReference: {fileID: 0}
+    - target: {fileID: 5893850529046376367, guid: 600868b31058e4d438fd42a6ce82857f,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -0.053989727
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 600868b31058e4d438fd42a6ce82857f, type: 3}
 --- !u!43 &201961464
