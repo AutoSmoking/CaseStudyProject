@@ -27,12 +27,30 @@ public class CameraOpe : MonoBehaviour
 
     void CameraMove()
     {
-        Vector2 max, min;
-        Vector3 center;
+        Vector2 max = Vector2.zero, min = Vector2.zero;
+        Vector3 center = Vector3.zero;
 
-        max = Bubble[0].transform.position;
-        min = Bubble[0].transform.position;
-        center = Bubble[0].transform.position;
+        // 初期化
+        for (int i = 0; i < Bubble.Count; i++)
+        {
+            // エラー防止
+            if (Bubble[i] == null)
+            {
+                continue;
+            }
+
+            max = Bubble[i].transform.position;
+            min = Bubble[i].transform.position;
+            center = Bubble[i].transform.position;
+
+            break;
+        }
+
+        // 泡が消えきったらもう処理しない
+        if(max == Vector2.zero)
+        {
+            return;
+        }
 
         // カメラの位置を決める計算
         for (int i = 1; i < Bubble.Count; i++)
