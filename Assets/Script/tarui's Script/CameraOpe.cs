@@ -1,0 +1,164 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CameraOpe : MonoBehaviour
+{
+    [SerializeField, Header("泡を格納")]
+    List<Transform> Bubble = new List<Transform>() { };
+
+    [SerializeField, Header("奥行の最低値"), Range(0.1f, 10.0f)]
+    float Zsize = 0.1f;
+
+    [SerializeField, Header("見える領域の＋α値"), Range(0.1f, 2.0f)]
+    float alpha = 0.5f;
+
+    [SerializeField, Header("ディレイの度合"), Range(0, 60)]
+    int delaySize = 10;
+
+    List<Vector2> delay = new List<Vector2>() { };
+
+    // Start is called before the first frame update
+    private void Start()
+    {
+        Vector2 max, min;
+        Vector3 center;
+
+        max = Bubble[0].transform.position;
+        min = Bubble[0].transform.position;
+        center = Bubble[0].transform.position;
+
+        // カメラの位置を決める計算
+        for (int i = 1; i < Bubble.Count; i++)
+        {
+            // エラー防止
+            if (Bubble[i] == null)
+            {
+                continue;
+            }
+
+            if (max.x < Bubble[i].position.x)
+            {
+                max.x = Bubble[i].position.x;
+            }
+            if (max.y < Bubble[i].position.y)
+            {
+                max.y = Bubble[i].position.y;
+            }
+
+            if (min.x > Bubble[i].position.x)
+            {
+                min.x = Bubble[i].position.x;
+            }
+            if (min.y > Bubble[i].position.y)
+            {
+                min.y = Bubble[i].position.y;
+            }
+        }
+
+        // カメラの位置を調整
+        center.x = Mathf.Lerp(max.x, min.x, 0.5f);
+        center.y = Mathf.Lerp(max.y, min.y, 0.5f);
+        center.z = this.transform.position.z;
+        
+        this.transform.position = center;
+
+        CameraMove();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        CameraMove();
+    }
+
+    void CameraMove()
+    {
+        Vector2 max, min;
+        Vector2 center;
+
+        max = Bubble[0].transform.position;
+        min = Bubble[0].transform.position;
+        center = Bubble[0].transform.position;
+
+        // カメラの位置を決める計算
+        for (int i = 1; i < Bubble.Count; i++)
+        {
+            // エラー防止
+            if(Bubble[i] == null)
+            {
+                continue;
+            }
+
+            if (max.x < Bubble[i].position.x)
+            {
+                max.x = Bubble[i].position.x;
+            }
+            if (max.y < Bubble[i].position.y)
+            {
+                max.y = Bubble[i].position.y;
+            }
+
+            if (min.x > Bubble[i].position.x)
+            {
+                min.x = Bubble[i].position.x;
+            }
+            if (min.y > Bubble[i].position.y)
+            {
+                min.y = Bubble[i].position.y;
+            }
+        }
+
+        // カメラの位置を調整
+        center.x = Mathf.Lerp(max.x, min.x, 0.5f);
+        center.y = Mathf.Lerp(max.y, min.y, 0.5f);
+
+        // ディレイをかける
+        delay.Add(center);
+        
+        if (delay.Count == delaySize + 1)
+        {
+            Vector3 pos = delay[0];
+            pos.z = this.transform.position.z;
+
+            this.transform.position = pos;
+
+            // 格納したデータを削除
+            delay.RemoveAt(0);
+        }
+
+        // カメラの奥行の計算
+        float px, py;
+        float cx, cy;
+
+        px = Mathf.Abs(max.x - min.x);
+        py = Mathf.Abs(max.y - min.y);
+
+        cx = px / 4 + px / 32;
+        cy = py / 2;
+
+        if (cx >= cy)
+        {
+            if (Zsize >= cx + alpha)
+            {
+                this.GetComponent<Camera>().orthographicSize = Zsize;
+            }
+            else
+            {
+                this.GetComponent<Camera>().orthographicSize = cx + alpha;
+            }
+        }
+        else
+        {
+            if (Zsize >= cy + alpha)
+            {
+                this.GetComponent<Camera>().orthographicSize = Zsize;
+            }
+            else
+            {
+                this.GetComponent<Camera>().orthographicSize = cy + alpha;
+            }
+        }
+    }
+    
+}

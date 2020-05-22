@@ -282,6 +282,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 129248365}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &129248367 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8353143837347223529, guid: 5e1b68b5dd325d4448bdee5fdfe24f04,
+    type: 3}
+  m_PrefabInstance: {fileID: 129248365}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &162389998 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7497224430841196230, guid: 8e779debe9711584284706adb5d34090,
@@ -1105,6 +1111,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1279642683}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1279642685 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8353143837347223529, guid: 5e1b68b5dd325d4448bdee5fdfe24f04,
+    type: 3}
+  m_PrefabInstance: {fileID: 1279642683}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1348053582
 Mesh:
   m_ObjectHideFlags: 0
@@ -1345,6 +1357,12 @@ PrefabInstance:
 --- !u!1 &1377879618 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8353143837347223533, guid: 5e1b68b5dd325d4448bdee5fdfe24f04,
+    type: 3}
+  m_PrefabInstance: {fileID: 1377879617}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1377879619 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8353143837347223529, guid: 5e1b68b5dd325d4448bdee5fdfe24f04,
     type: 3}
   m_PrefabInstance: {fileID: 1377879617}
   m_PrefabAsset: {fileID: 0}
@@ -1680,6 +1698,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1336040012342726915, guid: 7fc82e73bd8f1c0429140f1905a14b85,
+        type: 3}
+      propertyPath: Bubble.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1336040012342726915, guid: 7fc82e73bd8f1c0429140f1905a14b85,
+        type: 3}
+      propertyPath: Bubble.Array.data[0]
+      value: 
+      objectReference: {fileID: 129248367}
+    - target: {fileID: 1336040012342726915, guid: 7fc82e73bd8f1c0429140f1905a14b85,
+        type: 3}
+      propertyPath: Bubble.Array.data[1]
+      value: 
+      objectReference: {fileID: 1377879619}
+    - target: {fileID: 1336040012342726915, guid: 7fc82e73bd8f1c0429140f1905a14b85,
+        type: 3}
+      propertyPath: Bubble.Array.data[2]
+      value: 
+      objectReference: {fileID: 1279642685}
     - target: {fileID: 3312172626579329852, guid: 7fc82e73bd8f1c0429140f1905a14b85,
         type: 3}
       propertyPath: m_Name

@@ -787,6 +787,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e1b68b5dd325d4448bdee5fdfe24f04, type: 3}
+--- !u!4 &817401811 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8353143837347223529, guid: 5e1b68b5dd325d4448bdee5fdfe24f04,
+    type: 3}
+  m_PrefabInstance: {fileID: 817401810}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &882639710 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2626936667782402460, guid: 2863ac0177c8b96438b94473003a00c6,
@@ -922,6 +928,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1336040012342726915, guid: 7fc82e73bd8f1c0429140f1905a14b85,
+        type: 3}
+      propertyPath: Bubble.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1336040012342726915, guid: 7fc82e73bd8f1c0429140f1905a14b85,
+        type: 3}
+      propertyPath: Bubble.Array.data[0]
+      value: 
+      objectReference: {fileID: 817401811}
+    - target: {fileID: 1336040012342726915, guid: 7fc82e73bd8f1c0429140f1905a14b85,
+        type: 3}
+      propertyPath: Bubble.Array.data[1]
+      value: 
+      objectReference: {fileID: 1779816098}
     - target: {fileID: 3312172626579329852, guid: 7fc82e73bd8f1c0429140f1905a14b85,
         type: 3}
       propertyPath: m_Name
@@ -1676,6 +1697,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e1b68b5dd325d4448bdee5fdfe24f04, type: 3}
+--- !u!4 &1779816098 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8353143837347223529, guid: 5e1b68b5dd325d4448bdee5fdfe24f04,
+    type: 3}
+  m_PrefabInstance: {fileID: 1779816097}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1892870759
 PrefabInstance:
   m_ObjectHideFlags: 0

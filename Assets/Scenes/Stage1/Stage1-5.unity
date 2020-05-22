@@ -936,6 +936,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 984455452}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &984455454 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8353143837347223529, guid: 5e1b68b5dd325d4448bdee5fdfe24f04,
+    type: 3}
+  m_PrefabInstance: {fileID: 984455452}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &993936481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1119,6 +1125,12 @@ PrefabInstance:
 --- !u!1 &1202782081 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8353143837347223533, guid: 5e1b68b5dd325d4448bdee5fdfe24f04,
+    type: 3}
+  m_PrefabInstance: {fileID: 1202782080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1202782082 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8353143837347223529, guid: 5e1b68b5dd325d4448bdee5fdfe24f04,
     type: 3}
   m_PrefabInstance: {fileID: 1202782080}
   m_PrefabAsset: {fileID: 0}
@@ -1802,6 +1814,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1336040012342726915, guid: 7fc82e73bd8f1c0429140f1905a14b85,
+        type: 3}
+      propertyPath: Bubble.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1336040012342726915, guid: 7fc82e73bd8f1c0429140f1905a14b85,
+        type: 3}
+      propertyPath: Bubble.Array.data[0]
+      value: 
+      objectReference: {fileID: 1202782082}
+    - target: {fileID: 1336040012342726915, guid: 7fc82e73bd8f1c0429140f1905a14b85,
+        type: 3}
+      propertyPath: Bubble.Array.data[1]
+      value: 
+      objectReference: {fileID: 984455454}
     - target: {fileID: 3312172626579329852, guid: 7fc82e73bd8f1c0429140f1905a14b85,
         type: 3}
       propertyPath: m_Name

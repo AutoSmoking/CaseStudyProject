@@ -1404,6 +1404,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1621931353}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1621931360 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8353143837347223529, guid: 5e1b68b5dd325d4448bdee5fdfe24f04,
+    type: 3}
+  m_PrefabInstance: {fileID: 1621931353}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1831817733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1411,6 +1417,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1336040012342726915, guid: 7fc82e73bd8f1c0429140f1905a14b85,
+        type: 3}
+      propertyPath: Bubble.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1336040012342726915, guid: 7fc82e73bd8f1c0429140f1905a14b85,
+        type: 3}
+      propertyPath: Bubble.Array.data[0]
+      value: 
+      objectReference: {fileID: 1621931360}
+    - target: {fileID: 1336040012342726915, guid: 7fc82e73bd8f1c0429140f1905a14b85,
+        type: 3}
+      propertyPath: Bubble.Array.data[1]
+      value: 
+      objectReference: {fileID: 2098417310}
     - target: {fileID: 3312172626579329852, guid: 7fc82e73bd8f1c0429140f1905a14b85,
         type: 3}
       propertyPath: m_Name
@@ -1503,7 +1524,7 @@ PrefabInstance:
     - target: {fileID: 6926228590368173556, guid: 1fd0408d3a0b5304c808a39e717bfc7b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6926228590368173556, guid: 1fd0408d3a0b5304c808a39e717bfc7b,
         type: 3}
@@ -1669,13 +1690,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2098417303}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &2098417310 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8353143837347223529, guid: 5e1b68b5dd325d4448bdee5fdfe24f04,
+    type: 3}
+  m_PrefabInstance: {fileID: 2098417303}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &2127895969
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-105638
+  m_Name: pb_Mesh-31020
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

@@ -575,6 +575,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 606696960}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &606696962 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8353143837347223529, guid: 5e1b68b5dd325d4448bdee5fdfe24f04,
+    type: 3}
+  m_PrefabInstance: {fileID: 606696960}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &732112211
 Mesh:
   m_ObjectHideFlags: 0
@@ -1525,6 +1531,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1408797346}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1408797348 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8353143837347223529, guid: 5e1b68b5dd325d4448bdee5fdfe24f04,
+    type: 3}
+  m_PrefabInstance: {fileID: 1408797346}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1446083066
 GameObject:
   m_ObjectHideFlags: 0
@@ -2080,6 +2092,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1336040012342726915, guid: 7fc82e73bd8f1c0429140f1905a14b85,
+        type: 3}
+      propertyPath: Bubble.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1336040012342726915, guid: 7fc82e73bd8f1c0429140f1905a14b85,
+        type: 3}
+      propertyPath: Bubble.Array.data[0]
+      value: 
+      objectReference: {fileID: 606696962}
+    - target: {fileID: 1336040012342726915, guid: 7fc82e73bd8f1c0429140f1905a14b85,
+        type: 3}
+      propertyPath: Bubble.Array.data[1]
+      value: 
+      objectReference: {fileID: 1408797348}
     - target: {fileID: 3312172626579329852, guid: 7fc82e73bd8f1c0429140f1905a14b85,
         type: 3}
       propertyPath: m_Name
