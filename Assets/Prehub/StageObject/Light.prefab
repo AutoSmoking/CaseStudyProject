@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 8818559398879621241}
   - component: {fileID: 8818559398879621242}
   - component: {fileID: 2612402379262763033}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Directional Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

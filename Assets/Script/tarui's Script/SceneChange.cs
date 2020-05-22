@@ -8,6 +8,9 @@ public class SceneChange : MonoBehaviour
     [SerializeField, Header("シーン切り替えボタン")]
     KeyCode key = KeyCode.Alpha1;
 
+    [SerializeField, Header("シーン切り替えボタン")]
+    Controll con = Controll.HOMEボタン;
+
     [SerializeField, Header("切り替え先シーン名(ここに名前を書いてね)")]
     string scene = null;
 
@@ -23,7 +26,7 @@ public class SceneChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(key))
+        if(Input.GetKeyDown(key) || Input.GetButtonDown(con.ToString()))
         {
             SceneManager.LoadScene(scene);
         }
