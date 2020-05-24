@@ -972,7 +972,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1180690226}
   m_Layer: 0
-  m_Name: StageObj1
+  m_Name: StageObjM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
