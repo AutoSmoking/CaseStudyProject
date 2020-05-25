@@ -435,10 +435,15 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 1609806947974991919, guid: bb14668f9bb24fd488e3b0b428172e48,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1609806947974991922, guid: bb14668f9bb24fd488e3b0b428172e48,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1609806947974991922, guid: bb14668f9bb24fd488e3b0b428172e48,
         type: 3}
@@ -720,7 +725,7 @@ PrefabInstance:
     - target: {fileID: 2759565212186133042, guid: 42d8dea9f5600094baf9408e70624c69,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 278
+      value: 279
       objectReference: {fileID: 0}
     - target: {fileID: 2759565212186133042, guid: 42d8dea9f5600094baf9408e70624c69,
         type: 3}
