@@ -201,7 +201,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-18504
+  m_Name: pb_Mesh24608
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -370,7 +370,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-18580
+  m_Name: pb_Mesh24540
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1636,7 +1636,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1029094820}
   m_Layer: 0
-  m_Name: StageObj1
+  m_Name: StageObjM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1687,7 +1687,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1103701334}
   m_Layer: 0
-  m_Name: StageObj2
+  m_Name: StageObjS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2149,7 +2149,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-18492
+  m_Name: pb_Mesh24530
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

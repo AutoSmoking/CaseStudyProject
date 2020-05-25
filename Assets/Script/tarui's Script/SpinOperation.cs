@@ -23,10 +23,10 @@ public class SpinOperation : MonoBehaviour
 
 #else
     [SerializeField, Header("左回転用キー")]
-    KeyCode LeftSpin = KeyCode.LeftArrow;
+    PS4Con LeftSpinX = PS4Con.PSL1;
 
     [SerializeField, Header("右回転用キー")]
-    KeyCode RightSpin = KeyCode.RightArrow;
+    PS4Con RightSpinX = PS4Con.PSR1;
 #endif
 
 #if DEBUG
@@ -55,7 +55,7 @@ public class SpinOperation : MonoBehaviour
     float SpinSlide = 0.01f;
 
     // 回転の現在速度
-    [SerializeField]
+    //[SerializeField]
     float SpinSpeed = 0;
 
     [SerializeField, Header("影響があるオブジェクト 入れないとバグ")]
@@ -67,6 +67,9 @@ public class SpinOperation : MonoBehaviour
     [SerializeField, Header("中心の海域の場合はtrueにしてください")]
     bool CenterFlg = false;
 
+    [SerializeField, Header("中心の海域でない場合は一つ下の海域をセットしてください。")]
+    List<GameObject> smallSeaArea = new List<GameObject>() { };
+
     //[SerializeField, Header("回転中に止めるオブジェクト")]
     //List<GameObject> stopObj = new List<GameObject>() { };
 
@@ -75,6 +78,7 @@ public class SpinOperation : MonoBehaviour
     bool SlideFlg = false;
 
     // 回転の停止を検知する
+    [System.NonSerialized]
     public static bool stopFlg = false;
 
     float t = 0.0f;
@@ -87,6 +91,12 @@ public class SpinOperation : MonoBehaviour
             Debug.LogError("左右の回転に同じキーが割り当てられてるよ");
         }
 #endif
+
+        // 中心の海域でないときに海域をセットしてないとバグ
+        if (!CenterFlg && smallSeaArea == null)
+        {
+            Debug.LogError(this.name + "に一つ下の海域をセットしてください。");
+        }
     }
 
     private void FixedUpdate()
@@ -121,28 +131,31 @@ public class SpinOperation : MonoBehaviour
     void SpinControl()
     {
         if (
-#if (XBOX || PS4)
+#if (XBOX)
                 (((int)LeftSpinX >= 10)
-#endif
-#if XBOX
-                    && (Input.GetAxis(LeftSpinX.ToString()) > stickSense))
-#elif PS4
-#else
-#endif
 
-#if (XBOX || PS4)
+                    && (Input.GetAxis(LeftSpinX.ToString()) > stickSense))
+
                || (((int)LeftSpinX >= 0 && (int)LeftSpinX < 10)
-#endif
-#if XBOX
+
                 && (Input.GetButton(LeftSpinX.ToString())))
 #elif PS4
+                (((int)LeftSpinX >= 14)
+
+                    && (Input.GetAxis(LeftSpinX.ToString()) > stickSense))
+
+               || (((int)LeftSpinX >= 0 && (int)LeftSpinX < 14)
+
+                && (Input.GetButton(LeftSpinX.ToString())))
 
 #else
-                  (Input.GetKey(LeftSpin)))
+                  (Input.GetKey(LeftSpin))
 #endif
 
-#if DEBUG
+#if (DEBUG && (XBOX || PS4))
                 || (Input.GetKey(LeftSpin)))
+#else
+                )
 #endif
 
         {
@@ -183,27 +196,30 @@ public class SpinOperation : MonoBehaviour
 
 
         else if (
-#if (XBOX || PS4)
+#if (XBOX)
                 (((int)RightSpinX >= 10)
-#endif
-#if XBOX
-                    && (Input.GetAxis(RightSpinX.ToString()) > stickSense))
-#elif PS4
-#else
-#endif
 
-#if (XBOX || PS4)
+                    && (Input.GetAxis(RightSpinX.ToString()) > stickSense))
+
                || (((int)RightSpinX >= 0 && (int)RightSpinX < 10)
-#endif
-#if XBOX
+
                 && (Input.GetButton(RightSpinX.ToString())))
 #elif PS4
-#else
-                  (Input.GetKey(RightSpin)))
-#endif
+                (((int)RightSpinX >= 14)
 
-#if DEBUG
+                    && (Input.GetAxis(RightSpinX.ToString()) > stickSense))
+
+               || (((int)RightSpinX >= 0 && (int)RightSpinX < 14)
+
+                && (Input.GetButton(RightSpinX.ToString())))
+#else
+                  (Input.GetKey(RightSpin))
+#endif
+                  
+#if (DEBUG && (XBOX || PS4))
                 || (Input.GetKey(RightSpin)))
+#else
+                )
 #endif
         {
 
@@ -266,7 +282,7 @@ public class SpinOperation : MonoBehaviour
     // 適用されてるオブジェクトを回転させる
     void SpinUpdate(Collider collider)
     {
-        if (SpinSpeed != 0.0f)
+        if (SpinSpeed != 0.0f && this.enabled)
         {
             bool BubbleFlg = false;
 
@@ -277,14 +293,40 @@ public class SpinOperation : MonoBehaviour
                     float r;
                     r = 0.5f * Mathf.Max(obj.transform.localScale.x, obj.transform.localScale.y, obj.transform.localScale.z);
 
-                    if (CenterFlg ||
-                        !CircleCollider2D(new Vector2(obj.transform.position.x, obj.transform.position.y),
-                        r,
-                        new Vector2(this.transform.position.x, this.transform.position.y),
-                        (0.5f *
-                        Mathf.Max(this.transform.localScale.x, this.transform.localScale.y, this.transform.localScale.z) / 2 - r * 2 + 0.1f)))
+                    if (CenterFlg)
                     {
                         SpinMath(obj);
+                    }                    
+                    // それ以外なら当たり判定を取って、
+                    // 中に入っている時に処理させる
+                    else
+                    {
+                        // 中の海域に当たっていたらfalse
+                        bool HitFlg = false;
+
+                        foreach (var seaArea in smallSeaArea)
+                        {
+                            if (CircleCollider2D(new Vector2(obj.transform.position.x, obj.transform.position.y),
+                            r,
+                            new Vector2(seaArea.transform.position.x, seaArea.transform.position.y),
+                            ((Mathf.Max(seaArea.transform.localScale.x, seaArea.transform.localScale.y,
+                            seaArea.transform.localScale.z)) / 2 - r * 2 + 0.1f)))
+                            {
+                                HitFlg = false;
+
+                                // 終了させないと処理が重複してしまう(バグ)
+                                break;
+                            }
+                            else
+                            {
+                                HitFlg = true;
+                            }
+                        }
+
+                        if (HitFlg)
+                        {
+                            SpinMath(obj);
+                        }
                     }
 
                     BubbleFlg = true;
@@ -354,15 +396,17 @@ public class SpinOperation : MonoBehaviour
     {
         float a = posA.x - posB.x;
         float b = posA.y - posB.y;
-        float c = Mathf.Sqrt(a * a + b * b);
+        float c = a * a + b * b;
+        float r = (radA + radB);
 
-        if (c <= radA + radB)
+        if (c <= r * r) 
         {
             return true;
         }
         else
         {
             return false;
+
         }
     }
 

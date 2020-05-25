@@ -116,6 +116,16 @@ public class FishMove : MonoBehaviour
 
         // 子オブジェクトを取得
         child = this.transform.GetChild(0);
+
+        // 角度を調整
+        if(LRFlag)
+        {
+            child.transform.localEulerAngles = new Vector3(0, 180.0f);
+        }
+        else
+        {
+            child.transform.localEulerAngles = Vector3.zero;
+        }
     }
 
     // Update is called once per frame
