@@ -10,12 +10,19 @@ public class CameraOpe : MonoBehaviour
     [SerializeField, Header("奥行の最低値"), Range(0.1f, 10.0f)]
     float Zsize = 0.1f;
 
+    [SerializeField, Header("カメラの幅が小さくなる速さ"), Range(0.1f, 10.0f)]
+    float spd = 1f;
+
     [SerializeField, Header("見える領域の＋α値"), Range(0.1f, 2.0f)]
     float alpha = 0.5f;
+
+    Camera cam = null;
 
     // Start is called before the first frame update
     private void Start()
     {
+        cam = this.GetComponent<Camera>();
+
         CameraMove();
     }
 
@@ -93,29 +100,57 @@ public class CameraOpe : MonoBehaviour
         px = Mathf.Abs(max.x - min.x);
         py = Mathf.Abs(max.y - min.y);
 
-        cx = px / 4 + px / 32;
-        cy = py / 2;
+        cx = px / 4 + px / 32 + alpha;
+        cy = py / 2 + alpha;
 
         if (cx >= cy)
         {
-            if (Zsize >= cx + alpha)
+            if (Zsize >= cx)
             {
-                this.GetComponent<Camera>().orthographicSize = Zsize;
+                if (cam.orthographicSize > Zsize)
+                {
+                    cam.orthographicSize -= spd * Time.deltaTime;
+                }
+                else
+                {
+                    cam.orthographicSize = Zsize;
+                }
             }
             else
             {
-                this.GetComponent<Camera>().orthographicSize = cx + alpha;
+                if (cam.orthographicSize > cx)
+                {
+                    cam.orthographicSize -= spd * Time.deltaTime;
+                }
+                else
+                {
+                    cam.orthographicSize = cx;
+                }
             }
         }
         else
         {
-            if (Zsize >= cy + alpha)
+            if (Zsize >= cy)
             {
-                this.GetComponent<Camera>().orthographicSize = Zsize;
+                if (cam.orthographicSize > Zsize)
+                {
+                    cam.orthographicSize -= spd * Time.deltaTime;
+                }
+                else
+                {
+                    cam.orthographicSize = Zsize;
+                }
             }
             else
             {
-                this.GetComponent<Camera>().orthographicSize = cy + alpha;
+                if (cam.orthographicSize > cy)
+                {
+                    cam.orthographicSize -= spd * Time.deltaTime;
+                }
+                else
+                {
+                    cam.orthographicSize = cy;
+                }
             }
         }
     }
