@@ -511,6 +511,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7639970340101751101, guid: 79260046fe4d4f14cb5086c48d884c51,
         type: 3}
+      propertyPath: StageObj.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7639970340101751101, guid: 79260046fe4d4f14cb5086c48d884c51,
+        type: 3}
       propertyPath: smallSeaArea.Array.data[0]
       value: 
       objectReference: {fileID: 1500210922}
@@ -529,6 +534,11 @@ PrefabInstance:
       propertyPath: BubbleObj.Array.data[1]
       value: 
       objectReference: {fileID: 1398970174}
+    - target: {fileID: 7639970340101751101, guid: 79260046fe4d4f14cb5086c48d884c51,
+        type: 3}
+      propertyPath: StageObj.Array.data[0]
+      value: 
+      objectReference: {fileID: 1285259083}
     - target: {fileID: 9216070517513786013, guid: 79260046fe4d4f14cb5086c48d884c51,
         type: 3}
       propertyPath: m_Name
@@ -1685,6 +1695,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2267886859567542972, guid: 8e779debe9711584284706adb5d34090,
         type: 3}
+      propertyPath: StageObj.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267886859567542972, guid: 8e779debe9711584284706adb5d34090,
+        type: 3}
       propertyPath: smallSeaArea.Array.data[0]
       value: 
       objectReference: {fileID: 1500210922}
@@ -1698,6 +1713,11 @@ PrefabInstance:
       propertyPath: BubbleObj.Array.data[1]
       value: 
       objectReference: {fileID: 1398970174}
+    - target: {fileID: 2267886859567542972, guid: 8e779debe9711584284706adb5d34090,
+        type: 3}
+      propertyPath: StageObj.Array.data[0]
+      value: 
+      objectReference: {fileID: 706642788}
     - target: {fileID: 7497224430841196230, guid: 8e779debe9711584284706adb5d34090,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1938,6 +1958,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7837262783028762519, guid: ec0d53c6111d0ab4da4f79f3705d4755,
         type: 3}
+      propertyPath: StageObj.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7837262783028762519, guid: ec0d53c6111d0ab4da4f79f3705d4755,
+        type: 3}
       propertyPath: BubbleObj.Array.data[0]
       value: 
       objectReference: {fileID: 1899775636}
@@ -1946,6 +1971,11 @@ PrefabInstance:
       propertyPath: BubbleObj.Array.data[1]
       value: 
       objectReference: {fileID: 1398970174}
+    - target: {fileID: 7837262783028762519, guid: ec0d53c6111d0ab4da4f79f3705d4755,
+        type: 3}
+      propertyPath: StageObj.Array.data[0]
+      value: 
+      objectReference: {fileID: 891907940}
     - target: {fileID: 8728859256344052791, guid: ec0d53c6111d0ab4da4f79f3705d4755,
         type: 3}
       propertyPath: m_Name
