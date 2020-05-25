@@ -222,6 +222,7 @@ MonoBehaviour:
   - {fileID: 1132721194}
   - {fileID: 960836043}
   Zsize: 0.1
+  spd: 1
   alpha: 0.5
 --- !u!1001 &828931882
 PrefabInstance:

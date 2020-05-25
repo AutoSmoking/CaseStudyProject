@@ -82,6 +82,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: StageS
       objectReference: {fileID: 0}
+    - target: {fileID: 1773075882514767794, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: moveType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1773075882514767794, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: MoveAxis
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1773075882514767794, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: LRFlag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1773075882514767794, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: MoveSpd
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1773075882514767794, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: TurnTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2379126191017742575, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
       propertyPath: m_Radius
@@ -95,6 +120,71 @@ PrefabInstance:
     - target: {fileID: 2379126191017742575, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593095519642138004, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: MoveSpd
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833539561331094575, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833539561331094576, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833539561331094579, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.175
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833539561331094579, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.175
+      objectReference: {fileID: 0}
+    - target: {fileID: 6301034501119688983, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: MoveAxis
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6301034501119688983, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: MoveSpd
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6301034501119688983, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: LRFlag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6301034501119688983, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: moveType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6301034501119688983, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: TurnTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6893409870645792864, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: MoveSpd
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6893409870645792864, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: TurnTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6893409870645792864, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: LRFlag
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7045556360047982204, guid: 34b5b79874185494dba4a2d0e8bc79db,

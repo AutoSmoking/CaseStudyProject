@@ -252,7 +252,7 @@ public class FishMove : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Block" && !TurnFlag && WaitTime > ColStopTime)
+        if ((other.tag == "Block" || other.tag == "fish") && !TurnFlag && WaitTime > ColStopTime)
         {
             TurnFlag = true;
             FirstCAngle = child.transform.localEulerAngles;
