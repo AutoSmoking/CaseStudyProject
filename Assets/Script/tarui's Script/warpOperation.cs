@@ -44,6 +44,8 @@ public class warpOperation : MonoBehaviour
 
     Animation ani;
 
+    SkinnedMeshRenderer meshRen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +66,24 @@ public class warpOperation : MonoBehaviour
         if (GoalFlg)
         {
             ani.Play();
+        }
+
+        if(this.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>() == null)
+        {
+            meshRen = this.transform.GetChild(0).GetChild(1).gameObject.AddComponent<SkinnedMeshRenderer>();
+        }
+        else
+        {
+            meshRen = this.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>();
+        }
+
+        if (GoalFlg)
+        {
+            SetMatColor(meshRen, Color.red);
+        }
+        else
+        {
+            SetMatColor(meshRen, Color.green);
         }
     }
 
@@ -308,6 +328,9 @@ public class warpOperation : MonoBehaviour
                         }
                     }
 
+                    // 色を変える
+                    SetMatColor(meshRen, Color.red);
+
                     break;
                 }
             }
@@ -326,7 +349,16 @@ public class warpOperation : MonoBehaviour
                 Object = null;
 
                 GoalFlg = false;
+
+                // 色を変える
+                SetMatColor(meshRen, Color.green);
             }
         }
+    }
+
+
+    void SetMatColor(SkinnedMeshRenderer mesh, Color col)
+    {
+        mesh.material.color = col; //meshのmaterialの色を変える
     }
 }
