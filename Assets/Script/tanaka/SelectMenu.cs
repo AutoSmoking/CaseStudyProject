@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using KanKikuchi.AudioManager;
 
+using UnityEngine.EventSystems;
+
 public class SelectMenu : MonoBehaviour
 {
     [SerializeField, Header("1～10のステージシーン名")]
@@ -14,6 +16,9 @@ public class SelectMenu : MonoBehaviour
     public Animator[] anim = new Animator[3];
     public SceneName AllNameScript;
     public SceneComponent Scene;
+    public EventSystem Eve;
+    public bool SelectOn = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +26,7 @@ public class SelectMenu : MonoBehaviour
         Scene = GameObject.Find("SceneManager").GetComponent<SceneComponent>();
 
         button = GameObject.Find("Canvas/1~10").GetComponent<Button>();
-
+        Eve = GameObject.Find("EventSystem").GetComponent<EventSystem>();
         //ボタンが選択された状態になる
 
         button.Select();
@@ -35,10 +40,13 @@ public class SelectMenu : MonoBehaviour
         for (int t = 0; t < stage.Length; t++)
         {
             anim[t] = stage[t].GetComponent<Animator>();
-            anim[t].enabled = false;
+            anim[t].enabled = true;
             foreach (Transform obj in stage[t].transform)
             {
-                obj.gameObject.SetActive(false);
+                if (obj.gameObject.name != "Text")
+                {
+                    obj.gameObject.SetActive(false);
+                }
             }
         }
 
@@ -60,19 +68,30 @@ public class SelectMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (SelectOn == true && gameObject.name != "戻る")
         {
-
-            //string name = gameObject.name;
-            //Debug.Log(int.Parse(name));
-            //SceneComponent instance = GameObject.Find("SceneManager").GetComponent<SceneComponent>();
-            //EventSystem eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
-
-            //if (eventSystem.currentSelectedGameObject.gameObject == gameObject)
-            //{
-            //    OnClick(int.Parse(gameObject.name) + 1);
-            //}
-
+            foreach (Transform trans in transform)
+            {
+                if (trans.gameObject.name != "Text")
+                {
+                    if (trans.gameObject == Eve.currentSelectedGameObject)
+                    {
+                        var go = trans.gameObject.GetComponent<Animator>();
+                        go.enabled = true;
+                        go.SetBool("Select", true);
+                        trans.gameObject.GetComponent<Button>().Select();
+                        //var info = go.GetAnimatorTransitionInfo(0);
+                        //go.Play(info.nameHash, 0, 0.0f);
+                        //Debug.Log(trans.gameObject.name);
+                    }
+                    else
+                    {
+                        var go = trans.gameObject.GetComponent<Animator>();
+                        go.enabled = true;
+                        go.SetBool("Select", false);
+                    }
+                }
+            }
         }
     }
 
@@ -87,9 +106,22 @@ public class SelectMenu : MonoBehaviour
 
     public void OnClick(int name)
     {
-        SceneComponent instance = GameObject.Find("SceneManager").GetComponent<SceneComponent>();
-        instance.SceneName = scenenames[name];
-        instance.SceneFlag = true;
+        SEManager.Instance.Play(Scene.EnterClip);
+        if (SelectOn == true)
+        {
+            SelectOn = false;
+            for(int i = 0; i < 3; i++)
+            {
+                stage[i].GetComponent<SelectMenu>().SelectOn = false;
+            }
+            SetButton();
+        }
+        else
+        {
+            SceneComponent instance = GameObject.Find("SceneManager").GetComponent<SceneComponent>();
+            instance.SceneName = scenenames[name];
+            instance.SceneFlag = true;
+        }
         //for(int i = 0; i < scenename1_10.Length; i++)
         //{
         //    if (scenename1_10[i] == i.ToString())
@@ -99,35 +131,95 @@ public class SelectMenu : MonoBehaviour
         //}
     }
 
+    public void StageSet(int num)
+    {
+        SceneComponent instance = GameObject.Find("SceneManager").GetComponent<SceneComponent>();
+        instance.SceneName = scenenames[num];
+        instance.SceneFlag = true;
+    }
+
     public void MoveSelect(int num)
     {
-        SEManager.Instance.Play(Scene.EnterClip);
+        if (GameObject.Find("Animation").GetComponent<AnimationComponent>().AllAnimation == false)
+        {
+            SEManager.Instance.Play(Scene.EnterClip);
 
-        for (int t = 0; t < 3; t++) 
+            //非表示
+            AllOffButton();
+
+            //押したボタンのみ表示
+            PushButton();
+
+            SelectOn = true;
+            //switch (num)
+            //{
+            //    case 0:
+
+            //        break;
+
+            //}
+        }
+    }
+
+    void AllOffButton()
+    {
+        //ボタン全非表示
+        for (int t = 0; t < 3; t++)
         {
             foreach (Transform obj in stage[t].transform)
             {
                 obj.gameObject.SetActive(false);
             }
+            stage[t].gameObject.GetComponent<Button>().interactable = false;
+            //stage[t].gameObject.GetComponent<Image>().enabled = false;
         }
+    }
 
-        int i = 0;
+    void PushButton()
+    {
+        //押したボタンのみ表示
+        //int i = 0;
         Debug.Log("a");
-        foreach(Transform trans in transform)
+        transform.GetComponent<Button>().Select();
+        foreach (Transform trans in transform)
         {
-            trans.gameObject.SetActive(true);
-            var go = trans.gameObject.GetComponent<Animator>();
-            go.enabled = true;
-            var info = go.GetAnimatorTransitionInfo(0);
-            go.Play(info.nameHash, 0, 0.0f);
+            if (trans.gameObject.name == "Text")
+            {
+                trans.gameObject.SetActive(false);
+            }
+            else
+            {
+                trans.gameObject.SetActive(true);
+            }            
+
+            if (trans.gameObject.name == "1")
+            {
+                trans.GetComponent<Button>().Select();
+            }
+            //var go = trans.gameObject.GetComponent<Animator>();
+            //go.enabled = true;
+            //var info = go.GetAnimatorTransitionInfo(0);
+            //go.Play(info.nameHash, 0, 0.0f);
         }
-        
-        switch (num)
+
+        GameObject.Find("戻る").GetComponent<SelectMenu>().SelectOn = true;
+    }
+
+    void SetButton()
+    {
+        AllOffButton();
+
+        for(int i = 0; i < 3; i++)
         {
-            case 0:
+            stage[i].gameObject.GetComponent<Button>().interactable = true;
 
-                break;
-
+            foreach (Transform obj in stage[i].transform)
+            {
+                if (obj.gameObject.name == "Text")
+                {
+                    obj.gameObject.SetActive(true);
+                }
+            }
         }
     }
 }

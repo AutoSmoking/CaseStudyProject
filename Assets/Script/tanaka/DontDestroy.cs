@@ -23,23 +23,23 @@ public class DontDestroy : MonoBehaviour
 
             Destroy(gameObject);
         }
-        SceneCom = GameObject.Find("SceneManager").GetComponent<SceneComponent>();
-        NowSelectObj = instance.currentSelectedGameObject;
+        //SceneCom = GameObject.Find("SceneManager").GetComponent<SceneComponent>();
+        //NowSelectObj = instance.currentSelectedGameObject;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (instance.currentSelectedGameObject != NowSelectObj)
-        {
-            Debug.Log("se");
-            NowSelectObj = instance.currentSelectedGameObject;
-            SEManager.Instance.Play(SceneCom.EnterClip);
-        }
-        else 
-        {
-            instance.firstSelectedGameObject = NowSelectObj;
-        }
+        //if (instance.currentSelectedGameObject != NowSelectObj)
+        //{
+        //    Debug.Log("se");
+        //    NowSelectObj = instance.currentSelectedGameObject;
+        //    SEManager.Instance.Play(SceneCom.EnterClip);
+        //}
+        //else 
+        //{
+        //    instance.firstSelectedGameObject = NowSelectObj;
+        //}
     }
 }
