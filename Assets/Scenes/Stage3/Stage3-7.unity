@@ -438,6 +438,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7639970340101751101, guid: 79260046fe4d4f14cb5086c48d884c51,
         type: 3}
+      propertyPath: smallSeaArea.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7639970340101751101, guid: 79260046fe4d4f14cb5086c48d884c51,
+        type: 3}
       propertyPath: BubbleObj.Array.data[0]
       value: 
       objectReference: {fileID: 2046886466}
@@ -446,6 +451,16 @@ PrefabInstance:
       propertyPath: BubbleObj.Array.data[1]
       value: 
       objectReference: {fileID: 949653571}
+    - target: {fileID: 7639970340101751101, guid: 79260046fe4d4f14cb5086c48d884c51,
+        type: 3}
+      propertyPath: smallSeaArea.Array.data[0]
+      value: 
+      objectReference: {fileID: 494833617}
+    - target: {fileID: 7639970340101751101, guid: 79260046fe4d4f14cb5086c48d884c51,
+        type: 3}
+      propertyPath: smallSeaArea.Array.data[1]
+      value: 
+      objectReference: {fileID: 1201990956}
     - target: {fileID: 9216070517513786013, guid: 79260046fe4d4f14cb5086c48d884c51,
         type: 3}
       propertyPath: m_Name
@@ -802,7 +817,7 @@ PrefabInstance:
     - target: {fileID: 7837262783028762519, guid: ec0d53c6111d0ab4da4f79f3705d4755,
         type: 3}
       propertyPath: smallSeaArea.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7837262783028762519, guid: ec0d53c6111d0ab4da4f79f3705d4755,
         type: 3}
@@ -851,6 +866,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1807469412}
+  - component: {fileID: 1807469413}
   m_Layer: 0
   m_Name: StageObjL
   m_TagString: Untagged
@@ -872,6 +888,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1807469413
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807469411}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &1809658854
 Mesh:
   m_ObjectHideFlags: 0
@@ -1123,6 +1152,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1890856442}
+  - component: {fileID: 1890856443}
   m_Layer: 0
   m_Name: StageObjM
   m_TagString: Untagged
@@ -1144,6 +1174,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1890856443
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890856441}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1963600251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,6 +1196,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1963600252}
+  - component: {fileID: 1963600253}
   m_Layer: 0
   m_Name: StageObjS
   m_TagString: Untagged
@@ -1174,6 +1218,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1963600253
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963600251}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2046886464
 PrefabInstance:
   m_ObjectHideFlags: 0
