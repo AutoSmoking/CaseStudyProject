@@ -423,7 +423,7 @@ PrefabInstance:
     - target: {fileID: 1609806947974991916, guid: bb14668f9bb24fd488e3b0b428172e48,
         type: 3}
       propertyPath: _iteration
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1609806947974991919, guid: bb14668f9bb24fd488e3b0b428172e48,
         type: 3}
@@ -438,12 +438,12 @@ PrefabInstance:
     - target: {fileID: 1609806947974991919, guid: bb14668f9bb24fd488e3b0b428172e48,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1609806947974991922, guid: bb14668f9bb24fd488e3b0b428172e48,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 0
+      value: 2560
       objectReference: {fileID: 0}
     - target: {fileID: 1609806947974991922, guid: bb14668f9bb24fd488e3b0b428172e48,
         type: 3}
@@ -534,7 +534,7 @@ PrefabInstance:
     - target: {fileID: 1609806947974991916, guid: bb14668f9bb24fd488e3b0b428172e48,
         type: 3}
       propertyPath: _iteration
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1609806947974991919, guid: bb14668f9bb24fd488e3b0b428172e48,
         type: 3}
@@ -549,7 +549,7 @@ PrefabInstance:
     - target: {fileID: 1609806947974991922, guid: bb14668f9bb24fd488e3b0b428172e48,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 3584
+      value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 1609806947974991922, guid: bb14668f9bb24fd488e3b0b428172e48,
         type: 3}

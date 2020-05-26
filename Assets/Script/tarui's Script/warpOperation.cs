@@ -206,6 +206,7 @@ public class warpOperation : MonoBehaviour
                     // 閉じるアニメーションが再生されてないならしておく
                     if(!ani.isPlaying)
                     {
+                        ani.Stop();
                         // 閉じるアニメーション
                         ani.Play("shako_close");
                     }
@@ -227,6 +228,7 @@ public class warpOperation : MonoBehaviour
                     {
                         if (WaitTime <= 0.8f)
                         {
+                            ani.Stop();
                             // 閉じるアニメーション
                             ani.Play("shako_close");
 
@@ -235,6 +237,7 @@ public class warpOperation : MonoBehaviour
                         {
                             if (percent >= (WaitTime - 0.8f))
                             {
+                                ani.Stop();
                                 // 閉じるアニメーション
                                 ani.Play("shako_close");
                             }
