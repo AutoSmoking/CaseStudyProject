@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using KanKikuchi.AudioManager;
 
+
+
 public class BubbleOperation : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -24,7 +26,9 @@ public class BubbleOperation : MonoBehaviour
 
     [SerializeField] private Transform _parentTransform;
 
-    int floatflag = 0;
+    int floatflag = 0;//泡の浮き沈みのフラグ（bool型にしろよ）
+
+    public static int BubbleNum = 1;//泡の合計結合数（うまく言語化できない・・・）
 
     public bool DeathFlg = false;
 
@@ -71,6 +75,8 @@ public class BubbleOperation : MonoBehaviour
                 gameObject.transform.localScale.y + BubbleSize,
                 gameObject.transform.localScale.z
                 );
+
+                BubbleNum = BubbleNum + 1;
             }
 
             //3と衝突した場合
@@ -92,6 +98,8 @@ public class BubbleOperation : MonoBehaviour
                 gameObject.transform.localScale.y + BubbleSize,
                 gameObject.transform.localScale.z
                 );
+
+                BubbleNum = BubbleNum + 1;
             }
         }
 
@@ -111,22 +119,31 @@ public class BubbleOperation : MonoBehaviour
                 );
 
                 DeathBubble3 = true;
+
+                BubbleNum = BubbleNum + 1;
             }
         }
     }
 
-    //ゲッター
+    //フラグのゲッター
     public static bool GetDB3Flag()
     {
         return DeathBubble3;
     }
 
+    //泡の結合数のゲッター
+    public static int getBubbleNum()
+    {
+        return BubbleNum;
+    }
 
     // Update is called once per frame
     void Update()
     {
+        Transform myTransform = this.transform;
+
         //stopFlgを取得
-        BubbleStopFlg=SpinOperation.GetstopFlg();
+        BubbleStopFlg =SpinOperation.GetstopFlg();
 
         //スペースを押したときの処理（１回きり）
         if (Input.GetKey(KeyCode.Space) && floatflag == 0)
@@ -173,3 +190,5 @@ public class BubbleOperation : MonoBehaviour
         }
     }
 }
+
+
