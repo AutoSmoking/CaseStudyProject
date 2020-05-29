@@ -35,7 +35,7 @@ public class SceneName : MonoBehaviour
             {
                 if (NowSceneName == StageSceneNama[i])
                 {
-                    if (i == StageSceneNama.Count)
+                    if (i + 1 >= 30) 
                     {
                         NextSceneName = "StageSelect";
                     }
