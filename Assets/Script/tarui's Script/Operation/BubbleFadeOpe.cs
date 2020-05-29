@@ -105,6 +105,8 @@ public class BubbleFadeOpe : MonoBehaviour
                 child.GetComponent<FadeMoveOpe>().isStart = true;
             }
 
+            canvas.enabled = true;
+
             StartCoroutine(DelayMethod(delayTime));
 
             isFadeInStart = false;

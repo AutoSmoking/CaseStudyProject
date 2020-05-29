@@ -816,7 +816,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-5647490
+  m_Name: pb_Mesh-188720
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2059,6 +2059,26 @@ PrefabInstance:
       propertyPath: StageObj.Array.data[0]
       value: 
       objectReference: {fileID: 706642788}
+    - target: {fileID: 2267886859567542972, guid: 8e779debe9711584284706adb5d34090,
+        type: 3}
+      propertyPath: LeftSpinX
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267886859567542972, guid: 8e779debe9711584284706adb5d34090,
+        type: 3}
+      propertyPath: RightSpinX
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267886859567542972, guid: 8e779debe9711584284706adb5d34090,
+        type: 3}
+      propertyPath: LeftSpin
+      value: 97
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267886859567542972, guid: 8e779debe9711584284706adb5d34090,
+        type: 3}
+      propertyPath: RightSpin
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5346906962867237561, guid: 8e779debe9711584284706adb5d34090,
         type: 3}
       propertyPath: MoveSpd
@@ -2342,6 +2362,26 @@ PrefabInstance:
       propertyPath: StageObj.Array.data[0]
       value: 
       objectReference: {fileID: 891907940}
+    - target: {fileID: 7837262783028762519, guid: ec0d53c6111d0ab4da4f79f3705d4755,
+        type: 3}
+      propertyPath: LeftSpinX
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7837262783028762519, guid: ec0d53c6111d0ab4da4f79f3705d4755,
+        type: 3}
+      propertyPath: RightSpinX
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7837262783028762519, guid: ec0d53c6111d0ab4da4f79f3705d4755,
+        type: 3}
+      propertyPath: LeftSpin
+      value: 276
+      objectReference: {fileID: 0}
+    - target: {fileID: 7837262783028762519, guid: ec0d53c6111d0ab4da4f79f3705d4755,
+        type: 3}
+      propertyPath: RightSpin
+      value: 275
+      objectReference: {fileID: 0}
     - target: {fileID: 8728859256344052791, guid: ec0d53c6111d0ab4da4f79f3705d4755,
         type: 3}
       propertyPath: m_Name
