@@ -96,7 +96,7 @@ public class AnimationComponent : MonoBehaviour
             //}
 
             //
-            Debug.Log(ani[i].GetCurrentAnimatorStateInfo(0).normalizedTime);
+            //Debug.Log(ani[i].GetCurrentAnimatorStateInfo(0).normalizedTime);
 
         }
 
@@ -202,7 +202,7 @@ public class AnimationComponent : MonoBehaviour
             HashName[i] = ani[i].GetCurrentAnimatorStateInfo(0).nameHash;
             Ani[i] = true;
             Direction[i] = true;
-            Debug.Log("Right");
+            //Debug.Log("Right");
             trans[i]--;
             if (trans[i] < 1)
             {
@@ -223,7 +223,7 @@ public class AnimationComponent : MonoBehaviour
             HashName[i] = ani[i].GetCurrentAnimatorStateInfo(0).nameHash;
             Ani[i] = true;
             Direction[i] = true;
-            Debug.Log("Right");
+            //Debug.Log("Right");
             trans[i]++;
             if (trans[i] > 3)
             {

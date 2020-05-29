@@ -19,6 +19,7 @@ public class SelectMenu : MonoBehaviour
     public EventSystem Eve;
     public bool SelectOn = false;
 
+    Button SelectButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -80,6 +81,7 @@ public class SelectMenu : MonoBehaviour
                         go.enabled = true;
                         go.SetBool("Select", true);
                         trans.gameObject.GetComponent<Button>().Select();
+                        Debug.Log("bbb");
                         //var info = go.GetAnimatorTransitionInfo(0);
                         //go.Play(info.nameHash, 0, 0.0f);
                         //Debug.Log(trans.gameObject.name);
@@ -179,7 +181,7 @@ public class SelectMenu : MonoBehaviour
     {
         //押したボタンのみ表示
         //int i = 0;
-        Debug.Log("a");
+        //Debug.Log("a");
         transform.GetComponent<Button>().Select();
         foreach (Transform trans in transform)
         {
@@ -195,6 +197,7 @@ public class SelectMenu : MonoBehaviour
             if (trans.gameObject.name == "1")
             {
                 trans.GetComponent<Button>().Select();
+                SelectButton = trans.GetComponent<Button>();
             }
             //var go = trans.gameObject.GetComponent<Animator>();
             //go.enabled = true;
