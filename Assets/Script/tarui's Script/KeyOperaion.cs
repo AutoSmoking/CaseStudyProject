@@ -15,4 +15,20 @@ public class KeyOperaion : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        // 泡にぶつかった場合
+        if(other.gameObject.layer == LayerMask.NameToLayer("Bubble"))
+        {
+            // 泡から大きさを取ってくる
+            other.GetComponent<BubbleOperation>();
+
+            // 大きさによって処理が変わる
+            // if(??? >= 2)
+
+            // 泡の子オブジェクトに鍵を入れる
+            this.transform.parent = other.transform;
+        }
+    }
 }

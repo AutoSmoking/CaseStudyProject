@@ -106,7 +106,7 @@ public class warpOperation : MonoBehaviour
                     GoalFlg = true;
 
                     // ワープが終わったらオブジェクトを出現させる
-                    Object.SetActive(true);
+                    Object.GetComponent<MeshRenderer>().enabled = true;
 
                     // 対象オブジェクトをワープ先まで移動
                     Object.transform.position = next.transform.position;
@@ -212,7 +212,7 @@ public class warpOperation : MonoBehaviour
                     }
 
                     // ワープ中はオブジェクトは消す
-                    Object.SetActive(false);
+                    Object.GetComponent<MeshRenderer>().enabled = false;
                 }
                 // ワープ対象のオブジェクトが自身の中心まで移動
                 else
@@ -255,7 +255,7 @@ public class warpOperation : MonoBehaviour
         {
             foreach (var obj in objList)
             {
-                if (obj == other.gameObject)
+                if (obj == other.gameObject && !obj.GetComponent<BubbleBlast>())
                 {
                     // ワープを開始するフラグ
                     WarpFlg = true;
