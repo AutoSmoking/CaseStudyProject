@@ -9,6 +9,8 @@ TagManager:
   - 3
   - Block
   - fish
+  - stopList
+  - stage
   layers:
   - Default
   - TransparentFX
@@ -22,7 +24,7 @@ TagManager:
   - Stage
   - fish
   - Light
-  - 
+  - Fade
   - 
   - 
   - 

@@ -10,22 +10,27 @@ PrefabInstance:
     - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
       propertyPath: LeftSpin
-      value: 119
+      value: 276
       objectReference: {fileID: 0}
     - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
       propertyPath: RightSpin
-      value: 115
+      value: 275
       objectReference: {fileID: 0}
     - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
       propertyPath: LeftSpinX
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
       propertyPath: RightSpinX
-      value: 12
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 161256463006122258, guid: 34b5b79874185494dba4a2d0e8bc79db,
+        type: 3}
+      propertyPath: LRFlag
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1356325729571542700, guid: 34b5b79874185494dba4a2d0e8bc79db,
         type: 3}
