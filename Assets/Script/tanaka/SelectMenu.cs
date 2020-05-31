@@ -18,7 +18,7 @@ public class SelectMenu : MonoBehaviour
     public SceneComponent Scene;
     public EventSystem Eve;
     public bool SelectOn = false;
-
+    public Text[] SelectBig;
     Button SelectButton;
     // Start is called before the first frame update
     void Start()
@@ -63,6 +63,17 @@ public class SelectMenu : MonoBehaviour
                 SetStageName(20);
                 break;
 
+        }
+
+        SelectBig = new Text[3];
+        SelectBig[0] = GameObject.Find("Canvas/1/1").GetComponent<Text>();
+        SelectBig[1] = GameObject.Find("Canvas/1/2").GetComponent<Text>();
+        SelectBig[2] = GameObject.Find("Canvas/1/3").GetComponent<Text>();
+        GameObject.Find("Canvas/1").GetComponent<Image>().enabled = false;
+
+        for(int i = 0; i < 3; i++)
+        {
+            SelectBig[i].enabled = false;
         }
     }
 
@@ -161,6 +172,20 @@ public class SelectMenu : MonoBehaviour
 
             //}
         }
+
+        switch (num)
+        {
+            case 1:
+                SelectBig[num - 1].enabled = true;
+                break;
+            case 2:
+                SelectBig[num - 1].enabled = true;
+                break;
+            case 3:
+                SelectBig[num - 1].enabled = true;
+                break;
+        }
+        GameObject.Find("Canvas/1").GetComponent<Image>().enabled = true;
     }
 
     void AllOffButton()
@@ -168,6 +193,8 @@ public class SelectMenu : MonoBehaviour
         //ボタン全非表示
         for (int t = 0; t < 3; t++)
         {
+            SelectBig[t].enabled = false;
+
             foreach (Transform obj in stage[t].transform)
             {
                 obj.gameObject.SetActive(false);
@@ -175,6 +202,8 @@ public class SelectMenu : MonoBehaviour
             stage[t].gameObject.GetComponent<Button>().interactable = false;
             //stage[t].gameObject.GetComponent<Image>().enabled = false;
         }
+        GameObject.Find("Canvas/1").GetComponent<Image>().enabled = false;
+
     }
 
     void PushButton()
@@ -215,7 +244,6 @@ public class SelectMenu : MonoBehaviour
         for(int i = 0; i < 3; i++)
         {
             stage[i].gameObject.GetComponent<Button>().interactable = true;
-
             foreach (Transform obj in stage[i].transform)
             {
                 if (obj.gameObject.name == "Text")

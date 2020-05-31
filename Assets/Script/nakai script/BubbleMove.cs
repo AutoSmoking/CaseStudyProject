@@ -9,6 +9,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using KanKikuchi.AudioManager;
+<<<<<<< HEAD
+=======
+using UnityEngine.SceneManagement;
+>>>>>>> asuka
 
 public class BubbleMove : MonoBehaviour
 {
@@ -31,14 +35,22 @@ public class BubbleMove : MonoBehaviour
 
     [SerializeField, Header("フェードイン処理したいので追加")]
     public Image Panel;
+<<<<<<< HEAD
 
+=======
+    public float a;
+>>>>>>> asuka
     new float[] move_x;
     new float[] move_y;
     float max_x = 3.0f;
     float max_y = 5.0f;
     new float[] x;
 
+<<<<<<< HEAD
     bool flg = false;     //座標処理が終わればtrue→フェードイン処理へ
+=======
+    public bool flg = false;     //座標処理が終わればtrue→フェードイン処理へ
+>>>>>>> asuka
     int i = 0;            //for制御用
 
     void Start()
@@ -50,7 +62,13 @@ public class BubbleMove : MonoBehaviour
         move_x = new float[] { 0.15f, 0.15f, 0.15f, 0.15f, 0.15f };
         move_y = new float[] { 0.1f, 0.1f, 0.1f, 0.1f, 0.1f };
 
+<<<<<<< HEAD
         SEManager.Instance.Play("SE/SE_BubbleMove",1,0,1,true);
+=======
+        //SEManager.Instance.Play("SE/SE_BubbleMove",1,0,1,true);
+        SEManager.Instance.Play("SE/タイトル/泡の浮上音/音人/SE_BubbleRise", 1, 0, 1, true);
+
+>>>>>>> asuka
     }
 
 
@@ -158,8 +176,17 @@ public class BubbleMove : MonoBehaviour
         {
             Panel.color += new Color(0.0f, 0.0f, 0.0f, 0.005f);
         }
+<<<<<<< HEAD
 
 
+=======
+        a = Panel.color.a;
+        if (Panel.color.a >= 1)
+        {
+            Debug.Log("change");
+            SceneManager.LoadScene("Title Scene");
+        }
+>>>>>>> asuka
     }
 
 }
