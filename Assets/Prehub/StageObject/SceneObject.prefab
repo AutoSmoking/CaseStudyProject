@@ -824,6 +824,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FadeManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4578052281455669470, guid: 99ca987b57641d34db066df379891cbe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4578052281455669538, guid: 99ca987b57641d34db066df379891cbe,
         type: 3}
       propertyPath: m_LocalPosition.x
