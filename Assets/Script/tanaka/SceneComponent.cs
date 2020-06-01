@@ -73,7 +73,17 @@ public class SceneComponent : MonoBehaviour
             SceneName != "StageSelect")))
         {
 
-            SceneFlag = true;
+            if (SceneManager.GetActiveScene().name == "Title Scene" &&
+                GameObject.Find("Fade-in Canvas").GetComponent<FadeOut>().FadeTrg == false)
+            {
+                SceneFlag = false;
+            }
+            else
+            {
+                SceneFlag = true;
+            }
+            
+
         }
 
         //シーン名の読み込み
