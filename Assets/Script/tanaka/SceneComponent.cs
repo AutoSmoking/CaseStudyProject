@@ -19,7 +19,9 @@ public class SceneComponent : MonoBehaviour
     public PauseManager PauseManager;
     public AudioClip CursorClip;
     public AudioClip EnterClip;
+    bool fade = false;
 
+    public GameObject Fade = null;
     void Awake()
     {
         if (instance == null)
@@ -48,6 +50,11 @@ public class SceneComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Fade == null&& SceneManager.GetActiveScene().name == "Title Scene")
+        {
+            Fade = GameObject.Find("FadeManager");
+            Fade.GetComponent<Canvas>().enabled=false;
+        }
         //if (SceneName != "Title Scene" && SceneName != "StageSelect")
         //{
 
@@ -65,8 +72,8 @@ public class SceneComponent : MonoBehaviour
         //    SelectTransition();
         //}
 
-            //キー入力(タイトル、ステージセレクト時)
-            if ((Input.GetKeyDown(KeyCode.Z) ||
+        //キー入力(タイトル、ステージセレクト時)
+        if ((Input.GetKeyDown(KeyCode.Z) ||
             Input.GetKeyDown(KeyCode.Space)) && SceneFlag == false && 
             (SceneManager.GetActiveScene().name == "Title Scene" || 
             (SceneManager.GetActiveScene().name == "StageSelect" && 
@@ -102,11 +109,35 @@ public class SceneComponent : MonoBehaviour
             }
 
             // イベントにイベントハンドラーを追加
-            SceneManager.sceneLoaded += SceneLoaded;
-            //シーン読み込み
-            LoadScene(SceneName);
-        }
+            if (SceneManager.GetActiveScene().name == "Title Scene")
+            {
+                SceneManager.sceneLoaded += SceneUnLoaded;
+                if (Fade != null && fade == false)
+                {
+                    Fade.GetComponent<BubbleFadeOpe>().isFadeIn = false;
+                    Fade.GetComponent<BubbleFadeOpe>().isFadeOut = false;
 
+                    fade = true;
+                    Fade.SetActive(true);
+                    Fade.GetComponent<BubbleFadeOpe>().isFadeOut = true;
+                    Debug.Log("a");
+                }
+            }
+            else
+            {
+                SceneManager.sceneLoaded += SceneLoaded;
+                //シーン読み込み
+                LoadScene(SceneName);
+            }
+
+            if (fade == true)
+            {
+                if (GameObject.Find("FadeManager").GetComponent<BubbleFadeOpe>().isFadeOut == false)
+                {
+                    LoadScene(SceneName);
+                }
+            }
+        }
         //ゲームクリア時
         //if ((SceneManager.GetActiveScene().name != "Title Scene" && SceneManager.GetActiveScene().name != "StageSelect") && GameFrag == true) 
         //{
@@ -117,6 +148,16 @@ public class SceneComponent : MonoBehaviour
     }
 
     // イベントハンドラー（イベント発生時に動かしたい処理）
+    void SceneUnLoaded(Scene nextScene, LoadSceneMode mode)
+    {
+        GameObject Fade;
+        if (GameObject.Find("FadeManager") != null) 
+        {
+            Fade = GameObject.Find("FadeManager");
+            Fade.SetActive(true);
+            Fade.GetComponent<BubbleFadeOpe>().isFadeIn = true;
+        }
+    }
     void SceneLoaded(Scene nextScene, LoadSceneMode mode)
     {
         if (SceneName != "Title Scene" && SceneName != "StageSelect")
@@ -132,6 +173,12 @@ public class SceneComponent : MonoBehaviour
             //       // obj.AddComponent<PauseComponent>();
             //    }
             //}
+        }else if(SceneName == "Title Scene")
+        {
+            if (GameObject.Find("FadeManager") != null)
+            {
+                GameObject.Find("FadeManager").GetComponent<BubbleFadeOpe>().isFadeOut = true;
+            }
         }
     }
     //シーン読み込み
