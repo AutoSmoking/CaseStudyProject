@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CameraOpe : MonoBehaviour
 {
+    //[SerializeField, Header("中心位置")]
+    //Transform center = null;
+
     [SerializeField, Header("泡を格納")]
     List<Transform> Bubble = new List<Transform>() { };
 
@@ -97,10 +100,10 @@ public class CameraOpe : MonoBehaviour
         float px, py;
         float cx, cy;
 
-        px = Mathf.Abs(max.x - min.x);
+        px = Mathf.Abs(max.x - min.x) / 16 * 9;
         py = Mathf.Abs(max.y - min.y);
 
-        cx = px / 4 + px / 32 + alpha;
+        cx = px / 2 + alpha;
         cy = py / 2 + alpha;
 
         if (cx >= cy)
