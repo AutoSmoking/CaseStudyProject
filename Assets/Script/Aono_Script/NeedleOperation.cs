@@ -71,6 +71,8 @@ public class NeedleOperation : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Bubble") &&
             other.gameObject.GetComponent<Rigidbody>().isKinematic == false) 
         {
+            SEManager.Instance.Play("SE_Needle", 2);
+
             foreach(var obj in bubbleList)
             {
                 if(obj == null)
