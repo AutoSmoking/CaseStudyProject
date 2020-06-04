@@ -11,6 +11,8 @@ TagManager:
   - fish
   - stopList
   - stage
+  - BackFish
+  - camera
   layers:
   - Default
   - TransparentFX
