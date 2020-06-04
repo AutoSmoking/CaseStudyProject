@@ -51,7 +51,7 @@ public class BubbleMove : MonoBehaviour
         move_x = new float[] { 0.15f, 0.15f, 0.15f, 0.15f, 0.15f };
         move_y = new float[] { 0.1f, 0.1f, 0.1f, 0.1f, 0.1f };
 
-        SEManager.Instance.Play("SE/SE_BubbleMove",1,0,1,true);
+        //SEManager.Instance.Play("SE/SE_BubbleMove",1,0,1,true);
         //SEManager.Instance.Play("SE/SE_BubbleMove",1,0,1,true);
         SEManager.Instance.Play("SE/タイトル/泡の浮上音/音人/SE_BubbleRise", 1, 0, 1, true);
 
