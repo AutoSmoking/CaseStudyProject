@@ -40,12 +40,17 @@ public class BubbleOperation : MonoBehaviour
 
     Controll AButton = Controll.Aボタン;
 
+    // 20200604追加
+    // 樽の子オブジェクトを取得
+    Transform taru = null;
+
     void Start()
     {
         Bubble = GameObject.FindGameObjectWithTag("1");
         Bubble2 = GameObject.FindGameObjectWithTag("2");
         Bubble3 = GameObject.FindGameObjectWithTag("3");
 
+        taru = this.transform.Find("taru");
     }
 
     void OnCollisionEnter(Collision other)
@@ -146,25 +151,21 @@ public class BubbleOperation : MonoBehaviour
         BubbleStopFlg =SpinOperation.GetstopFlg();
 
         //スペースを押したときの処理（１回きり）
-        if (Input.GetKey(KeyCode.Space) && floatflag == 0)
+        //Aボタンを押した
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown(AButton.ToString())) && floatflag == 0)
         {
             floatflag++;
 
             // ここで音を鳴らす
             SEManager.Instance.Play("SE/Bubble_Birth");
 
-            Destroy(gameObject.transform.Find("taru").gameObject);
+            taru.GetComponent<Animation>().Play("taru_open");
         }
 
-        //Aボタンを押した
-        if (Input.GetButton(AButton.ToString()) && floatflag == 0)
+        if(floatflag !=0 && taru != null && !taru.GetComponent<Animation>().isPlaying)
         {
-            floatflag++;
-
-            // ここで音を鳴らす
-            SEManager.Instance.Play("SE/Bubble_Birth");
-
-            Destroy(gameObject.transform.Find("taru").gameObject);
+            Destroy(taru.gameObject);
+            taru = null;
         }
 
         if (BubbleStopFlg == true)
