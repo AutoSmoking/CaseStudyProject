@@ -25,7 +25,7 @@ public class PauseManager : MonoBehaviour
     public GameObject canvas;
     public Button button;
     public SceneComponent Scene;
-
+    public bool ChangeScene = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +51,7 @@ public class PauseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if ( Input.GetButtonDown(Controll.Xボタン.ToString())||Input.GetKeyDown(KeyCode.P) && Scene.SceneName != "Title Scene" && Scene.SceneName != "StageSelect") 
         {
             if (PauseFlag == false)
             {
@@ -160,7 +160,8 @@ public class PauseManager : MonoBehaviour
             //{
             //    obj.GetComponent<SpinOperation>().SpinSpeed = 0.0f;
             //}
-            if (obj!=null&&PauseFlag == false && obj.GetComponent<PauseComponent>() != null)
+            if (obj!=null&&(PauseFlag == false||ChangeScene==false) && 
+                obj.GetComponent<PauseComponent>() != null)
             {
                 obj.GetComponent<PauseComponent>().OnPause();
                 Debug.Log("on");
@@ -177,7 +178,8 @@ public class PauseManager : MonoBehaviour
             //{
             //    obj.GetComponent<SpinOperation>().SpinSpeed = 0.0f;
             //}
-            if (obj!=null&&PauseFlag == true && obj.GetComponent<PauseComponent>() != null)
+            if (obj != null && (PauseFlag == true || ChangeScene == true) &&
+                obj.GetComponent<PauseComponent>() != null)
             {
                 obj.GetComponent<PauseComponent>().OnResume();
                 Debug.Log("off");

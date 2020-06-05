@@ -139,17 +139,19 @@ public class AnimationComponent : MonoBehaviour
         if (time == true ) 
         {
 
-            if (Input.GetKeyDown(KeyCode.UpArrow) && trg == false) 
+            if ((Input.GetAxisRaw(Controll.十字キー上下.ToString()) >= 1) && trg == false && !Uptrg)  
             {
                 trg = true;
                 Uptrg = true;
                 SEManager.Instance.Play(Scene.EnterClip);
+                Debug.Log("UP");
             }
-            if (Input.GetKeyDown(KeyCode.DownArrow) && trg == false)
+            if ((Input.GetAxisRaw(Controll.十字キー上下.ToString()) <= -1) && trg == false && Uptrg) 
             {
                 trg = true;
                 Uptrg = false;
                 SEManager.Instance.Play(Scene.EnterClip);
+                Debug.Log("Down");
             }
 
             if (Uptrg == false)
@@ -162,7 +164,7 @@ public class AnimationComponent : MonoBehaviour
                     }
                 }
 
-                if (Input.GetKeyDown(KeyCode.LeftArrow) && trg == false)
+                if ((Input.GetAxis(Controll.十字キー左右.ToString()) <= -1)&& trg == false)
                 {
                     trg = true;
                     LeftTurn();
@@ -178,7 +180,7 @@ public class AnimationComponent : MonoBehaviour
                     //}
                     //HashName = ani.GetCurrentAnimatorStateInfo(0).nameHash;
                 }
-                if (Input.GetKeyDown(KeyCode.RightArrow) && trg == false)
+                if ((Input.GetAxis(Controll.十字キー左右.ToString()) >= 1) && trg == false)
                 {
                     trg = true;
                     RightTurn();

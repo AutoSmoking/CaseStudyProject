@@ -13,16 +13,29 @@ public class MiniMapOpe : MonoBehaviour
     SeaArea seaArea = SeaArea.中;
 
     [SerializeField, Header("宝箱用のUI")]
-    Transform treasureUI = null;
+    Transform UIT = null;
 
     [SerializeField, Header("泡用のUI")]
-    List<Transform> BubblesUI = new List<Transform>() { };
+    Transform UIB = null;
+
+    [SerializeField, Header("ハリセンボン用のUI")]
+    Transform UIF = null;
 
     // 宝箱
     Transform treasure = null;
+    // UI用
+    GameObject treasureUI = null;
 
     // 泡
     List<GameObject> Bubbles = new List<GameObject>() { };
+    // UI用
+    List<GameObject> BubblesUI = new List<GameObject>() { };
+
+
+    // ハリセンボン
+    List<GameObject> NeedleFish = new List<GameObject>() { };
+    // UI用
+    List<GameObject> NeedleFishsUI = new List<GameObject>() { };
 
     // Start is called before the first frame update
     void Start()
@@ -35,26 +48,47 @@ public class MiniMapOpe : MonoBehaviour
         Bubbles.Add(GameObject.FindGameObjectWithTag("2"));
         Bubbles.Add(GameObject.FindGameObjectWithTag("3"));
 
-        if(GameObject.FindGameObjectWithTag("2") == null)
-        {
-            BubblesUI[1].gameObject.SetActive(false);
-        }
-        if (GameObject.FindGameObjectWithTag("3") == null)
-        {
-            BubblesUI[2].gameObject.SetActive(false);
-        }
-
+        // ハリセンボンを格納
+        NeedleFish.AddRange(GameObject.FindGameObjectsWithTag("fish"));
+        
         List<GameObject> stage = new List<GameObject>() { };
 
         stage.AddRange(GameObject.FindGameObjectsWithTag("stage"));
+
+        // 泡のUIを生成
+        for (int i = 0; i < Bubbles.Count; i++)
+        {
+            if(Bubbles[i] == null)
+            {
+                continue;
+            }
+
+            BubblesUI.Add(GameObject.Instantiate(UIB.gameObject, this.transform));
+        }
+
+        // ハリセンボンのUIを生成
+        for (int i = 0; i < NeedleFish.Count; i++)
+        {
+            if (NeedleFish[i] == null)
+            {
+                continue;
+            }
+
+            NeedleFishsUI.Add(GameObject.Instantiate(UIF.gameObject, this.transform));
+        }
+
+        // 宝箱のUIを生成
+        treasureUI = GameObject.Instantiate(UIT.gameObject, this.transform);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        MiniMapFunction(treasure, treasureUI);
+        // 宝箱
+        MiniMapFunction(treasure, treasureUI.transform);
 
-        for (int i = 0; i < Bubbles.Count - 1; i++)  
+        // 泡
+        for (int i = 0; i < Bubbles.Count; i++)  
         {
             if(Bubbles[i] == null)
             {
@@ -65,7 +99,22 @@ public class MiniMapOpe : MonoBehaviour
                 continue;
             }
 
-            MiniMapFunction(Bubbles[i].transform, BubblesUI[i]);
+            MiniMapFunction(Bubbles[i].transform, BubblesUI[i].transform);
+        }
+
+        // ハリセンボン
+        for (int i = 0; i < NeedleFish.Count; i++)
+        {
+            if (NeedleFish[i] == null)
+            {
+                if (NeedleFishsUI[i].gameObject.activeInHierarchy)
+                {
+                    NeedleFishsUI[i].gameObject.SetActive(false);
+                }
+                continue;
+            }
+
+            MiniMapFunction(NeedleFish[i].transform, NeedleFishsUI[i].transform);
         }
     }
 

@@ -19,20 +19,37 @@ public class CameraOpe : MonoBehaviour
     [SerializeField, Header("見える領域の＋α値"), Range(0.1f, 2.0f)]
     float alpha = 0.5f;
 
+    [SerializeField, Header("カメラの中心位置")]
+    Vector2 centerPos = Vector2.zero;
+
     Camera cam = null;
+
+    // メイン以外のカメラ
+    List<GameObject> cameras = new List<GameObject>() { };
 
     // Start is called before the first frame update
     private void Start()
     {
         cam = this.GetComponent<Camera>();
 
+        cameras.AddRange(GameObject.FindGameObjectsWithTag("camera"));
+
         CameraMove();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         CameraMove();
+
+        foreach(var cams in cameras)
+        {
+            Camera camera = cams.GetComponent<Camera>();
+
+            cams.transform.position = this.transform.position;
+
+            camera.orthographicSize = cam.orthographicSize;
+        }
     }
 
     void CameraMove()
@@ -91,8 +108,8 @@ public class CameraOpe : MonoBehaviour
         }
 
         // カメラの位置を調整
-        center.x = Mathf.Lerp(max.x, min.x, 0.5f);
-        center.y = Mathf.Lerp(max.y, min.y, 0.5f);
+        center.x = Mathf.Lerp(max.x, min.x, 0.5f) + centerPos.x;
+        center.y = Mathf.Lerp(max.y, min.y, 0.5f) + centerPos.y;
         center.z = this.transform.position.z;
         this.transform.position = center;
 
