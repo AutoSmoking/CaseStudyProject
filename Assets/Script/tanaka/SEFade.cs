@@ -8,8 +8,11 @@ public class SEFade : MonoBehaviour
     [SerializeField, Header("フェード時のSE")]
     public AudioClip FadeSE;
 
-    [SerializeField, Header("フェード速度")]
-    public float FadeSpeed;
+    [SerializeField, Header("SE最大になるまでにかかる時間")]
+    public float FadeMaxSpeed;
+
+    [SerializeField, Header("SE最小になるまでにかかる時間")]
+    public float FadeMinSpeed;
 
     AudioSource audiosource;
     BubbleFadeOpe bubblefadeope;
@@ -91,13 +94,13 @@ public class SEFade : MonoBehaviour
     public void FadeIn()
     {
         SEPlay();
-        audiosource.volume = (float)(deltaTime / FadeSpeed);
+        audiosource.volume = (float)(deltaTime / FadeMaxSpeed);
     }
     //小さくなる
     public void FadeOut()
     {
         SEPlay();
-        audiosource.volume = 1.0f - (float)(deltaTime / FadeSpeed);
+        audiosource.volume = 1.0f - (float)(deltaTime / FadeMinSpeed);
     }
     void Reset()
     {

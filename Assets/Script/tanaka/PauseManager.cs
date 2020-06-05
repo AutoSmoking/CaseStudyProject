@@ -28,7 +28,7 @@ public class PauseManager : MonoBehaviour
     public SceneComponent Scene;
     public bool ChangeScene = false;
     bool AxisTrg = false;
-    int NowButton = 0;
+    public int NowButton = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -69,7 +69,7 @@ public class PauseManager : MonoBehaviour
                 StopStage();
                 canvas.SetActive(true);
                 button[NowButton].Select();
-
+                Debug.Log("Selected");
             }
             else
             {

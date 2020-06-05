@@ -5,18 +5,28 @@ using UnityEngine.UI;
 
 public class FadeOut : MonoBehaviour
 {
-    [SerializeField, Header("フェードアウト処理したいので追加")]
+    [SerializeField, Header("フェード速度(アルファ値の増減値)")]
+    public float Alpha;
+
+    [SerializeField, Header("フェードイン後に止まる時間")]
+    public float StopTime = 2.0f;
+
+    [SerializeField, Header("フェード様のパネル")]
     public Image Panel;
     public bool FadeTrgIn;
     public bool FadeTrgOut;
 
     SceneComponent Scene = null;
+
+
+    float Delta;
     // Start is called before the first frame update
     void Start()
     {
         Scene = transform.parent.GetComponent<SceneComponent>();
         FadeTrgIn = false;
         FadeTrgOut = false;
+        Delta = 2.0f;
     }
 
     // Update is called once per frame
@@ -25,7 +35,7 @@ public class FadeOut : MonoBehaviour
         if (!FadeTrgIn)
         {
             Debug.Log("In");
-            Panel.color += new Color(0.0f, 0.0f, 0.0f, 0.01f);
+            Panel.color += new Color(0.0f, 0.0f, 0.0f, Alpha);
         }
 
         if (Panel.color.a >= 1.0f) 
@@ -34,8 +44,15 @@ public class FadeOut : MonoBehaviour
         }
         if (!FadeTrgOut)
         {
-            Debug.Log("Out");
-            Panel.color -= new Color(0.0f, 0.0f, 0.0f, 0.01f);
+            if (Delta <= StopTime)
+            {
+                Delta += Time.deltaTime;
+            }
+            else
+            {
+                Debug.Log("Out");
+                Panel.color -= new Color(0.0f, 0.0f, 0.0f, Alpha);
+            }
         }
 
         if (Panel.color.a <= 0.0f) 
@@ -47,6 +64,7 @@ public class FadeOut : MonoBehaviour
 
     public void ReSetFadeOut()
     {
+        Delta = 0.0f;
         FadeTrgOut = false;
     }
     public void ReSetFadeIn()

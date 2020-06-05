@@ -9,6 +9,9 @@ public class Title_SelectBGM : MonoBehaviour
 
     bool play = false;
 
+    GameObject SceneManager;
+    SceneComponent Scene;
+
     private void Start()
     {
         if (clip == null) 
@@ -20,6 +23,9 @@ public class Title_SelectBGM : MonoBehaviour
         {
             play = true;
         }
+
+        SceneManager = GameObject.Find("SceneManager");
+        Scene = SceneManager.GetComponent<SceneComponent>();
     }
 
     // Update is called once per frame
@@ -33,25 +39,32 @@ public class Title_SelectBGM : MonoBehaviour
         //}
         if (play) 
         {
-
-            List<string> a =  BGMManager.Instance.GetCurrentAudioNames();
-            if (BGMManager.Instance.GetCurrentAudioNames().Count == 0)
+            //1つも再生してない場合
+            if (!BGMManager.Instance.IsPlaying())
             {
-                Debug.Log("uuuuuu");
+                Debug.Log("再生0");
                 BGMManager.Instance.Play(clip);
             }
             else
             {
+                //再生中のリスト取得
+                List<string> a = BGMManager.Instance.GetCurrentAudioNames();
+
                 for (int i = 0; i < BGMManager.Instance.GetCurrentAudioNames().Count; i++)
                 {
-                    if (a[i].ToString() == clip.ToString())
+
+                    //再生しているのが流そうとしているモノと同じ
+                    if (clip.ToString().Equals(a[i].ToString()))
                     {
+                        Debug.Log("再生してた");
                         break;
                     }
                     else if (i + 1 == BGMManager.Instance.GetCurrentAudioNames().Count)
                     {
-                        Debug.Log("a" + a[i].ToString());
+                        Debug.Log("再生してなかった");
+                        Debug.Log(a[i].ToString());
                         Debug.Log(clip.ToString());
+                        Debug.Log(i);
                         BGMManager.Instance.Play(clip);
                         break;
                     }
