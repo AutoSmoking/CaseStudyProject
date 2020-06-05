@@ -399,7 +399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -686,9 +686,10 @@ MonoBehaviour:
   TargetObj: []
   PauseFlag: 0
   canvas: {fileID: 0}
-  button: {fileID: 0}
+  button: []
   Scene: {fileID: 0}
   ChangeScene: 0
+  NowButton: 0
 --- !u!4 &372405068
 Transform:
   m_ObjectHideFlags: 0
@@ -838,7 +839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -1152,10 +1153,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8242e56f1e6cd6468576606282e999c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
+  button: []
   canvas: {fileID: 637875488}
   buttonflag: 0
   PauseManager: {fileID: 0}
+  AxisTrg: 0
+  NowButton: 0
 --- !u!4 &719429044
 Transform:
   m_ObjectHideFlags: 0
@@ -1336,6 +1339,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1147166822 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4328000580566162136, guid: 38000fd02b96202489e03cb351103f5d,
+    type: 3}
+  m_PrefabInstance: {fileID: 4328000579428973574}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1147166826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147166822}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01762ba18a892f94086e71f4cd8a75f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1344432254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1475,7 +1496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -1603,7 +1624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -2166,7 +2187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -2273,7 +2294,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &402754947889417751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2294,6 +2315,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 502855893, guid: 38000fd02b96202489e03cb351103f5d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 502855898, guid: 38000fd02b96202489e03cb351103f5d, type: 3}
+      propertyPath: Alpha
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 502855898, guid: 38000fd02b96202489e03cb351103f5d, type: 3}
+      propertyPath: StopTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814442162781456404, guid: 38000fd02b96202489e03cb351103f5d,
+        type: 3}
+      propertyPath: FadeSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814442162781456404, guid: 38000fd02b96202489e03cb351103f5d,
+        type: 3}
+      propertyPath: FadeMaxSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814442162781456404, guid: 38000fd02b96202489e03cb351103f5d,
+        type: 3}
+      propertyPath: FadeMinSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4328000580566162136, guid: 38000fd02b96202489e03cb351103f5d,
         type: 3}
       propertyPath: m_Name
@@ -2304,6 +2352,11 @@ PrefabInstance:
       propertyPath: WhiteFadeobj
       value: 
       objectReference: {fileID: 4328000579428973575}
+    - target: {fileID: 4328000580566162137, guid: 38000fd02b96202489e03cb351103f5d,
+        type: 3}
+      propertyPath: TitleAndSelectBGM
+      value: 
+      objectReference: {fileID: 8300000, guid: 74c88fde9f7f0cf479d08d2676f50225, type: 3}
     - target: {fileID: 4328000580566162150, guid: 38000fd02b96202489e03cb351103f5d,
         type: 3}
       propertyPath: m_LocalPosition.x

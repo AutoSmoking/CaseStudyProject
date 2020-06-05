@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using KanKikuchi.AudioManager;
 
-using UnityEngine.EventSystems;
 
 public class SelectMenu : MonoBehaviour
 {
@@ -20,14 +19,31 @@ public class SelectMenu : MonoBehaviour
     public bool SelectOn = false;
     public Text[] SelectBig;
     Button SelectButton;
+    int childnumber;
+    public bool AxisTrg = false;
+    bool Uptrg = false;
+    public Button BackButton;
+    AnimationComponent AnimaObj;
+    bool StageStart = false;
+    Image[] StageFont;
+
     // Start is called before the first frame update
     void Start()
     {
+        StageFont = new Image[3];
+        StageFont[0] = GameObject.Find("SelectFont/StageSelect").GetComponent<Image>();
+        StageFont[1] = GameObject.Find("SelectFont/Stage").GetComponent<Image>();
+        StageFont[2] = GameObject.Find("SelectFont/Stage2").GetComponent<Image>();
+        StageFont[2].enabled = false;
+
+        StageStart = false;
         AllNameScript = GameObject.Find("SceneManager").GetComponent<SceneName>();
         Scene = GameObject.Find("SceneManager").GetComponent<SceneComponent>();
 
         button = GameObject.Find("Canvas/1~10").GetComponent<Button>();
         Eve = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+        AnimaObj = GameObject.Find("Animation").GetComponent<AnimationComponent>();
+
         //ボタンが選択された状態になる
 
         button.Select();
@@ -70,8 +86,9 @@ public class SelectMenu : MonoBehaviour
         SelectBig[1] = GameObject.Find("Canvas/1/2").GetComponent<Text>();
         SelectBig[2] = GameObject.Find("Canvas/1/3").GetComponent<Text>();
         GameObject.Find("Canvas/1").GetComponent<Image>().enabled = false;
+        BackButton = GameObject.Find("戻る").GetComponent<Button>();
 
-        for(int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++)
         {
             SelectBig[i].enabled = false;
         }
@@ -82,28 +99,106 @@ public class SelectMenu : MonoBehaviour
     {
         if (SelectOn == true && gameObject.name != "戻る")
         {
-            foreach (Transform trans in transform)
+            Debug.Log(gameObject.name);
+
+            if (!StageStart)
             {
-                if (trans.gameObject.name != "Text")
+                if ((Input.GetAxisRaw(Controll.十字キー上下.ToString()) >= 1) && AxisTrg == false && !Uptrg)
                 {
-                    if (trans.gameObject == Eve.currentSelectedGameObject)
+                    AxisTrg = true;
+                    Uptrg = true;
+                    SEManager.Instance.Play(Scene.EnterClip);
+                    Debug.Log("UP");
+                }
+                if ((Input.GetAxisRaw(Controll.十字キー上下.ToString()) <= -1) && AxisTrg == false && Uptrg)
+                {
+                    AxisTrg = true;
+                    Uptrg = false;
+                    SEManager.Instance.Play(Scene.EnterClip);
+                    Debug.Log("Down");
+                }
+
+                if ((Input.GetAxis(Controll.十字キー左右.ToString()) <= -1) && AxisTrg == false)
+                {
+                    AxisTrg = true;
+                    SEManager.Instance.Play(Scene.EnterClip);
+                    if (!Uptrg)
                     {
-                        var go = trans.gameObject.GetComponent<Animator>();
-                        go.enabled = true;
-                        go.SetBool("Select", true);
-                        trans.gameObject.GetComponent<Button>().Select();
-                        Debug.Log("bbb");
-                        //var info = go.GetAnimatorTransitionInfo(0);
-                        //go.Play(info.nameHash, 0, 0.0f);
-                        //Debug.Log(trans.gameObject.name);
+                        childnumber--;
                     }
                     else
                     {
-                        var go = trans.gameObject.GetComponent<Animator>();
-                        go.enabled = true;
-                        go.SetBool("Select", false);
+                        Uptrg = false;
+                    }
+
+                    if (childnumber <= 0)
+                    {
+                        childnumber = 10;
                     }
                 }
+                if ((Input.GetAxis(Controll.十字キー左右.ToString()) >= 1) && AxisTrg == false)
+                {
+                    AxisTrg = true;
+                    SEManager.Instance.Play(Scene.EnterClip);
+                    if (!Uptrg)
+                    {
+                        childnumber++;
+                    }
+                    else
+                    {
+                        Uptrg = false;
+                    }
+
+                    if (childnumber > 10)
+                    {
+                        childnumber = 1;
+                    }
+                }
+
+                //if ((Input.GetAxis(Controll.十字キー左右.ToString()) < 1 && Input.GetAxis(Controll.十字キー左右.ToString()) > -1) && AxisTrg)
+                if ((Input.GetAxis(Controll.十字キー左右.ToString()) <= 0.5 &&
+                    Input.GetAxis(Controll.十字キー左右.ToString()) >= -0.5 &&
+                    Input.GetAxis(Controll.十字キー上下.ToString()) <= 0.5 &&
+                    Input.GetAxis(Controll.十字キー上下.ToString()) >= -0.5) &&
+                    AxisTrg)
+                {
+                    AxisTrg = false;
+                }
+
+                Debug.Log(gameObject.name);
+                if (Uptrg)
+                {
+                    BackButton.Select();
+                }
+                else
+                {
+                    gameObject.transform.GetChild(childnumber).GetComponent<Button>().Select();
+                }
+
+                foreach (Transform trans in transform)
+                {
+                    if (trans.gameObject.name != "Text")
+                    {
+                        if (trans.gameObject == Eve.currentSelectedGameObject)
+                        {
+                            var go = trans.gameObject.GetComponent<Animator>();
+                            go.enabled = true;
+                            go.SetBool("Select", true);
+                            // trans.gameObject.GetComponent<Button>().Select();
+                            Debug.Log("bbb");
+                            //var info = go.GetAnimatorTransitionInfo(0);
+                            //go.Play(info.nameHash, 0, 0.0f);
+                            //Debug.Log(trans.gameObject.name);
+                        }
+                        else
+                        {
+                            var go = trans.gameObject.GetComponent<Animator>();
+                            go.enabled = true;
+                            go.SetBool("Select", false);
+                        }
+                    }
+                }
+
             }
         }
     }
@@ -126,7 +221,12 @@ public class SelectMenu : MonoBehaviour
             for(int i = 0; i < 3; i++)
             {
                 stage[i].GetComponent<SelectMenu>().SelectOn = false;
+                StageFont[i].enabled = false;
             }
+
+            StageFont[0].enabled = true;
+            StageFont[1].enabled = true;
+
             SetButton();
         }
         else
@@ -146,6 +246,12 @@ public class SelectMenu : MonoBehaviour
 
     public void StageSet(int num)
     {
+        if (!StageStart)
+        {
+            SEManager.Instance.Play(Scene.EnterClip);
+            StageStart = true;
+        }
+
         SceneComponent instance = GameObject.Find("SceneManager").GetComponent<SceneComponent>();
         instance.SceneName = scenenames[num];
         instance.SceneFlag = true;
@@ -153,39 +259,46 @@ public class SelectMenu : MonoBehaviour
 
     public void MoveSelect(int num)
     {
-        if (GameObject.Find("Animation").GetComponent<AnimationComponent>().AllAnimation == false)
+        if (AnimaObj.time)
         {
-            SEManager.Instance.Play(Scene.EnterClip);
+            if (GameObject.Find("Animation").GetComponent<AnimationComponent>().AllAnimation == false)
+            {
+                SEManager.Instance.Play(Scene.EnterClip);
+                childnumber = 1;
+                Uptrg = false;
+                //非表示
+                AllOffButton();
 
-            //非表示
-            AllOffButton();
+                //押したボタンのみ表示
+                PushButton();
 
-            //押したボタンのみ表示
-            PushButton();
+                SelectOn = true;
+                //switch (num)
+                //{
+                //    case 0:
 
-            SelectOn = true;
-            //switch (num)
-            //{
-            //    case 0:
+                //        break;
 
-            //        break;
+                //}
+            }
 
-            //}
+            switch (num)
+            {
+                case 1:
+                    SelectBig[num - 1].enabled = true;
+                    break;
+                case 2:
+                    SelectBig[num - 1].enabled = true;
+                    break;
+                case 3:
+                    SelectBig[num - 1].enabled = true;
+                    break;
+            }
+            GameObject.Find("Canvas/1").GetComponent<Image>().enabled = true;
+            StageFont[0].enabled = false;
+            StageFont[1].enabled = false;
+            StageFont[2].enabled = true;
         }
-
-        switch (num)
-        {
-            case 1:
-                SelectBig[num - 1].enabled = true;
-                break;
-            case 2:
-                SelectBig[num - 1].enabled = true;
-                break;
-            case 3:
-                SelectBig[num - 1].enabled = true;
-                break;
-        }
-        GameObject.Find("Canvas/1").GetComponent<Image>().enabled = true;
     }
 
     void AllOffButton()
