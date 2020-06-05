@@ -9,9 +9,12 @@ public class FadeOut : MonoBehaviour
     public Image Panel;
     public bool FadeTrgIn;
     public bool FadeTrgOut;
+
+    SceneComponent Scene = null;
     // Start is called before the first frame update
     void Start()
     {
+        Scene = transform.parent.GetComponent<SceneComponent>();
         FadeTrgIn = false;
         FadeTrgOut = false;
     }
@@ -21,7 +24,8 @@ public class FadeOut : MonoBehaviour
     {
         if (!FadeTrgIn)
         {
-            Panel.color += new Color(0.0f, 0.0f, 0.0f, 0.005f);
+            Debug.Log("In");
+            Panel.color += new Color(0.0f, 0.0f, 0.0f, 0.01f);
         }
 
         if (Panel.color.a >= 1.0f) 
@@ -30,19 +34,31 @@ public class FadeOut : MonoBehaviour
         }
         if (!FadeTrgOut)
         {
-            Panel.color -= new Color(0.0f, 0.0f, 0.0f, 0.005f);
+            Debug.Log("Out");
+            Panel.color -= new Color(0.0f, 0.0f, 0.0f, 0.01f);
         }
 
         if (Panel.color.a <= 0.0f) 
         {
             FadeTrgOut = true;
+            Scene.WhiteFadeTrg = false;
         }
     }
 
-    public void ReSetFade()
+    public void ReSetFadeOut()
     {
-        Panel.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
-        FadeTrgIn = false;
         FadeTrgOut = false;
     }
+    public void ReSetFadeIn()
+    {
+        FadeTrgIn = false;
+    }
+    public bool IsEnd()
+    {
+        if (FadeTrgOut == true && FadeTrgIn == true)
+        {
+            return true;
+        }
+        return false;
+    }                
 }
