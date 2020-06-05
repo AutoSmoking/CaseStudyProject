@@ -50,7 +50,7 @@ public class BubbleOperation : MonoBehaviour
         Bubble2 = GameObject.FindGameObjectWithTag("2");
         Bubble3 = GameObject.FindGameObjectWithTag("3");
 
-        taru = this.transform.Find("taru");
+        taru = this.transform.parent.Find("taru");
     }
 
     void OnCollisionEnter(Collision other)
@@ -64,7 +64,7 @@ public class BubbleOperation : MonoBehaviour
             //2と衝突した場合
             if (other.gameObject.tag == "2")
             {
-                Destroy(Bubble2);
+                Destroy(Bubble2.transform.parent.gameObject);
 
                 DB3 = BubbleOperation.GetDB3Flag();
 
@@ -87,7 +87,7 @@ public class BubbleOperation : MonoBehaviour
             //3と衝突した場合
             if (other.gameObject.tag == "3")
             {
-                Destroy(Bubble3);
+                Destroy(Bubble3.transform.parent.gameObject);
 
                 DB3 = BubbleOperation.GetDB3Flag();
 
@@ -114,7 +114,7 @@ public class BubbleOperation : MonoBehaviour
             //3と衝突した場合
             if (other.gameObject.tag == "3")
             {
-                Destroy(Bubble3);
+                Destroy(Bubble3.transform.parent.gameObject);
                 transform.Translate(new Vector3(0, -BubbleSize, 0), Space.World);
 
                 gameObject.transform.localScale = new Vector3(

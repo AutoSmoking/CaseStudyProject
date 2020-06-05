@@ -7,8 +7,8 @@ public class CameraOpe : MonoBehaviour
     //[SerializeField, Header("中心位置")]
     //Transform center = null;
 
-    [SerializeField, Header("泡を格納")]
-    List<Transform> Bubble = new List<Transform>() { };
+    //[SerializeField, Header("泡を格納")]
+    List<GameObject> Bubble = new List<GameObject>() { };
 
     [SerializeField, Header("奥行の最低値"), Range(0.1f, 10.0f)]
     float Zsize = 0.1f;
@@ -30,6 +30,11 @@ public class CameraOpe : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        // 泡を格納
+        Bubble.Add(GameObject.FindGameObjectWithTag("1"));
+        Bubble.Add(GameObject.FindGameObjectWithTag("2"));
+        Bubble.Add(GameObject.FindGameObjectWithTag("3"));
+
         cam = this.GetComponent<Camera>();
 
         cameras.AddRange(GameObject.FindGameObjectsWithTag("camera"));
@@ -88,22 +93,22 @@ public class CameraOpe : MonoBehaviour
                 continue;
             }
 
-            if (max.x < Bubble[i].position.x)
+            if (max.x < Bubble[i].transform.position.x)
             {
-                max.x = Bubble[i].position.x;
+                max.x = Bubble[i].transform.position.x;
             }
-            if (max.y < Bubble[i].position.y)
+            if (max.y < Bubble[i].transform.position.y)
             {
-                max.y = Bubble[i].position.y;
+                max.y = Bubble[i].transform.position.y;
             }
 
-            if (min.x > Bubble[i].position.x)
+            if (min.x > Bubble[i].transform.position.x)
             {
-                min.x = Bubble[i].position.x;
+                min.x = Bubble[i].transform.position.x;
             }
-            if (min.y > Bubble[i].position.y)
+            if (min.y > Bubble[i].transform.position.y)
             {
-                min.y = Bubble[i].position.y;
+                min.y = Bubble[i].transform.position.y;
             }
         }
 

@@ -58,22 +58,12 @@ public class MiniMapOpe : MonoBehaviour
         // 泡のUIを生成
         for (int i = 0; i < Bubbles.Count; i++)
         {
-            if(Bubbles[i] == null)
-            {
-                continue;
-            }
-
             BubblesUI.Add(GameObject.Instantiate(UIB.gameObject, this.transform));
         }
 
         // ハリセンボンのUIを生成
         for (int i = 0; i < NeedleFish.Count; i++)
         {
-            if (NeedleFish[i] == null)
-            {
-                continue;
-            }
-
             NeedleFishsUI.Add(GameObject.Instantiate(UIF.gameObject, this.transform));
         }
 

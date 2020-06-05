@@ -61,7 +61,7 @@ public class SpinOperation : MonoBehaviour
     [SerializeField, Header("影響があるオブジェクト 入れないとバグ")]
     List<GameObject> StageObj = new List<GameObject>() { };
 
-    [SerializeField, Header("動くオブジェクト専用 入れないとバグ")]
+    //[SerializeField, Header("動くオブジェクト専用 入れないとバグ")]
     List<GameObject> BubbleObj = new List<GameObject>() { };
 
     [SerializeField, Header("中心の海域の場合はtrueにしてください")]
@@ -97,6 +97,9 @@ public class SpinOperation : MonoBehaviour
         {
             Debug.LogError(this.name + "に一つ下の海域をセットしてください。");
         }
+
+        BubbleObj.AddRange(GameObject.FindGameObjectsWithTag("Bubble"));
+        BubbleObj.AddRange(GameObject.FindGameObjectsWithTag("fish"));
     }
 
     private void FixedUpdate()

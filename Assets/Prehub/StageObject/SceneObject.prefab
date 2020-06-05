@@ -801,6 +801,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameSceneUI
       objectReference: {fileID: 0}
+    - target: {fileID: 7091277114898916245, guid: 76da19dec7ee4ff448f5694456d9ac25,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7091277114898916246, guid: 76da19dec7ee4ff448f5694456d9ac25,
         type: 3}
       propertyPath: m_Camera
