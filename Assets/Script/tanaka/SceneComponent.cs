@@ -18,7 +18,7 @@ public class SceneComponent : MonoBehaviour
     public SceneName StageNameInstance;
     //public bool PauseFlag = false;
     public PauseManager PauseManager;
-    public AudioClip CursorClip;
+    public AudioClip TitleAndSelectBGM;
     public AudioClip EnterClip;
 
     public bool fade = false;
@@ -27,6 +27,9 @@ public class SceneComponent : MonoBehaviour
     public GameObject WhiteFadeobj = null;
     public bool WhiteFadeTrg = false;
     public bool AllFade = false;
+
+    public bool bgm = false;
+
     void Awake()
     {
         if (instance == null)
@@ -51,6 +54,8 @@ public class SceneComponent : MonoBehaviour
         StageNameInstance = instance.GetComponent<SceneName>();
         PauseManager = GameObject.Find("PauseManager").GetComponent<PauseManager>();
         WhiteFadeTrg = false;
+
+        BGMManager.Instance.Play(TitleAndSelectBGM);
 
         //フェード初期処理
         if (Fadeobj != null)
@@ -267,6 +272,12 @@ public class SceneComponent : MonoBehaviour
                 //fade = false;
                 FadeOut();
             }
+
+            if (bgm)
+            {
+                BGMManager.Instance.Play(TitleAndSelectBGM);
+                bgm = false;
+            }
         }
         //if (SceneName != "Title Scene" && SceneName != "StageSelect")
         else
@@ -290,6 +301,10 @@ public class SceneComponent : MonoBehaviour
     //シーン読み込み
     void LoadScene(string name)
     {
+        if (GetSceneNow() != "Title Scene" && SceneName == "StageSelect")  
+        {
+            bgm = true;
+        }
         SceneFlag = false;
         SceneManager.sceneLoaded += SceneLoaded;
         SceneManager.LoadScene(name);
