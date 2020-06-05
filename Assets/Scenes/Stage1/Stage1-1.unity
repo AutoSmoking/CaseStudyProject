@@ -1880,6 +1880,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneObject
       objectReference: {fileID: 0}
+    - target: {fileID: 3997417662269549870, guid: 7fc82e73bd8f1c0429140f1905a14b85,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3997417662415089957, guid: 7fc82e73bd8f1c0429140f1905a14b85,
+        type: 3}
+      propertyPath: seaArea
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5580469097175754710, guid: 7fc82e73bd8f1c0429140f1905a14b85,
         type: 3}
       propertyPath: m_LocalPosition.x

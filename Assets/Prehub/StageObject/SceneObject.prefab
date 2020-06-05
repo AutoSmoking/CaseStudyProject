@@ -936,6 +936,11 @@ PrefabInstance:
       propertyPath: m_ClearFlags
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2759565212186133042, guid: 42d8dea9f5600094baf9408e70624c69,
+        type: 3}
+      propertyPath: orthographic size
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2759565212186133043, guid: 42d8dea9f5600094baf9408e70624c69,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -999,7 +1004,7 @@ PrefabInstance:
     - target: {fileID: 7019997245502552408, guid: 42d8dea9f5600094baf9408e70624c69,
         type: 3}
       propertyPath: centerPos.x
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 7019997245502552408, guid: 42d8dea9f5600094baf9408e70624c69,
         type: 3}

@@ -4868,6 +4868,21 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 3997417661979728858, guid: 7fc82e73bd8f1c0429140f1905a14b85,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3997417662269549870, guid: 7fc82e73bd8f1c0429140f1905a14b85,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3997417662415089957, guid: 7fc82e73bd8f1c0429140f1905a14b85,
+        type: 3}
+      propertyPath: seaArea
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5022763237519603318, guid: 7fc82e73bd8f1c0429140f1905a14b85,
         type: 3}
       propertyPath: orthographic size
