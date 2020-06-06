@@ -1529,9 +1529,10 @@ GameObject:
   - component: {fileID: 6484908925202204430}
   - component: {fileID: 292650805967906456}
   - component: {fileID: 1580447202600027637}
+  - component: {fileID: 1494849387874085574}
   m_Layer: 0
   m_Name: taru_open
-  m_TagString: Untagged
+  m_TagString: taru
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1600,6 +1601,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ef1cb280983c04c8900ac9328bd686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &1494849387874085574
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8044659940711134493}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.01
+  m_Center: {x: 0, y: 0.01, z: 0}
 --- !u!1 &8090062003993813751
 GameObject:
   m_ObjectHideFlags: 0

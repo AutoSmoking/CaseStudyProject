@@ -98,7 +98,10 @@ public class SpinOperation : MonoBehaviour
             Debug.LogError(this.name + "に一つ下の海域をセットしてください。");
         }
 
-        BubbleObj.AddRange(GameObject.FindGameObjectsWithTag("Bubble"));
+        BubbleObj.Add(GameObject.FindGameObjectWithTag("1"));
+        BubbleObj.Add(GameObject.FindGameObjectWithTag("2"));
+        BubbleObj.Add(GameObject.FindGameObjectWithTag("3"));
+        BubbleObj.AddRange(GameObject.FindGameObjectsWithTag("taru"));
         BubbleObj.AddRange(GameObject.FindGameObjectsWithTag("fish"));
     }
 
@@ -294,7 +297,8 @@ public class SpinOperation : MonoBehaviour
                 if(obj == collider.gameObject)
                 {
                     float r;
-                    r = 0.5f * Mathf.Max(obj.transform.localScale.x, obj.transform.localScale.y, obj.transform.localScale.z);
+                    r = obj.GetComponent<SphereCollider>().radius *
+                        Mathf.Max(obj.transform.localScale.x, obj.transform.localScale.y, obj.transform.localScale.z);
 
                     if (CenterFlg)
                     {
