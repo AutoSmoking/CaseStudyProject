@@ -20,6 +20,10 @@ public class GoalHitOperation : MonoBehaviour
     [System.NonSerialized]
     public bool GoalFlg = false;
 
+    // エフェクト
+    GameObject prefab = null;
+    GameObject particle = null;
+
     // Start is called before the first frame update
 
     void Start()
@@ -31,6 +35,8 @@ public class GoalHitOperation : MonoBehaviour
         bubble3 = GameObject.FindGameObjectWithTag("3");
 
         SceneManager = GameObject.Find("SceneManager");
+
+        prefab = (GameObject)Resources.Load("BoxOpen_Effect");
     }
 
     //void OnTriggerEnter(Collider other)
@@ -50,6 +56,9 @@ public class GoalHitOperation : MonoBehaviour
             OpenFlg = true;
 
             ani.Play("takarabako_open");
+
+            particle = Instantiate(prefab, this.transform);
+            particle.GetComponentInChildren<ParticleSystem>().Play();
         }
 
         if(!GoalFlg && OpenFlg && !ani.IsPlaying("takarabako_open"))

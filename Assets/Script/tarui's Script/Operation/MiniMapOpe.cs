@@ -58,22 +58,12 @@ public class MiniMapOpe : MonoBehaviour
         // 泡のUIを生成
         for (int i = 0; i < Bubbles.Count; i++)
         {
-            if(Bubbles[i] == null)
-            {
-                continue;
-            }
-
             BubblesUI.Add(GameObject.Instantiate(UIB.gameObject, this.transform));
         }
 
         // ハリセンボンのUIを生成
         for (int i = 0; i < NeedleFish.Count; i++)
         {
-            if (NeedleFish[i] == null)
-            {
-                continue;
-            }
-
             NeedleFishsUI.Add(GameObject.Instantiate(UIF.gameObject, this.transform));
         }
 
@@ -136,17 +126,17 @@ public class MiniMapOpe : MonoBehaviour
         {
             case SeaArea.小:
 
-                pos = pos / (17.0f / 2.0f) * 400.0f / 2.0f;
+                pos = pos / (18.0f / 2.0f) * 400.0f / 2.0f;
                 break;
 
             case SeaArea.中:
 
-                pos = pos / (17.0f / 2.0f) * 400.0f / 2.0f;
+                pos = pos / (18.0f / 2.0f) * 400.0f / 2.0f;
                 break;
 
             case SeaArea.大:
 
-                pos = pos / (25.0f / 2.0f) * 400.0f / 2.0f;
+                pos = pos / (26.0f / 2.0f) * 400.0f / 2.0f;
                 break;
 
             default:
@@ -156,8 +146,8 @@ public class MiniMapOpe : MonoBehaviour
 
         len = Mathf.Sqrt(pos.x * pos.x + pos.y * pos.y);
 
-        pos2.x = len * Mathf.Cos(theta) + this.transform.position.x;
-        pos2.y = len * Mathf.Sin(theta) + this.transform.position.y;
+        pos2.x = len * Mathf.Cos(theta) + this.transform.position.x - this.transform.parent.localPosition.x;
+        pos2.y = len * Mathf.Sin(theta) + this.transform.position.y - this.transform.parent.localPosition.y;
         pos2.z = OutTrans.localPosition.z;
 
         OutTrans.localPosition = pos2;

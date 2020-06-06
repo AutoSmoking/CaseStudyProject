@@ -61,7 +61,7 @@ public class SpinOperation : MonoBehaviour
     [SerializeField, Header("影響があるオブジェクト 入れないとバグ")]
     List<GameObject> StageObj = new List<GameObject>() { };
 
-    [SerializeField, Header("動くオブジェクト専用 入れないとバグ")]
+    //[SerializeField, Header("動くオブジェクト専用 入れないとバグ")]
     List<GameObject> BubbleObj = new List<GameObject>() { };
 
     [SerializeField, Header("中心の海域の場合はtrueにしてください")]
@@ -97,6 +97,12 @@ public class SpinOperation : MonoBehaviour
         {
             Debug.LogError(this.name + "に一つ下の海域をセットしてください。");
         }
+
+        BubbleObj.Add(GameObject.FindGameObjectWithTag("1"));
+        BubbleObj.Add(GameObject.FindGameObjectWithTag("2"));
+        BubbleObj.Add(GameObject.FindGameObjectWithTag("3"));
+        BubbleObj.AddRange(GameObject.FindGameObjectsWithTag("taru"));
+        BubbleObj.AddRange(GameObject.FindGameObjectsWithTag("fish"));
     }
 
     private void FixedUpdate()
@@ -291,7 +297,8 @@ public class SpinOperation : MonoBehaviour
                 if(obj == collider.gameObject)
                 {
                     float r;
-                    r = 0.5f * Mathf.Max(obj.transform.localScale.x, obj.transform.localScale.y, obj.transform.localScale.z);
+                    r = obj.GetComponent<SphereCollider>().radius *
+                        Mathf.Max(obj.transform.localScale.x, obj.transform.localScale.y, obj.transform.localScale.z);
 
                     if (CenterFlg)
                     {

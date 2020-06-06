@@ -19,7 +19,7 @@ public class AnimationComponent : MonoBehaviour
     public bool AllAnimation = false;
     public bool change = false;
     public SceneComponent Scene;
-    bool trg = false;
+    public bool trg = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -124,7 +124,8 @@ public class AnimationComponent : MonoBehaviour
         {
             if (img[i].interactable == false ||
                 ani[i].GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f ||
-                AllAnimation == true)
+                AllAnimation == true||
+                !Scene.AllFade)
             {
                 time = false;
                 break;

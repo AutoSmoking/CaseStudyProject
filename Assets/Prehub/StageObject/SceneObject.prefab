@@ -801,6 +801,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameSceneUI
       objectReference: {fileID: 0}
+    - target: {fileID: 7091277114898916245, guid: 76da19dec7ee4ff448f5694456d9ac25,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7091277114898916246, guid: 76da19dec7ee4ff448f5694456d9ac25,
         type: 3}
       propertyPath: m_Camera
@@ -931,6 +936,11 @@ PrefabInstance:
       propertyPath: m_ClearFlags
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2759565212186133042, guid: 42d8dea9f5600094baf9408e70624c69,
+        type: 3}
+      propertyPath: orthographic size
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2759565212186133043, guid: 42d8dea9f5600094baf9408e70624c69,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -994,7 +1004,7 @@ PrefabInstance:
     - target: {fileID: 7019997245502552408, guid: 42d8dea9f5600094baf9408e70624c69,
         type: 3}
       propertyPath: centerPos.x
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7019997245502552408, guid: 42d8dea9f5600094baf9408e70624c69,
         type: 3}
