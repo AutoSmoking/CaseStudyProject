@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 3273682291133983788, guid: 0fb7fa2b2e1437a4c81981e32a306b3b,
         type: 3}
       propertyPath: m_Name
-      value: NeedleFishImage
+      value: NeedleFishImage Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3273682291133983789, guid: 0fb7fa2b2e1437a4c81981e32a306b3b,
         type: 3}
@@ -121,7 +121,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 83dd78bf7c9126e4b8e877112e47fde4,
+      objectReference: {fileID: 21300000, guid: eacd253d030e78e40bfa2f8863fb085a,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fb7fa2b2e1437a4c81981e32a306b3b, type: 3}

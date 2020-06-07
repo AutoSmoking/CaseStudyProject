@@ -20,7 +20,7 @@ public class CameraOpe : MonoBehaviour
     float alpha = 0.5f;
 
     [SerializeField, Header("カメラの中心位置")]
-    Vector2 centerPos = Vector2.zero;
+    public Vector2 centerPos = Vector2.zero;
 
     Camera cam = null;
 
