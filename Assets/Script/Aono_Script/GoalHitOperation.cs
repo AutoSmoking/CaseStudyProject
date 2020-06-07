@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KanKikuchi.AudioManager;
 
 public class GoalHitOperation : MonoBehaviour
 {
@@ -56,9 +57,11 @@ public class GoalHitOperation : MonoBehaviour
             OpenFlg = true;
 
             ani.Play("takarabako_open");
+            SEManager.Instance.Play("宝箱/SE_GoalOpen");
 
             particle = Instantiate(prefab, this.transform);
             particle.GetComponentInChildren<ParticleSystem>().Play();
+            SEManager.Instance.Play("宝箱/SE_GoalKirakira", 2, 0, 1, true);
         }
 
         if(!GoalFlg && OpenFlg && !ani.IsPlaying("takarabako_open"))

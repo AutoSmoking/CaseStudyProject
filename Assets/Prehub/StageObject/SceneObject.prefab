@@ -594,7 +594,7 @@ PrefabInstance:
     - target: {fileID: 1609806947974991916, guid: bb14668f9bb24fd488e3b0b428172e48,
         type: 3}
       propertyPath: _iteration
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1609806947974991919, guid: bb14668f9bb24fd488e3b0b428172e48,
         type: 3}
@@ -1010,6 +1010,11 @@ PrefabInstance:
         type: 3}
       propertyPath: alpha
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7019997245502552408, guid: 42d8dea9f5600094baf9408e70624c69,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42d8dea9f5600094baf9408e70624c69, type: 3}
