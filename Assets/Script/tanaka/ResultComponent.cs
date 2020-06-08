@@ -49,6 +49,7 @@ public class ResultComponent : MonoBehaviour
     {
         if (canvas.activeSelf == true) 
         {
+
         }
 
         if (scene.GameFrag == true && buttonflag == false) 
@@ -106,7 +107,6 @@ public class ResultComponent : MonoBehaviour
         scene.SceneFlag = true;
         scene.GameFrag = false;
         scene.SceneName = scene.StageNameInstance.NextSceneName;
-        canvas.SetActive(false);
     }
 
     public void TitleMenu()
@@ -116,7 +116,12 @@ public class ResultComponent : MonoBehaviour
         scene.SceneFlag = true;
         scene.GameFrag = false;
         scene.SelectTransition();
-        canvas.SetActive(false);
 
+    }
+
+    public void ResultScreenOff()
+    {
+        NowButton = 0;
+        canvas.SetActive(false);
     }
 }
