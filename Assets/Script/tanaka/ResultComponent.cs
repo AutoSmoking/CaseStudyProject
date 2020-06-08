@@ -122,6 +122,7 @@ public class ResultComponent : MonoBehaviour
     public void ResultScreenOff()
     {
         NowButton = 0;
+        scene.GameFrag = false;
         canvas.SetActive(false);
     }
 }

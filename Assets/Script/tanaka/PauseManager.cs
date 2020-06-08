@@ -251,4 +251,9 @@ public class PauseManager : MonoBehaviour
             }
         }
     }
+
+    public void PauseScreenOff()
+    {
+        canvas.SetActive(false);
+    }
 }

@@ -30,6 +30,8 @@ public class SceneComponent : MonoBehaviour
 
     public bool bgm = false;
 
+    ResultComponent Result;
+
     void Awake()
     {
         if (instance == null)
@@ -54,6 +56,7 @@ public class SceneComponent : MonoBehaviour
         StageNameInstance = instance.GetComponent<SceneName>();
         PauseManager = GameObject.Find("PauseManager").GetComponent<PauseManager>();
         WhiteFadeTrg = false;
+        Result = GameObject.Find("ResultManager").GetComponent<ResultComponent>();
 
         BGMManager.Instance.Play(TitleAndSelectBGM);
 
@@ -260,6 +263,8 @@ public class SceneComponent : MonoBehaviour
 
     void SceneLoaded(Scene nextScene, LoadSceneMode mode)
     {
+        Result.ResultScreenOff();
+        PauseManager.PauseScreenOff();
 
         if (SceneName == "Title Scene" || SceneName == "StageSelect")
         {
