@@ -57,7 +57,7 @@ public class PauseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown(Controll.Xボタン.ToString()) || Input.GetKeyDown(KeyCode.P) &&
+        if ((Input.GetButtonDown(Controll.HOMEボタン.ToString()) || Input.GetKeyDown(KeyCode.P)) &&
             Scene.GetSceneNow() != "Title Scene" && Scene.GetSceneNow() != "StageSelect" && !ChangeScene&&!Scene.GameFrag)  
         {
             SEManager.Instance.Play(Scene.EnterClip);
