@@ -17,7 +17,7 @@ public class SelectMenu : MonoBehaviour
     public SceneComponent Scene;
     public EventSystem Eve;
     public bool SelectOn = false;
-    public Text[] SelectBig;
+    public Image[] SelectBig;
     Button SelectButton;
     int childnumber;
     public bool AxisTrg = false;
@@ -81,10 +81,10 @@ public class SelectMenu : MonoBehaviour
 
         }
 
-        SelectBig = new Text[3];
-        SelectBig[0] = GameObject.Find("Canvas/1/1").GetComponent<Text>();
-        SelectBig[1] = GameObject.Find("Canvas/1/2").GetComponent<Text>();
-        SelectBig[2] = GameObject.Find("Canvas/1/3").GetComponent<Text>();
+        SelectBig = new Image[3];
+        SelectBig[0] = GameObject.Find("Canvas/1/1").GetComponent<Image>();
+        SelectBig[1] = GameObject.Find("Canvas/1/2").GetComponent<Image>();
+        SelectBig[2] = GameObject.Find("Canvas/1/3").GetComponent<Image>();
         GameObject.Find("Canvas/1").GetComponent<Image>().enabled = false;
         BackButton = GameObject.Find("戻る").GetComponent<Button>();
 
@@ -185,7 +185,7 @@ public class SelectMenu : MonoBehaviour
                             go.enabled = true;
                             go.SetBool("Select", true);
                             // trans.gameObject.GetComponent<Button>().Select();
-                            Debug.Log("bbb");
+                            //Debug.Log("bbb");
                             //var info = go.GetAnimatorTransitionInfo(0);
                             //go.Play(info.nameHash, 0, 0.0f);
                             //Debug.Log(trans.gameObject.name);
