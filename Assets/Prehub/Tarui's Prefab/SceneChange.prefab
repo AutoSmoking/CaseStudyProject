@@ -38,10 +38,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8949907362590129318}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4140faef20ba91e41aad0353165eaa7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: 49
-  scene: Stage4
+  key: 50
+  con: 7
+  scene: Stage1-1

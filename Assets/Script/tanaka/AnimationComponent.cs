@@ -165,7 +165,7 @@ public class AnimationComponent : MonoBehaviour
                     }
                 }
 
-                if ((Input.GetAxis(Controll.十字キー左右.ToString()) <= -1)&& trg == false)
+                if ((Input.GetAxis(Controll.十字キー左右.ToString()) >= 1)&& trg == false)
                 {
                     trg = true;
                     LeftTurn();
@@ -181,7 +181,7 @@ public class AnimationComponent : MonoBehaviour
                     //}
                     //HashName = ani.GetCurrentAnimatorStateInfo(0).nameHash;
                 }
-                if ((Input.GetAxis(Controll.十字キー左右.ToString()) >= 1) && trg == false)
+                if ((Input.GetAxis(Controll.十字キー左右.ToString()) <= -1) && trg == false)
                 {
                     trg = true;
                     RightTurn();
