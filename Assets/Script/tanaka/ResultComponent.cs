@@ -102,26 +102,21 @@ public class ResultComponent : MonoBehaviour
 
     public void NextStage()
     {
-        if (buttonflag)
-        {
-            SEManager.Instance.Play(PauseManager.Scene.EnterClip);
-            buttonflag = false;
-            scene.SceneFlag = true;
-            scene.GameFrag = false;
-            scene.SceneName = scene.StageNameInstance.NextSceneName;
-        }
+        SEManager.Instance.Play(PauseManager.Scene.EnterClip);
+        buttonflag = false;
+        scene.SceneFlag = true;
+        scene.GameFrag = false;
+        scene.SceneName = scene.StageNameInstance.NextSceneName;
     }
 
     public void TitleMenu()
     {
-        if (buttonflag)
-        {
-            SEManager.Instance.Play(PauseManager.Scene.EnterClip);
-            buttonflag = false;
-            scene.SceneFlag = true;
-            scene.GameFrag = false;
-            scene.SelectTransition();
-        }
+        SEManager.Instance.Play(PauseManager.Scene.EnterClip);
+        buttonflag = false;
+        scene.SceneFlag = true;
+        scene.GameFrag = false;
+        scene.SelectTransition();
+
     }
 
     public void ResultScreenOff()
