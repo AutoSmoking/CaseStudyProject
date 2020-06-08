@@ -15,6 +15,7 @@ TagManager:
   - camera
   - Bubble
   - taru
+  - warp
   layers:
   - Default
   - TransparentFX
