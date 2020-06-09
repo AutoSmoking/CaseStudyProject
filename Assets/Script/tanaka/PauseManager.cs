@@ -29,12 +29,14 @@ public class PauseManager : MonoBehaviour
     public bool ChangeScene = false;
     bool AxisTrg = false;
     public int NowButton = 0;
+
+    public List<GameObject> BubbleList;
     // Start is called before the first frame update
     void Start()
     {
         if (instance == null)
         {
-            Debug.Log("set");
+            //Debug.Log("set");
             instance = GetComponent<PauseManager>();
             DontDestroyOnLoad(gameObject);
         }
@@ -57,6 +59,8 @@ public class PauseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        BubbleChack();
+
         if ((Input.GetButtonDown(Controll.HOMEボタン.ToString()) || Input.GetKeyDown(KeyCode.P)) &&
             Scene.GetSceneNow() != "Title Scene" && Scene.GetSceneNow() != "StageSelect" && !ChangeScene&&!Scene.GameFrag)  
         {
@@ -69,7 +73,7 @@ public class PauseManager : MonoBehaviour
                 StopStage();
                 canvas.SetActive(true);
                 button[NowButton].Select();
-                Debug.Log("Selected");
+                //Debug.Log("Selected");
             }
             else
             {
@@ -148,9 +152,10 @@ public class PauseManager : MonoBehaviour
 
     public void GetPauseObject()
     {
-        Debug.Log("GetPauseObject");
+        //Debug.Log("GetPauseObject");
         StageLayerObjList.Clear();
         TargetObj.Clear();
+        BubbleList.Clear();
         PauseFlag = false;
         //全てのオブジェクト取得
         GameObject[] AllObj = GameObject.FindObjectsOfType<GameObject>();
@@ -161,11 +166,17 @@ public class PauseManager : MonoBehaviour
             if (obj.layer == BubbleLayerNumber)
             {
                 TargetObj.Add(obj);
+                BubbleList.Add(obj);
             }
 
             if (obj.layer == StageLayerNumber) 
             {
                 StageLayerObjList.Add(obj);
+                TargetObj.Add(obj);
+            }
+
+            if (obj.tag == "fish")
+            {
                 TargetObj.Add(obj);
             }
         }
@@ -229,7 +240,7 @@ public class PauseManager : MonoBehaviour
                 obj.GetComponent<PauseComponent>() != null)
             {
                 obj.GetComponent<PauseComponent>().OnPause();
-                Debug.Log("on");
+                //Debug.Log("on");
             }
         }
     }
@@ -247,7 +258,7 @@ public class PauseManager : MonoBehaviour
                 obj.GetComponent<PauseComponent>() != null)
             {
                 obj.GetComponent<PauseComponent>().OnResume();
-                Debug.Log("off");
+                //Debug.Log("off");
             }
         }
     }
@@ -255,5 +266,19 @@ public class PauseManager : MonoBehaviour
     public void PauseScreenOff()
     {
         canvas.SetActive(false);
+    }
+
+    bool BubbleChack()
+    {
+        for(int i = 0; i < BubbleList.Count; i++)
+        {
+            if (BubbleList[i] != null)
+            {
+                return false;
+            }
+        }
+
+        Debug.Log("Bubble=0");
+        return true;
     }
 }

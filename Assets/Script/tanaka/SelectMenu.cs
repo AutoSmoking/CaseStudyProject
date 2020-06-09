@@ -99,8 +99,6 @@ public class SelectMenu : MonoBehaviour
     {
         if (SelectOn == true && gameObject.name != "戻る")
         {
-            Debug.Log(gameObject.name);
-
             if (!StageStart)
             {
                 if ((Input.GetAxisRaw(Controll.十字キー上下.ToString()) >= 1) && AxisTrg == false && !Uptrg)
@@ -108,14 +106,12 @@ public class SelectMenu : MonoBehaviour
                     AxisTrg = true;
                     Uptrg = true;
                     SEManager.Instance.Play(Scene.EnterClip);
-                    Debug.Log("UP");
                 }
                 if ((Input.GetAxisRaw(Controll.十字キー上下.ToString()) <= -1) && AxisTrg == false && Uptrg)
                 {
                     AxisTrg = true;
                     Uptrg = false;
                     SEManager.Instance.Play(Scene.EnterClip);
-                    Debug.Log("Down");
                 }
 
                 if ((Input.GetAxis(Controll.十字キー左右.ToString()) <= -1) && AxisTrg == false)
@@ -165,7 +161,6 @@ public class SelectMenu : MonoBehaviour
                     AxisTrg = false;
                 }
 
-                Debug.Log(gameObject.name);
                 if (Uptrg)
                 {
                     BackButton.Select();

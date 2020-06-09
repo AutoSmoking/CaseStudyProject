@@ -56,15 +56,10 @@ public class Title_SelectBGM : MonoBehaviour
                     //再生しているのが流そうとしているモノと同じ
                     if (clip.ToString().Equals(a[i].ToString()))
                     {
-                        Debug.Log("再生してた");
                         break;
                     }
                     else if (i + 1 == BGMManager.Instance.GetCurrentAudioNames().Count)
                     {
-                        Debug.Log("再生してなかった");
-                        Debug.Log(a[i].ToString());
-                        Debug.Log(clip.ToString());
-                        Debug.Log(i);
                         BGMManager.Instance.Play(clip);
                         break;
                     }

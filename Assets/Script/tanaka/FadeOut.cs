@@ -34,7 +34,6 @@ public class FadeOut : MonoBehaviour
     {
         if (!FadeTrgIn)
         {
-            Debug.Log("In");
             Panel.color += new Color(0.0f, 0.0f, 0.0f, Alpha);
         }
 
@@ -50,7 +49,6 @@ public class FadeOut : MonoBehaviour
             }
             else
             {
-                Debug.Log("Out");
                 Panel.color -= new Color(0.0f, 0.0f, 0.0f, Alpha);
             }
         }

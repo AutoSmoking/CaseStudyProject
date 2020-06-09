@@ -54,6 +54,8 @@ public class ResultComponent : MonoBehaviour
 
         if (scene.GameFrag == true && buttonflag == false) 
         {
+            button[0].interactable = true;
+            button[1].interactable = true;
             canvas.SetActive(true);
             buttonflag = true;
             PauseManager.ChangeScene = true;
@@ -102,6 +104,9 @@ public class ResultComponent : MonoBehaviour
 
     public void NextStage()
     {
+        button[0].interactable = false;
+        button[1].interactable = false;
+
         SEManager.Instance.Play(PauseManager.Scene.EnterClip);
         buttonflag = false;
         scene.SceneFlag = true;
@@ -111,6 +116,9 @@ public class ResultComponent : MonoBehaviour
 
     public void TitleMenu()
     {
+        button[0].interactable = false;
+        button[1].interactable = false;
+
         SEManager.Instance.Play(PauseManager.Scene.EnterClip);
         buttonflag = false;
         scene.SceneFlag = true;
@@ -123,6 +131,7 @@ public class ResultComponent : MonoBehaviour
     {
         NowButton = 0;
         scene.GameFrag = false;
+        buttonflag = false;
         canvas.SetActive(false);
     }
 }

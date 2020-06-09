@@ -170,8 +170,6 @@ public class SceneComponent : MonoBehaviour
                         {
                             Fadeobj.GetComponent<BubbleFadeOpe>().isFadeIn = false;
                             Fadeobj.GetComponent<BubbleFadeOpe>().isFadeOut = false;
-                            Debug.Log("FadeTrue1");
-
                             fade = true;
                             FadeIn();
                         }
@@ -180,7 +178,6 @@ public class SceneComponent : MonoBehaviour
                 //セレクトからタイトル
                 else if (!WhiteFadeTrg)
                 {
-                    Debug.Log("Select~Title");
                     SceneName = "Title Scene";
                     WhiteFadeobj.GetComponent<FadeOut>().ReSetFadeIn();
                     WhiteFadeTrg = true;
@@ -194,7 +191,6 @@ public class SceneComponent : MonoBehaviour
                 {
                     Fadeobj.GetComponent<BubbleFadeOpe>().isFadeIn = false;
                     Fadeobj.GetComponent<BubbleFadeOpe>().isFadeOut = false;
-                    Debug.Log("FadeTrue2");
                     fade = true;
                     FadeIn();
                 }
@@ -214,8 +210,6 @@ public class SceneComponent : MonoBehaviour
             //}
             if (fade == true)
             {
-                Debug.Log("2");
-
                 if (GameObject.Find("FadeManager").GetComponent<BubbleFadeOpe>().isFadeOut == false)
                 {
                     LoadScene(SceneName);
@@ -224,7 +218,6 @@ public class SceneComponent : MonoBehaviour
             {
                 if (WhiteFadeobj.GetComponent<FadeOut>().FadeTrgIn)
                 {
-                    Debug.Log("3");
                     LoadScene(SceneName);
                 }
             }
