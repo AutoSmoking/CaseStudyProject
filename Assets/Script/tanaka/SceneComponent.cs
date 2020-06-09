@@ -78,6 +78,14 @@ public class SceneComponent : MonoBehaviour
             Debug.Log("GoalSet");
             GoalFlag();
         }
+
+        if(GetSceneNow() != "Title Scene" && GetSceneNow() != "StageSelect")
+        {
+            if (PauseManager.BubbleChack())
+            {
+                ResetStage();
+            }
+        }
         //if (SceneName != "Title Scene" && SceneName != "StageSelect")
         //{
 

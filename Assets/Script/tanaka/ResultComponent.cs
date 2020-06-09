@@ -54,6 +54,7 @@ public class ResultComponent : MonoBehaviour
 
         if (scene.GameFrag == true && buttonflag == false) 
         {
+            Debug.Log("リザルト出現");
             button[0].interactable = true;
             button[1].interactable = true;
             canvas.SetActive(true);

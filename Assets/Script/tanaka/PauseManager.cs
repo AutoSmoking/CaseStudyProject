@@ -224,8 +224,7 @@ public class PauseManager : MonoBehaviour
                 break;
         }
 
-        canvas.SetActive(false);
-
+        PauseScreenOff();
     }
     //ステージ上のオブジェクトを止める
     public void StopStage()
@@ -265,10 +264,12 @@ public class PauseManager : MonoBehaviour
 
     public void PauseScreenOff()
     {
+        PauseFlag = false;
+
         canvas.SetActive(false);
     }
 
-    bool BubbleChack()
+    public bool BubbleChack()
     {
         for(int i = 0; i < BubbleList.Count; i++)
         {
