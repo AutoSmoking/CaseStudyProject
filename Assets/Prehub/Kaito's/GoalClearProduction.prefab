@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6042005959745152460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6042005959745152462}
+  - component: {fileID: 6042005959745152461}
+  m_Layer: 0
+  m_Name: GoalClearProduction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6042005959745152462
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6042005959745152460}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.1156383, y: 0.2297822, z: -0.8565055}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6042005959745152461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6042005959745152460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0734d3684bfeacb40aa209e917449053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Key: 263
+  second: 3
+  Zaihou: {fileID: 1139787285900039485, guid: fef51df44b13e5e4c958ad73e8045f1c, type: 3}
+  Effect: {fileID: 3322875828559112452, guid: 306eb28d1ab3c984a8bd7381310996f2, type: 3}
+  pause: {fileID: 0}
+  Goal: {fileID: 0}
+  SceneManager: {fileID: 0}
+  Bubble: {fileID: 0}
+  ani: {fileID: 0}

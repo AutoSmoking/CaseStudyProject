@@ -269,6 +269,12 @@ PrefabInstance:
       propertyPath: m_PlaneDistance
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 3862390035333424344, guid: 2c07c667899d66c4ca15a49db5fe12fb,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0a5a289196b7b66418b23688d9fb22a1,
+        type: 3}
     - target: {fileID: 3862390035333424350, guid: 2c07c667899d66c4ca15a49db5fe12fb,
         type: 3}
       propertyPath: m_IsActive
@@ -489,7 +495,7 @@ PrefabInstance:
     - target: {fileID: 1609806947974991916, guid: bb14668f9bb24fd488e3b0b428172e48,
         type: 3}
       propertyPath: _iteration
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1609806947974991919, guid: bb14668f9bb24fd488e3b0b428172e48,
         type: 3}
@@ -594,7 +600,7 @@ PrefabInstance:
     - target: {fileID: 1609806947974991916, guid: bb14668f9bb24fd488e3b0b428172e48,
         type: 3}
       propertyPath: _iteration
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1609806947974991919, guid: bb14668f9bb24fd488e3b0b428172e48,
         type: 3}

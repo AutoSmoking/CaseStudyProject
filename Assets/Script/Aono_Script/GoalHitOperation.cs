@@ -25,6 +25,12 @@ public class GoalHitOperation : MonoBehaviour
     GameObject prefab = null;
     GameObject particle = null;
 
+    //以下ゴールクリア演出用
+    //by Kaito
+    bool CreateFlag = false;
+    [SerializeField,Header("ゴールクリア用オブジェクト")]
+    public GameObject GoalClear = null;
+
     // Start is called before the first frame update
 
     void Start()
@@ -56,8 +62,8 @@ public class GoalHitOperation : MonoBehaviour
         {
             OpenFlg = true;
 
-            ani.Play("takarabako_open");
-            SEManager.Instance.Play("宝箱/SE_GoalOpen");
+            //ani.Play("takarabako_open");
+            //SEManager.Instance.Play("宝箱/SE_GoalOpen");
 
             particle = Instantiate(prefab, this.transform);
             particle.GetComponentInChildren<ParticleSystem>().Play();
@@ -79,8 +85,23 @@ public class GoalHitOperation : MonoBehaviour
             if (!GameFlg)
             {
                 Debug.Log("GoalHit");
-                SceneManager.GetComponent<SceneComponent>().GameFrag = true;
+                CreateObjects();
             }
+        }
+    }
+
+    void CreateObjects()
+    {
+        if (CreateFlag)
+        {
+        }
+        else
+        {
+            Debug.Log("CreateObjects On");
+            GoalClear = Instantiate(GoalClear, new Vector3(0, 0, 0), Quaternion.identity);
+            GoalClearProductionOperater gcp = GoalClear.GetComponent<GoalClearProductionOperater>();
+            gcp.Init(ani, bubble1, this.gameObject, SceneManager);
+            CreateFlag = true;
         }
     }
 }
