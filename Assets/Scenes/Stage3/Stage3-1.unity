@@ -2579,7 +2579,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-88380
+  m_Name: pb_Mesh-249484
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3798,7 +3798,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh32220
+  m_Name: pb_Mesh89260
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4863,6 +4863,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneObject
       objectReference: {fileID: 0}
+    - target: {fileID: 3874406428186460432, guid: 7fc82e73bd8f1c0429140f1905a14b85,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f3daa6f5553788347a5167a0440ef3dc,
+        type: 3}
     - target: {fileID: 3957093089922047719, guid: 7fc82e73bd8f1c0429140f1905a14b85,
         type: 3}
       propertyPath: orthographic size

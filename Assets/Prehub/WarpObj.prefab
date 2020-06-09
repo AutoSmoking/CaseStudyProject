@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 928446569699117835}
   - component: {fileID: 2653383752211794035}
   - component: {fileID: 8904494158479905512}
+  - component: {fileID: 5690257909120003140}
   m_Layer: 0
   m_Name: WarpObj
-  m_TagString: Untagged
+  m_TagString: warp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,11 +79,21 @@ MonoBehaviour:
   next: {fileID: 0}
   WaitTime: 0.5
   WarpTime: 0.5
-  objList: []
   stopList: []
-  warpObj: []
   GoalFlg: 0
   StopFlg: 0
+--- !u!114 &5690257909120003140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492688807614398205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f46f3e5e97e18cf4e8e749123daa0357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1546840377645635975
 PrefabInstance:
   m_ObjectHideFlags: 0

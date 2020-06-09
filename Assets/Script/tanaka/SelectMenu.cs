@@ -26,7 +26,7 @@ public class SelectMenu : MonoBehaviour
     AnimationComponent AnimaObj;
     bool StageStart = false;
     Image[] StageFont;
-
+     
     // Start is called before the first frame update
     void Start()
     {
