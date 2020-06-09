@@ -330,7 +330,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 48d70e48b56e7bc43b037c5227b1ade4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a2980cde362106e47baacbbbc092195c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1473,7 +1473,7 @@ RectTransform:
   m_GameObject: {fileID: 1543220080}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2879, y: 1.2879, z: 1.2879}
+  m_LocalScale: {x: 1, y: 1, z: 1.2879}
   m_Children: []
   m_Father: {fileID: 468962791}
   m_RootOrder: 5
@@ -1505,7 +1505,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
     m_SelectedColor: {r: 0.99565035, g: 1, b: 0.2783019, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -1555,7 +1555,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: caa264a5c9fbd0c4687e83b14846de37, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b5ab3c17bbca9524280e7f24c71f1693, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

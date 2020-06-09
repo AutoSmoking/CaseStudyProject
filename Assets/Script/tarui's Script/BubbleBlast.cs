@@ -16,6 +16,8 @@ public class BubbleBlast : MonoBehaviour
 
     bool isParticle = false;
 
+    List<GameObject> bubble = new List<GameObject>() { };
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,10 @@ public class BubbleBlast : MonoBehaviour
         endScale = firstScale * 1.5f;
 
         prefab = (GameObject)Resources.Load("BubblesBurst_Particle");
+
+        bubble.Add(GameObject.FindGameObjectWithTag("1"));
+        bubble.Add(GameObject.FindGameObjectWithTag("2"));
+        bubble.Add(GameObject.FindGameObjectWithTag("3"));
     }
 
     // Update is called once per frame
@@ -49,6 +55,16 @@ public class BubbleBlast : MonoBehaviour
         if (isParticle && particle.GetComponent<ParticleSystem>().isStopped)
         {
             Destroy(this.transform.parent.gameObject);
+
+            for(int i=0;i<bubble.Count;i++)
+            {
+                if(bubble[i] == null)
+                {
+                    continue;
+                }
+
+                bubble[i].GetComponent<BubbleOperation>().DeathFlg = true;
+            }
         }
     }
 }

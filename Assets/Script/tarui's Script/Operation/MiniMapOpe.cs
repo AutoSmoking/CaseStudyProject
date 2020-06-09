@@ -21,6 +21,9 @@ public class MiniMapOpe : MonoBehaviour
     [SerializeField, Header("ハリセンボン用のUI")]
     Transform UIF = null;
 
+    [SerializeField, Header("シャコガイ用のUI")]
+    Transform UIS = null;
+
     // 宝箱
     Transform treasure = null;
     // UI用
@@ -37,6 +40,12 @@ public class MiniMapOpe : MonoBehaviour
     // UI用
     List<GameObject> NeedleFishsUI = new List<GameObject>() { };
 
+
+    // シャコガイ
+    List<GameObject> syako = new List<GameObject>() { };
+    // UI用
+    List<GameObject> syakoUI = new List<GameObject>() { };
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +59,9 @@ public class MiniMapOpe : MonoBehaviour
 
         // ハリセンボンを格納
         NeedleFish.AddRange(GameObject.FindGameObjectsWithTag("fish"));
+
+        // シャコガイを格納
+        syako.AddRange(GameObject.FindGameObjectsWithTag("warp"));
         
         List<GameObject> stage = new List<GameObject>() { };
 
@@ -69,6 +81,13 @@ public class MiniMapOpe : MonoBehaviour
 
         // 宝箱のUIを生成
         treasureUI = GameObject.Instantiate(UIT.gameObject, this.transform);
+
+        // シャコガイのUIを生成
+        for (int i = 0; i < syako.Count; i++)
+        {
+            syakoUI.Add(GameObject.Instantiate(UIS.gameObject, this.transform));
+            syakoUI[i].GetComponent<warpOpenTexture>().warp = syako[i];
+        }
     }
 
     // Update is called once per frame
@@ -105,6 +124,21 @@ public class MiniMapOpe : MonoBehaviour
             }
 
             MiniMapFunction(NeedleFish[i].transform, NeedleFishsUI[i].transform);
+        }
+
+        // シャコガイ
+        for (int i = 0; i < syako.Count; i++)
+        {
+            if (syako[i] == null)
+            {
+                if (syakoUI[i].gameObject.activeInHierarchy)
+                {
+                    syakoUI[i].gameObject.SetActive(false);
+                }
+                continue;
+            }
+
+            MiniMapFunction(syako[i].transform, syakoUI[i].transform);
         }
     }
 

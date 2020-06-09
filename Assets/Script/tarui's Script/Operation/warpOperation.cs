@@ -13,17 +13,17 @@ public class warpOperation : MonoBehaviour
     [SerializeField, Header("ワープ中のの待ち時間"), Range(0.01f, 5.0f)]
     float WarpTime = 0.01f;
 
-    [SerializeField, Header("ワープ対象のオブジェクト(入れたオブジェクトは止める対象にもなる)")]
+    //[SerializeField, Header("ワープ対象のオブジェクト(入れたオブジェクトは止める対象にもなる)")]
     List<GameObject> objList = new List<GameObject>() { };
 
     [SerializeField, Header("ワープ中に止める対象のオブジェクト(上記以外のオブジェクト)")]
     List<GameObject> stopList = new List<GameObject>() { };
 
-    [SerializeField, Header("ワープオブジェクトを格納")]
+    //[SerializeField, Header("ワープオブジェクトを格納")]
     List<GameObject> warpObj = new List<GameObject>() { };
 
     [SerializeField, Header("ゴールかどうか")]
-    bool GoalFlg = false;
+    public bool GoalFlg = false;
 
     [SerializeField, Header("ワープ中に停止させるか TRUE:させる")]
     bool StopFlg = false;
@@ -49,10 +49,13 @@ public class warpOperation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(objList.Count == 0)
-        {
-            Debug.LogError("ワープする対象がないです。");
-        }
+        objList.Add(GameObject.FindGameObjectWithTag("1"));
+        objList.Add(GameObject.FindGameObjectWithTag("2"));
+        objList.Add(GameObject.FindGameObjectWithTag("3"));
+
+        objList.AddRange(GameObject.FindGameObjectsWithTag("fish"));
+
+        warpObj.AddRange(GameObject.FindGameObjectsWithTag("warp"));
 
         if(next == null && !GoalFlg)
         {
