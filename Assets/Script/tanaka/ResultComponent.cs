@@ -14,6 +14,7 @@ public class ResultComponent : MonoBehaviour
     public PauseManager PauseManager;
     public bool AxisTrg = false;
     public int NowButton;
+
     void Awake()
     {
         if (instance == null)
@@ -107,9 +108,9 @@ public class ResultComponent : MonoBehaviour
     {
         button[0].interactable = false;
         button[1].interactable = false;
+        Debug.Log("ボタンOFF");
 
         SEManager.Instance.Play(PauseManager.Scene.EnterClip);
-        buttonflag = false;
         scene.SceneFlag = true;
         scene.GameFrag = false;
         scene.SceneName = scene.StageNameInstance.NextSceneName;
@@ -119,9 +120,9 @@ public class ResultComponent : MonoBehaviour
     {
         button[0].interactable = false;
         button[1].interactable = false;
+        Debug.Log("ボタンOFF");
 
         SEManager.Instance.Play(PauseManager.Scene.EnterClip);
-        buttonflag = false;
         scene.SceneFlag = true;
         scene.GameFrag = false;
         scene.SelectTransition();

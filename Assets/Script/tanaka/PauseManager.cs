@@ -59,8 +59,6 @@ public class PauseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        BubbleChack();
-
         if ((Input.GetButtonDown(Controll.HOMEボタン.ToString()) || Input.GetKeyDown(KeyCode.P)) &&
             Scene.GetSceneNow() != "Title Scene" && Scene.GetSceneNow() != "StageSelect" && !ChangeScene&&!Scene.GameFrag)  
         {
