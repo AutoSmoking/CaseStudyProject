@@ -171,12 +171,12 @@ public class BubbleOperation : MonoBehaviour
         if (BubbleStopFlg == true)
         {
             FloatAcceleration = StopAcceleration;
-            Debug.Log("StageStopNow");
+           // Debug.Log("StageStopNow");
         }
         else
         {
             FloatAcceleration = MoveAcceleration;
-            Debug.Log("StageMoveNow");
+            //Debug.Log("StageMoveNow");
         }
         
     }
