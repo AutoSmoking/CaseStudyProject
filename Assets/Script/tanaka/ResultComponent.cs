@@ -66,6 +66,21 @@ public class ResultComponent : MonoBehaviour
             buttonflag = true;
             PauseManager.ChangeScene = true;
             PauseManager.StopStage();
+
+            List<string> a = SEManager.Instance.GetCurrentAudioNames();
+            for (int i = 0; i < a.Count; i++)
+            {
+                if (a[i] == "SE_GoalKirakira")
+                {
+                    Debug.Log("OK");
+                    SEManager.Instance.FadeOut(a[i]);
+                }
+                else
+                {
+                    Debug.Log("NO");
+                }
+            }
+
         }
 
         if (scene.GameFrag == true && buttonflag == true)
