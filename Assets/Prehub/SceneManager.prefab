@@ -185,8 +185,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f4f301590165a94c801a654da1fd516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Alpha: 0.05
+  StopTime: 1
   Panel: {fileID: 176759620}
-  FadeTrg: 0
+  FadeTrgIn: 0
+  FadeTrgOut: 0
 --- !u!1 &4328000580566162136
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,6 +201,7 @@ GameObject:
   - component: {fileID: 4328000580566162150}
   - component: {fileID: 4328000580566162137}
   - component: {fileID: 4328000580566162151}
+  - component: {fileID: 1147166826}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -238,10 +242,14 @@ MonoBehaviour:
   GameFrag: 0
   StageNameInstance: {fileID: 0}
   PauseManager: {fileID: 0}
-  CursorClip: {fileID: 0}
+  TitleAndSelectBGM: {fileID: 8300000, guid: 74c88fde9f7f0cf479d08d2676f50225, type: 3}
   EnterClip: {fileID: 8300000, guid: a774f9cb087314de6aebf390dd78fcd5, type: 3}
   fade: 0
   Fadeobj: {fileID: 4578052281744316460}
+  WhiteFadeobj: {fileID: 502855893}
+  WhiteFadeTrg: 0
+  AllFade: 0
+  bgm: 0
 --- !u!114 &4328000580566162151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,6 +297,18 @@ MonoBehaviour:
   SceneScript: {fileID: 0}
   NowSceneName: 
   NextSceneName: 
+--- !u!114 &1147166826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4328000580566162136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01762ba18a892f94086e71f4cd8a75f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4578052279900884109
 GameObject:
   m_ObjectHideFlags: 0
@@ -2509,7 +2529,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FadeSE: {fileID: 8300000, guid: 6766c5bd094984044ae696ee93229026, type: 3}
-  FadeSpeed: 3
+  FadeMaxSpeed: 1
+  FadeMinSpeed: 5
 --- !u!82 &4578052281744316461
 AudioSource:
   m_ObjectHideFlags: 0
