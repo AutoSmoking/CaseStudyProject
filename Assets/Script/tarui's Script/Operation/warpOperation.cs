@@ -349,7 +349,10 @@ public class warpOperation : MonoBehaviour
                     }
 
                     // 色を変える
-                    SetMatColor(meshRen, Color.red);
+                    for (int i = 0; i < warpObj.Count; i++)
+                    {
+                        SetMatColor(warpObj[i].transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>(), Color.red);
+                    }
 
                     break;
                 }
@@ -371,7 +374,19 @@ public class warpOperation : MonoBehaviour
                 GoalFlg = false;
 
                 // 色を変える
-                SetMatColor(meshRen, Color.green);
+                for (int i = 0; i < warpObj.Count; i++)
+                {
+                    if(warpObj[i].GetComponent<warpOperation>().GoalFlg)
+                    {
+                        SetMatColor(warpObj[i].transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>(), Color.red);
+
+                    }
+                    else
+                    {
+                        SetMatColor(warpObj[i].transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>(), Color.green);
+
+                    }
+                }
             }
         }
     }
