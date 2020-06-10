@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KanKikuchi.AudioManager;
 
 public class BubbleFadeOpe : MonoBehaviour
 {
@@ -127,6 +128,10 @@ public class BubbleFadeOpe : MonoBehaviour
                 }
                 mono.enabled = true;
             }
+
+            // すべてのSEとBGMを止める
+            BGMManager.Instance.Stop();
+            SEManager.Instance.Stop();
         }
     }
 
