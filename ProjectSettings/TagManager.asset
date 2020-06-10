@@ -17,6 +17,7 @@ TagManager:
   - taru
   - warp
   - fade
+  - UI
   layers:
   - Default
   - TransparentFX

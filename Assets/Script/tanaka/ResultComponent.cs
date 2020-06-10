@@ -14,6 +14,7 @@ public class ResultComponent : MonoBehaviour
     public PauseManager PauseManager;
     public bool AxisTrg = false;
     public int NowButton;
+    public Animation[] buttonanimation;
 
     void Awake()
     {
@@ -38,6 +39,9 @@ public class ResultComponent : MonoBehaviour
         button = new Button[2];
         button[0] = GameObject.Find("Canvas/NextStage").GetComponent<Button>();
         button[1] = GameObject.Find("Canvas/StageSelect").GetComponent<Button>();
+        //buttonanimation = new Animation[2];
+        //buttonanimation[0] = GameObject.Find("Canvas/NextStage").GetComponent<Animation>();
+        //buttonanimation[1] = GameObject.Find("Canvas/StageSelect").GetComponent<Animation>();
 
         //canvas = GameObject.GetComponentInChildren<GameObject>();
         canvas.SetActive(false);
@@ -48,12 +52,12 @@ public class ResultComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canvas.activeSelf == true) 
+        if (canvas.activeSelf == true)
         {
 
         }
 
-        if (scene.GameFrag == true && buttonflag == false) 
+        if (scene.GameFrag == true && buttonflag == false)
         {
             Debug.Log("リザルト出現");
             button[0].interactable = true;
@@ -87,13 +91,14 @@ public class ResultComponent : MonoBehaviour
                 if (NowButton > 1)
                 {
                     NowButton = 1;
-                }else
+                }
+                else
                 {
                     SEManager.Instance.Play(PauseManager.Scene.EnterClip);
                 }
             }
             if ((Input.GetAxis(Controll.十字キー左右.ToString()) <= 0.5 &&
-                Input.GetAxis(Controll.十字キー左右.ToString()) >= -0.5 )&&
+                Input.GetAxis(Controll.十字キー左右.ToString()) >= -0.5) &&
                 AxisTrg)
             {
                 AxisTrg = false;
@@ -101,6 +106,25 @@ public class ResultComponent : MonoBehaviour
 
             //ボタンセット
             button[NowButton].Select();
+
+            //for (int i = 0; i < button.Length; i++)
+            //{
+            //    if (i == NowButton)
+            //    {
+            //        if (!button[i].GetComponent<Animation>().isPlaying)
+            //        {
+            //            buttonanimation[i].enabled = true;
+            //            buttonanimation[i].Play();
+            //            Debug.Log("play" + i);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        Debug.Log("stop" + i);
+            //        buttonanimation[i].Stop();
+            //        buttonanimation[i].enabled = false;
+            //    }
+            //}
         }
     }
 
