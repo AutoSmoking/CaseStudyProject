@@ -48,7 +48,7 @@ public class BubbleFadeOpe : MonoBehaviour
 
         foreach(GameObject obj in Object.FindObjectsOfType(typeof(GameObject)))
         {
-            if(obj.tag == "fade")
+            if(obj.tag == "fade" || obj.tag == "UI")
             {
                 continue;
             }
