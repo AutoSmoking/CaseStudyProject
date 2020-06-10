@@ -43,17 +43,17 @@ public class CameraOpe : MonoBehaviour
 
         cameras.AddRange(GameObject.FindGameObjectsWithTag("camera"));
 
-        CameraMove();
+        //CameraMove();
 
-        // 他のカメラを追従させる
-        foreach (var cams in cameras)
-        {
-            Camera camera = cams.GetComponent<Camera>();
+        //// 他のカメラを追従させる
+        //foreach (var cams in cameras)
+        //{
+        //    Camera camera = cams.GetComponent<Camera>();
 
-            cams.transform.position = this.transform.position;
+        //    cams.transform.position = this.transform.position;
 
-            camera.orthographicSize = cam.orthographicSize;
-        }
+        //    camera.orthographicSize = cam.orthographicSize;
+        //}
     }
 
     // Update is called once per frame
