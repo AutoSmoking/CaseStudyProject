@@ -18,6 +18,8 @@ public class warpOpenTexture : MonoBehaviour
 
     Image Image = null;
 
+    Material material = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,12 +39,16 @@ public class warpOpenTexture : MonoBehaviour
             {
                 Image.sprite = close;
             }
+
+            Image.color = material.color;
         }
         else
         {
             if (warp != null)
             {
                 warpOperation = warp.GetComponent<warpOperation>();
+
+                material = warpOperation.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material;
 
                 isNoNull = true;
             }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   open: {fileID: 21300000, guid: 2c569052e371cfe4f824d529c859e797, type: 3}
-  close: {fileID: 21300000, guid: bf79438c8d0ffc444960737afeb71e51, type: 3}
+  close: {fileID: 21300000, guid: 1c79d7b0d748b1e4988d6ef00baaf730, type: 3}
 --- !u!1001 &7067900360172323294
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -135,7 +135,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: bf79438c8d0ffc444960737afeb71e51,
+      objectReference: {fileID: 21300000, guid: 1c79d7b0d748b1e4988d6ef00baaf730,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fb7fa2b2e1437a4c81981e32a306b3b, type: 3}
