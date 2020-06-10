@@ -27,6 +27,10 @@ public class CameraOpe : MonoBehaviour
     // メイン以外のカメラ
     List<GameObject> cameras = new List<GameObject>() { };
 
+    // カメラの開始時の停止用
+    Controll AButton = Controll.Aボタン;
+    bool isStop = false;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -40,20 +44,38 @@ public class CameraOpe : MonoBehaviour
         cameras.AddRange(GameObject.FindGameObjectsWithTag("camera"));
 
         CameraMove();
-    }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        CameraMove();
-
-        foreach(var cams in cameras)
+        // 他のカメラを追従させる
+        foreach (var cams in cameras)
         {
             Camera camera = cams.GetComponent<Camera>();
 
             cams.transform.position = this.transform.position;
 
             camera.orthographicSize = cam.orthographicSize;
+        }
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        if (!isStop && (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown(AButton.ToString())))
+        {
+            isStop = true;
+        }
+        else if(isStop)
+        {
+            CameraMove();
+
+            // 他のカメラを追従させる
+            foreach (var cams in cameras)
+            {
+                Camera camera = cams.GetComponent<Camera>();
+
+                cams.transform.position = this.transform.position;
+
+                camera.orthographicSize = cam.orthographicSize;
+            }
         }
     }
 
