@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KanKikuchi.AudioManager;
 
 public class BubbleFadeOpe : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class BubbleFadeOpe : MonoBehaviour
     Canvas canvas = null;
     
     List<Transform> child = new List<Transform>() { };
+
+    List<MonoBehaviour> monos = new List<MonoBehaviour>() { };
     
     // Start is called before the first frame update
     void Start()
@@ -42,6 +45,16 @@ public class BubbleFadeOpe : MonoBehaviour
             }
 
             child.Add(trans);
+        }
+
+        foreach(GameObject obj in Object.FindObjectsOfType(typeof(GameObject)))
+        {
+            if(obj.tag == "fade" || obj.tag == "UI")
+            {
+                continue;
+            }
+
+            monos.AddRange(obj.GetComponents<MonoBehaviour>());
         }
     }
 
@@ -71,6 +84,17 @@ public class BubbleFadeOpe : MonoBehaviour
     {
         if (isFadeOutStart)
         {
+            // フェード中はその他のスクリプトを停止
+            foreach (var mono in monos)
+            {
+                if(mono == null)
+                {
+                    continue;
+                }
+
+                mono.enabled = false;
+            }
+
             // フェード用の画像の位置を初期化
             foreach (var child in child)
             {
@@ -89,10 +113,25 @@ public class BubbleFadeOpe : MonoBehaviour
             isEndChildMove = true;
         }
 
+        // フェード終了
         if (isEndChildMove && !child[child.Count - 1].GetComponent<FadeMoveOpe>().isMove)
         {
             isFadeOut = false;
             isEndChildMove = false;
+
+            // フェード終了後はその他のスクリプトを開始
+            foreach (var mono in monos)
+            {
+                if (mono == null)
+                {
+                    continue;
+                }
+                mono.enabled = true;
+            }
+
+            // すべてのSEとBGMを止める
+            BGMManager.Instance.Stop();
+            SEManager.Instance.Stop();
         }
     }
 
@@ -100,6 +139,16 @@ public class BubbleFadeOpe : MonoBehaviour
     {
         if (isFadeInStart)
         {
+            // フェード中はその他のスクリプトを停止
+            foreach(var mono in monos)
+            {
+                if (mono == null)
+                {
+                    continue;
+                }
+                mono.enabled = false;
+            }
+
             foreach (var child in child)
             {
                 child.GetComponent<FadeMoveOpe>().isStart = true;
@@ -117,12 +166,23 @@ public class BubbleFadeOpe : MonoBehaviour
             isEndChildMove = true;
         }
 
+        // フェード終了
         if (isEndChildMove && !child[child.Count - 1].GetComponent<FadeMoveOpe>().isMove) 
         {
             isFadeIn = false;
             isEndChildMove = false;
 
             canvas.enabled = false;
+
+            // フェード終了後はその他のスクリプトを開始
+            foreach (var mono in monos)
+            {
+                if (mono == null)
+                {
+                    continue;
+                }
+                mono.enabled = true;
+            }
         }
     }
 

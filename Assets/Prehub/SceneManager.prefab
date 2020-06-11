@@ -323,7 +323,7 @@ GameObject:
   - component: {fileID: 4578052279900884145}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -409,7 +409,7 @@ GameObject:
   - component: {fileID: 4578052279991185736}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -495,7 +495,7 @@ GameObject:
   - component: {fileID: 4578052280006065715}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -581,7 +581,7 @@ GameObject:
   - component: {fileID: 4578052280011447170}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 4578052280097607052}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -753,7 +753,7 @@ GameObject:
   - component: {fileID: 4578052280144728700}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -839,7 +839,7 @@ GameObject:
   - component: {fileID: 4578052280204195816}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -925,7 +925,7 @@ GameObject:
   - component: {fileID: 4578052280620321707}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1011,7 +1011,7 @@ GameObject:
   - component: {fileID: 4578052280647567837}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1097,7 +1097,7 @@ GameObject:
   - component: {fileID: 4578052280759308415}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1183,7 +1183,7 @@ GameObject:
   - component: {fileID: 4578052280809349496}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1269,7 +1269,7 @@ GameObject:
   - component: {fileID: 4578052280964331954}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1355,7 +1355,7 @@ GameObject:
   - component: {fileID: 4578052281091453241}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1441,7 +1441,7 @@ GameObject:
   - component: {fileID: 4578052281161747614}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1527,7 +1527,7 @@ GameObject:
   - component: {fileID: 4578052281298855995}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1613,7 +1613,7 @@ GameObject:
   - component: {fileID: 4578052281332893624}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1699,7 +1699,7 @@ GameObject:
   - component: {fileID: 4578052281415720758}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1785,7 +1785,7 @@ GameObject:
   - component: {fileID: 4578052281428641236}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1871,7 +1871,7 @@ GameObject:
   - component: {fileID: 4578052281558483987}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1957,7 +1957,7 @@ GameObject:
   - component: {fileID: 4578052281577296408}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2043,7 +2043,7 @@ GameObject:
   - component: {fileID: 4578052281602570647}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2129,7 +2129,7 @@ GameObject:
   - component: {fileID: 4578052281689130277}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2215,7 +2215,7 @@ GameObject:
   - component: {fileID: 4578052281721703189}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2301,7 +2301,7 @@ GameObject:
   - component: {fileID: 4578052281738720971}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2390,7 +2390,7 @@ GameObject:
   - component: {fileID: 4578052281744316461}
   m_Layer: 12
   m_Name: FadeManager
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2641,7 +2641,7 @@ GameObject:
   - component: {fileID: 4578052281793097051}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2727,7 +2727,7 @@ GameObject:
   - component: {fileID: 4578052281970833676}
   m_Layer: 12
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

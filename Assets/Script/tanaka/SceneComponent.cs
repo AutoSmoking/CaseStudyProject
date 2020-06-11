@@ -267,6 +267,19 @@ public class SceneComponent : MonoBehaviour
         Result.ResultScreenOff();
         PauseManager.PauseScreenOff();
 
+        List<string> a = SEManager.Instance.GetCurrentAudioNames();
+        for (int i = 0; i < a.Count; i++)
+        {
+            if (a[i]=="SE_GoalKirakira")
+            {
+                Debug.Log("OK");
+                SEManager.Instance.Stop(a[i]);
+            }
+            else
+            {
+                Debug.Log("NO");
+            }
+        }
         if (SceneName == "Title Scene" || SceneName == "StageSelect")
         {
             if (WhiteFadeTrg)
