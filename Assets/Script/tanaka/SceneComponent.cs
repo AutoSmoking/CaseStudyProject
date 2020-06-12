@@ -32,6 +32,7 @@ public class SceneComponent : MonoBehaviour
 
     ResultComponent Result;
 
+    public bool TitleFlag = false;
     void Awake()
     {
         if (instance == null)
@@ -110,6 +111,7 @@ public class SceneComponent : MonoBehaviour
                 Input.GetKeyDown(KeyCode.Z) ||
                 Input.GetKeyDown(KeyCode.Space)) &&
             SceneFlag == false && AllFade&&
+            TitleFlag&&
             (GetSceneNow() == "Title Scene" || 
                 (GetSceneNow() == "StageSelect" && 
                     SceneName != "StageSelect")))
