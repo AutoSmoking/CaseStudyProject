@@ -86,6 +86,8 @@ public class SceneComponent : MonoBehaviour
                 ResetStage();
             }
         }
+
+
         //if (SceneName != "Title Scene" && SceneName != "StageSelect")
         //{
 
@@ -141,10 +143,12 @@ public class SceneComponent : MonoBehaviour
         //シーン読み込み中のロック解除
         if (PauseManager.ChangeScene == true &&
             Fadeobj.GetComponent<BubbleFadeOpe>().isFadeIn == false &&
+            Fadeobj.GetComponent<BubbleFadeOpe>().isFadeOut == false &&
             Fadeobj.GetComponent<Canvas>().enabled == false&&!GameFrag)   
         {
             Debug.Log("StopPausecon");
             PauseManager.ChangeScene = false;
+            PauseManager.ResetNow = false;
             PauseManager.StartStage();
         }
 
