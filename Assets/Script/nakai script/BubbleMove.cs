@@ -158,6 +158,11 @@ public class BubbleMove : MonoBehaviour
             SEManager.Instance.Stop();
         }
 
+        if (Input.GetButtonDown(Controll.Aボタン.ToString()))
+        {
+            flg = true;
+            SEManager.Instance.Stop();
+        }
         if (flg == true)
         {
             Panel.color += new Color(0.0f, 0.0f, 0.0f, 0.005f);

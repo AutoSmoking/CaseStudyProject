@@ -71,8 +71,10 @@ public class CameraOpe : MonoBehaviour
             foreach (var cams in cameras)
             {
                 Camera camera = cams.GetComponent<Camera>();
+                Vector3 pos = this.transform.position;
+                pos.z = cams.transform.position.z;
 
-                cams.transform.position = this.transform.position;
+                cams.transform.position = pos;
 
                 camera.orthographicSize = cam.orthographicSize;
             }
