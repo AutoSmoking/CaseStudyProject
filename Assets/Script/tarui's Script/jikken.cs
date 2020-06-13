@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class jikken : MonoBehaviour
 {
-    Animator anim;
+    BubbleFadeOpe fade;
 
     // Start is called before the first frame update
     void Start()
     {
-        anim = this.gameObject.GetComponent<Animator>();
+        fade = this.GetComponent<BubbleFadeOpe>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            anim.Play(0);
+            fade.isFadeIn = true;
+        }
+
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            fade.isFadeOut = true;
         }
     }
 }

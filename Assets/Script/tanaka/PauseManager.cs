@@ -29,7 +29,7 @@ public class PauseManager : MonoBehaviour
     public bool ChangeScene = false;
     bool AxisTrg = false;
     public int NowButton = 0;
-
+    public bool ResetNow = false;
     public List<GameObject> BubbleList;
     // Start is called before the first frame update
     void Start()
@@ -49,8 +49,8 @@ public class PauseManager : MonoBehaviour
         PauseFlag = false;
         canvas = transform.Find("Canvas").gameObject;
         button= new Button[3];
-        button[0] = transform.Find("Canvas/Reset").GetComponent<Button>();
-        button[1] = transform.Find("Canvas/Back").GetComponent<Button>();
+        button[0] = transform.Find("Canvas/Back").GetComponent<Button>();
+        button[1] = transform.Find("Canvas/Reset").GetComponent<Button>();
         button[2] = transform.Find("Canvas/StageSelect").GetComponent<Button>();
         canvas.SetActive(false);
         Scene = GameObject.Find("SceneManager").GetComponent<SceneComponent>();
@@ -60,7 +60,7 @@ public class PauseManager : MonoBehaviour
     void Update()
     {
         if ((Input.GetButtonDown(Controll.HOMEボタン.ToString()) || Input.GetKeyDown(KeyCode.P)) &&
-            Scene.GetSceneNow() != "Title Scene" && Scene.GetSceneNow() != "StageSelect" && !ChangeScene&&!Scene.GameFrag)  
+            Scene.GetSceneNow() != "Title Scene" && Scene.GetSceneNow() != "StageSelect" && !ChangeScene && !Scene.GameFrag && !ResetNow)   
         {
             SEManager.Instance.Play(Scene.EnterClip);
 
@@ -86,41 +86,59 @@ public class PauseManager : MonoBehaviour
             //AxisTrg = false;
 
             //移動
-            if ((Input.GetAxis(Controll.十字キー左右.ToString()) <= -1) && AxisTrg == false)
-            {
-                AxisTrg = true;
-                if (NowButton != 1)
-                {
-                    NowButton = 1;
-                    SEManager.Instance.Play(Scene.EnterClip);
-                }
-            }
-            if ((Input.GetAxis(Controll.十字キー左右.ToString()) >= 1) && AxisTrg == false)
-            {
-                AxisTrg = true;
-                if (NowButton == 1)
-                {
-                    NowButton = 0;
-                    SEManager.Instance.Play(Scene.EnterClip);
-                }
-            }
+            //if ((Input.GetAxis(Controll.十字キー左右.ToString()) <= -1) && AxisTrg == false)
+            //{
+            //    AxisTrg = true;
+            //    if (NowButton != 1)
+            //    {
+            //        NowButton = 1;
+            //        SEManager.Instance.Play(Scene.EnterClip);
+            //    }
+            //}
+            //if ((Input.GetAxis(Controll.十字キー左右.ToString()) >= 1) && AxisTrg == false)
+            //{
+            //    AxisTrg = true;
+            //    if (NowButton == 1)
+            //    {
+            //        NowButton = 0;
+            //        SEManager.Instance.Play(Scene.EnterClip);
+            //    }
+            //}
             if ((Input.GetAxis(Controll.十字キー上下.ToString()) <= -1) && AxisTrg == false)
             {
                 AxisTrg = true;
-                if (NowButton == 1 || NowButton == 0) 
+                NowButton++;
+                if (NowButton >= 3)
                 {
                     NowButton = 2;
+                }
+                else
+                {
                     SEManager.Instance.Play(Scene.EnterClip);
                 }
+                //if (NowButton == 1 || NowButton == 0) 
+                //{
+                //    NowButton = 2;
+                //    SEManager.Instance.Play(Scene.EnterClip);
+                //}
             }
             if ((Input.GetAxis(Controll.十字キー上下.ToString()) >= 1) && AxisTrg == false)
             {
                 AxisTrg = true;
-                if (NowButton == 2 || NowButton == 1) 
+                NowButton--;
+                if (NowButton < 0)
                 {
                     NowButton = 0;
+                }
+                else
+                {
                     SEManager.Instance.Play(Scene.EnterClip);
                 }
+                //if (NowButton == 2 || NowButton == 1) 
+                //{
+                //    NowButton = 0;
+                //    SEManager.Instance.Play(Scene.EnterClip);
+                //}
             }
 
             button[NowButton].Select();
@@ -211,18 +229,22 @@ public class PauseManager : MonoBehaviour
         {
             case 0:
                 StartStage();
+                PauseScreenOff();
                 break;
 
             case 1:
                 Scene.ResetStage();
+                PauseScreenOff();
+                ResetNow = true;
                 break;
 
             case 2:
                 Scene.SelectTransition();
+                PauseScreenOff();
+                ResetNow = true;
                 break;
         }
 
-        PauseScreenOff();
     }
     //ステージ上のオブジェクトを止める
     public void StopStage()
@@ -263,10 +285,11 @@ public class PauseManager : MonoBehaviour
     public void PauseScreenOff()
     {
         PauseFlag = false;
-
+        ResetNow = false;
         canvas.SetActive(false);
     }
 
+    //ゲームオーバー判定
     public bool BubbleChack()
     {
         for(int i = 0; i < BubbleList.Count; i++)
@@ -278,6 +301,8 @@ public class PauseManager : MonoBehaviour
         }
 
         Debug.Log("Bubble=0");
+
+        ResetNow = true;
         return true;
     }
 }

@@ -73,6 +73,8 @@ public class GoalHitOperation : MonoBehaviour
         if(!GoalFlg && OpenFlg && !ani.IsPlaying("takarabako_open"))
         {
             GoalFlg = true;
+
+            ani.Play("takara_opensoso");
         }
     }
 
