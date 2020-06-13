@@ -1371,6 +1371,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneObject
       objectReference: {fileID: 0}
+    - target: {fileID: 3743604867562212396, guid: 7fc82e73bd8f1c0429140f1905a14b85,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3874406428186460432, guid: 7fc82e73bd8f1c0429140f1905a14b85,
         type: 3}
       propertyPath: m_Sprite
@@ -1461,6 +1466,11 @@ PrefabInstance:
         type: 3}
       propertyPath: orthographic size
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7905475243988370912, guid: 7fc82e73bd8f1c0429140f1905a14b85,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fc82e73bd8f1c0429140f1905a14b85, type: 3}
