@@ -59,11 +59,7 @@ public class CameraOpe : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!isStop && (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown(AButton.ToString())))
-        {
-            isStop = true;
-        }
-        else if(isStop)
+        if (isStop)
         {
             CameraMove();
 
@@ -78,6 +74,10 @@ public class CameraOpe : MonoBehaviour
 
                 camera.orthographicSize = cam.orthographicSize;
             }
+        }
+        else if (Bubble[0].GetComponent<BubbleOperation>().isFloat)
+        {
+            isStop = true;
         }
     }
 

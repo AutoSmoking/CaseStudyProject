@@ -26,7 +26,16 @@ public class BubbleOperation : MonoBehaviour
 
     [SerializeField] private Transform _parentTransform;
 
-    int floatflag = 0;//泡の浮き沈みのフラグ（bool型にしろよ）
+    bool floatflag = false;//泡の浮き沈みのフラグ（bool型にしろよ）
+    // プロパティっていうやつ
+    // ゲッターとセッター作るときに便利
+    public bool isFloat
+    {
+        get
+        {
+            return floatflag;
+        }
+    }
 
     public static int BubbleNum = 1;//泡の合計結合数（うまく言語化できない・・・）
 
@@ -152,9 +161,9 @@ public class BubbleOperation : MonoBehaviour
 
         //スペースを押したときの処理（１回きり）
         //Aボタンを押した
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown(AButton.ToString())) && floatflag == 0)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown(AButton.ToString())) && !floatflag)
         {
-            floatflag++;
+            floatflag = !floatflag;
 
             // ここで音を鳴らす
             SEManager.Instance.Play("SE/Bubble_Birth");
@@ -162,7 +171,7 @@ public class BubbleOperation : MonoBehaviour
             taru.GetComponent<Animation>().Play("taru_open");
         }
 
-        if(floatflag !=0 && taru != null && !taru.GetComponent<Animation>().isPlaying)
+        if(floatflag && taru != null && !taru.GetComponent<Animation>().isPlaying)
         {
             Destroy(taru.gameObject);
             taru = null;
@@ -184,7 +193,7 @@ public class BubbleOperation : MonoBehaviour
     void FixedUpdate()
     {
         //泡の上昇部分の処理
-        if (floatflag != 0)
+        if (floatflag)
         {
             Rigidbody rb = this.transform.GetComponent<Rigidbody>();
             rb.velocity = new Vector3(0, FloatAcceleration, 0);
