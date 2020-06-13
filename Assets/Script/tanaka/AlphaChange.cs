@@ -12,6 +12,7 @@ public class AlphaChange : MonoBehaviour
     Image AButton = null;
     bool AlphaTrg = false;
     float time = 0.0f;
+    public bool AlphaStart = false;
         // Start is called before the first frame update
     void Start()
     {
@@ -21,26 +22,34 @@ public class AlphaChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (AlphaTrg)
+        if (AlphaStart)
         {
-            AButton.color+=new Color(0.0f, 0.0f, 0.0f, 0.05f);
-            if (AButton.color.a >= 1)
+            if (AlphaTrg)
             {
-                time += Time.deltaTime;
-                if (time >= 0.5f)
+                AButton.color += new Color(0.0f, 0.0f, 0.0f, Amount);
+                if (AButton.color.a >= 1)
                 {
-                    AlphaTrg = false;
-                    time = 0;
+                    time += Time.deltaTime;
+                    if (time >= WaitTime)
+                    {
+                        AlphaTrg = false;
+                        time = 0;
+                    }
+                }
+            }
+            else
+            {
+                AButton.color -= new Color(0.0f, 0.0f, 0.0f, Amount);
+                if (AButton.color.a <= 0.0f)
+                {
+                    AlphaTrg = true;
                 }
             }
         }
-        else
-        {
-            AButton.color -= new Color(0.0f, 0.0f, 0.0f, 0.05f);
-            if (AButton.color.a <= 0.0f) 
-            {
-                AlphaTrg = true;
-            }
-        }
+    }
+
+    public void AlphaReset()
+    {
+        AButton.color += new Color(0.0f, 0.0f, 0.0f, 1.0f);
     }
 }
