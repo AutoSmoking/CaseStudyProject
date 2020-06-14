@@ -47,11 +47,22 @@ public class BubbleOperation : MonoBehaviour
 
     bool DB3;
 
+    bool OnBubble2 = false;
+    bool OnBubble3 = false;
+
+    int num = 0;
+
+    public Vector3 Bub1Vec = Vector3.zero;
+    public Vector3 Bub2Vec = Vector3.zero;
+    public Vector3 Bub3Vec = Vector3.zero;
+
     Controll AButton = Controll.Aボタン;
 
     // 20200604追加
     // 樽の子オブジェクトを取得
     Transform taru = null;
+
+    Transform GravityField = null;
 
     void Start()
     {
@@ -62,7 +73,12 @@ public class BubbleOperation : MonoBehaviour
         taru = this.transform.parent.Find("taru");
     }
 
-    void OnCollisionEnter(Collision other)
+    public void Say()
+    {
+        Debug.Log("当たったときの処理");
+    }
+
+    public void OnCollisionEnter(Collision other)
     {
 
         Transform myTransform = this.transform;
@@ -139,6 +155,33 @@ public class BubbleOperation : MonoBehaviour
         }
     }
 
+    void OnTriggerStay(Collider other)
+    {
+        if (this.gameObject.CompareTag("1"))
+        {
+            if (other.gameObject.tag == "2")
+            {
+                transform.position = Vector3.Lerp(Bub1Vec, Bub2Vec, 0.03f);
+            }
+            if (other.gameObject.tag == "3")
+            {
+                transform.position = Vector3.Lerp(Bub1Vec, Bub3Vec, 0.03f);
+            }
+        }
+
+        if (this.gameObject.CompareTag("2"))
+        {
+            //if (other.gameObject.tag == "1")
+            //{
+            //    transform.position = Vector3.Lerp(Bub2Vec, Bub1Vec, 0.01f);
+            //}
+            if (other.gameObject.tag == "3")
+            {
+                transform.position = Vector3.Lerp(Bub1Vec, Bub3Vec, 0.03f);
+            }
+        }
+    }
+
     //フラグのゲッター
     public static bool GetDB3Flag()
     {
@@ -151,13 +194,29 @@ public class BubbleOperation : MonoBehaviour
         return BubbleNum;
     }
 
+
     // Update is called once per frame
     void Update()
     {
         Transform myTransform = this.transform;
 
+        if (Bubble2 != null) { OnBubble2 = true; }
+        else { OnBubble2 = false; }
+        if (Bubble3 != null) { OnBubble3 = true; }
+        else { OnBubble3 = false; }
+
+        Bub1Vec = Bubble.transform.position;
+        if (OnBubble2 == true) { Bub2Vec = Bubble2.transform.position; }
+        if (OnBubble3 == true) { Bub3Vec = Bubble3.transform.position; }
+
+        if (OnBubble2 == false && OnBubble3 == false && num==0)
+        {
+            Destroy(gameObject.transform.FindChild("GravityField").gameObject);
+            num += 1;
+        }
+
         //stopFlgを取得
-        BubbleStopFlg =SpinOperation.GetstopFlg();
+        BubbleStopFlg = SpinOperation.GetstopFlg();
 
         //スペースを押したときの処理（１回きり）
         //Aボタンを押した
