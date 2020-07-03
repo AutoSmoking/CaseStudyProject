@@ -4,6 +4,24 @@ using UnityEngine;
 
 public class KeyOperaion : MonoBehaviour
 {
+    enum KeyType
+    {
+        二分割,三分割
+    }
+
+    KeyType keyType = KeyType.二分割;
+
+    private int keyIndex = 0;
+    public int KeyIndex
+    {
+        get
+        {
+            return keyIndex;
+        }
+    }
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,21 +32,5 @@ public class KeyOperaion : MonoBehaviour
     void Update()
     {
         
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        // 泡にぶつかった場合
-        if(other.gameObject.layer == LayerMask.NameToLayer("Bubble"))
-        {
-            // 泡から大きさを取ってくる
-            other.GetComponent<BubbleOperation>();
-
-            // 大きさによって処理が変わる
-            // if(??? >= 2)
-
-            // 泡の子オブジェクトに鍵を入れる
-            this.transform.parent = other.transform;
-        }
     }
 }

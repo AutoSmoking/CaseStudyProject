@@ -36,6 +36,7 @@ Transform:
   - {fileID: 5022763237519603319}
   - {fileID: 833895887375599288}
   - {fileID: 4950754975909615096}
+  - {fileID: 7564523543458614460}
   - {fileID: 3997417661694803537}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -735,7 +736,7 @@ PrefabInstance:
     - target: {fileID: 7091277114898916241, guid: 76da19dec7ee4ff448f5694456d9ac25,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7091277114898916241, guid: 76da19dec7ee4ff448f5694456d9ac25,
         type: 3}
@@ -914,6 +915,96 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8427892193027247447, guid: 80a8af5b0fc2eb64c81ab3e04d513ceb,
     type: 3}
   m_PrefabInstance: {fileID: 6241334584629932319}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7778051978073555051
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5580469097175754710}
+    m_Modifications:
+    - target: {fileID: 219452650590522580, guid: d8e76a998652f194483d0f92fb5385ee,
+        type: 3}
+      propertyPath: m_Name
+      value: FadeAnim
+      objectReference: {fileID: 0}
+    - target: {fileID: 219452650590522580, guid: d8e76a998652f194483d0f92fb5385ee,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 219452650590522582, guid: d8e76a998652f194483d0f92fb5385ee,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 219452650590522583, guid: d8e76a998652f194483d0f92fb5385ee,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 219452650590522583, guid: d8e76a998652f194483d0f92fb5385ee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 219452650590522583, guid: d8e76a998652f194483d0f92fb5385ee,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 219452650590522583, guid: d8e76a998652f194483d0f92fb5385ee,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 219452650590522583, guid: d8e76a998652f194483d0f92fb5385ee,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 219452650590522583, guid: d8e76a998652f194483d0f92fb5385ee,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 219452650590522583, guid: d8e76a998652f194483d0f92fb5385ee,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 219452650590522583, guid: d8e76a998652f194483d0f92fb5385ee,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 219452650590522583, guid: d8e76a998652f194483d0f92fb5385ee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 219452650590522583, guid: d8e76a998652f194483d0f92fb5385ee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 219452650590522583, guid: d8e76a998652f194483d0f92fb5385ee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6685905565107075951, guid: d8e76a998652f194483d0f92fb5385ee,
+        type: 3}
+      propertyPath: isFadeIn
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d8e76a998652f194483d0f92fb5385ee, type: 3}
+--- !u!4 &7564523543458614460 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 219452650590522583, guid: d8e76a998652f194483d0f92fb5385ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 7778051978073555051}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8351533108314761307
 PrefabInstance:

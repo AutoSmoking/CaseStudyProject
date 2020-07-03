@@ -211,7 +211,7 @@ public class BubbleOperation : MonoBehaviour
 
         if (OnBubble2 == false && OnBubble3 == false && num==0)
         {
-            Destroy(gameObject.transform.FindChild("GravityField").gameObject);
+            Destroy(gameObject.transform.Find("GravityField").gameObject);
             num += 1;
         }
 
