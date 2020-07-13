@@ -250,9 +250,9 @@ public class FishMove : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if ((other.tag == "Block" || other.tag == "BackFish") && !TurnFlag && WaitTime > ColStopTime)
+        if ((other.gameObject.tag == "Block" || other.gameObject.tag == "BackFish") && !TurnFlag && WaitTime > ColStopTime)
         {
             TurnFlag = true;
             FirstCAngle = child.transform.localEulerAngles;

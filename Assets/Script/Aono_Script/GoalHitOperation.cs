@@ -31,6 +31,9 @@ public class GoalHitOperation : MonoBehaviour
     [SerializeField,Header("ゴールクリア用オブジェクト")]
     public GameObject GoalClear = null;
 
+    // あかりを強くする
+    Light light;
+
     // Start is called before the first frame update
 
     void Start()
@@ -44,6 +47,8 @@ public class GoalHitOperation : MonoBehaviour
         SceneManager = GameObject.Find("SceneManager");
 
         prefab = (GameObject)Resources.Load("BoxOpen_Effect");
+
+        light = this.transform.GetChild(1).GetComponent<Light>();
     }
 
     //void OnTriggerEnter(Collider other)
@@ -68,6 +73,9 @@ public class GoalHitOperation : MonoBehaviour
             particle = Instantiate(prefab, this.transform);
             particle.GetComponentInChildren<ParticleSystem>().Play();
             SEManager.Instance.Play("宝箱/SE_GoalKirakira", 2, 0, 1, true);
+
+            // あかりをつよくする
+            light.intensity = 7;
         }
 
         if(!GoalFlg && OpenFlg && !ani.IsPlaying("takarabako_open"))
