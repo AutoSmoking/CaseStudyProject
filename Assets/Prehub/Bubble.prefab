@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 8353143837347223534}
   - component: {fileID: 8353143837347223530}
   - component: {fileID: 5435381655637924918}
+  - component: {fileID: 3409575444547482023}
   m_Layer: 8
   m_Name: Bubble
   m_TagString: 1
@@ -238,6 +239,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &3409575444547482023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8353143837347223533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fd3fb1da2d105f42b1195cb51e9febb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KeyModel:
+  - {fileID: 2431293753937443108, guid: 731870215d41bca4e93d3251a3fa244e, type: 3}
+  - {fileID: 6829311606467057696, guid: 5b4bd6fd0b2e10a468bf075fc5346ec8, type: 3}
+  - {fileID: 6270777320419372606, guid: 5c8ca991cafbeb6429f023a2480082a3, type: 3}
+  - {fileID: 4982014223510413469, guid: da3a49178e448a449bd6f4a899a7e943, type: 3}
+  - {fileID: 6737205399715103811, guid: fa2c855bc6f558a4bb8870a0d0b9a414, type: 3}
+  - {fileID: 7157559831719486283, guid: 3119a947315ebac4eb7fc1f2d0c09a33, type: 3}
+  - {fileID: 1279007390153972425, guid: f7e0fb18976222745a8dfce354f57c7f, type: 3}
+  - {fileID: 8041237057903762093, guid: 562e97a1e7691fa46a845f42be38b94f, type: 3}
+  - {fileID: 416576865703260802, guid: ef4a4fcaea03108409eaf6a1f22ea682, type: 3}
 --- !u!1001 &3361464673357039473
 PrefabInstance:
   m_ObjectHideFlags: 0

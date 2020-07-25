@@ -114,22 +114,22 @@ public class NeedleOperation : MonoBehaviour
 
         other.AddComponent<BubbleBlast>();
         
-        yield return new WaitForSeconds(1.0f);
+        //yield return new WaitForSeconds(1.0f);
 
-        foreach (var obj in bubbleList)
-        {
-            if(obj == other)
-            {
-                continue;
-            }
+        //foreach (var obj in bubbleList)
+        //{
+        //    if(obj == other)
+        //    {
+        //        continue;
+        //    }
 
-            if(obj == null)
-            {
-                continue;
-            }
+        //    if(obj == null)
+        //    {
+        //        continue;
+        //    }
 
-            obj.AddComponent<BubbleBlast>();
-        }
+        //    obj.AddComponent<BubbleBlast>();
+        //}
     }
 
     // Update is called once per frame
