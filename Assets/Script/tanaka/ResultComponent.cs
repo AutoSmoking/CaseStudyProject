@@ -14,7 +14,7 @@ public class ResultComponent : MonoBehaviour
     public PauseManager PauseManager;
     public bool AxisTrg = false;
     public int NowButton;
-    public Animation[] buttonanimation;
+    public Animator[] buttonanimation;
 
     void Awake()
     {
@@ -26,7 +26,6 @@ public class ResultComponent : MonoBehaviour
         }
         else
         {
-
             Destroy(gameObject);
         }
 
@@ -39,9 +38,9 @@ public class ResultComponent : MonoBehaviour
         button = new Button[2];
         button[0] = GameObject.Find("Canvas/NextStage").GetComponent<Button>();
         button[1] = GameObject.Find("Canvas/StageSelect").GetComponent<Button>();
-        //buttonanimation = new Animation[2];
-        //buttonanimation[0] = GameObject.Find("Canvas/NextStage").GetComponent<Animation>();
-        //buttonanimation[1] = GameObject.Find("Canvas/StageSelect").GetComponent<Animation>();
+        buttonanimation = new Animator[2];
+        buttonanimation[0] = button[0].GetComponent<Animator>();
+        buttonanimation[1] = button[1].GetComponent<Animator>();
 
         //canvas = GameObject.GetComponentInChildren<GameObject>();
         canvas.SetActive(false);
@@ -66,6 +65,7 @@ public class ResultComponent : MonoBehaviour
             buttonflag = true;
             PauseManager.ChangeScene = true;
             PauseManager.StopStage();
+            buttonanimation[NowButton].SetBool("ScaleChange", true);
 
             List<string> a = SEManager.Instance.GetCurrentAudioNames();
             for (int i = 0; i < a.Count; i++)
@@ -86,9 +86,10 @@ public class ResultComponent : MonoBehaviour
         if (scene.GameFrag == true && buttonflag == true)
         {
             //移動
-            if ((Input.GetAxis(Controll.十字キー左右.ToString()) <= -1) && AxisTrg == false)
-            {
-                AxisTrg = true;
+            //if ((Input.GetAxis(Controll.十字キー左右.ToString()) <= -1) && AxisTrg == false)
+            if ((Input.GetAxis(Controll.十字キー上下.ToString()) >= 1) && AxisTrg == false)
+                {
+                    AxisTrg = true;
                 NowButton--;
                 if (NowButton < 0)
                 {
@@ -99,7 +100,8 @@ public class ResultComponent : MonoBehaviour
                     SEManager.Instance.Play(PauseManager.Scene.EnterClip);
                 }
             }
-            if ((Input.GetAxis(Controll.十字キー左右.ToString()) >= 1) && AxisTrg == false)
+            //if ((Input.GetAxis(Controll.十字キー左右.ToString()) >= 1) && AxisTrg == false)
+            if ((Input.GetAxis(Controll.十字キー上下.ToString()) <= -1) && AxisTrg == false)
             {
                 AxisTrg = true;
                 NowButton++;
@@ -112,8 +114,11 @@ public class ResultComponent : MonoBehaviour
                     SEManager.Instance.Play(PauseManager.Scene.EnterClip);
                 }
             }
-            if ((Input.GetAxis(Controll.十字キー左右.ToString()) <= 0.5 &&
-                Input.GetAxis(Controll.十字キー左右.ToString()) >= -0.5) &&
+            //if ((Input.GetAxis(Controll.十字キー左右.ToString()) <= 0.5 &&
+            //    Input.GetAxis(Controll.十字キー左右.ToString()) >= -0.5) &&
+            //    AxisTrg)
+            if ((Input.GetAxis(Controll.十字キー上下.ToString()) <= 0.5 &&
+                Input.GetAxis(Controll.十字キー上下.ToString()) >= -0.5) &&
                 AxisTrg)
             {
                 AxisTrg = false;
@@ -122,24 +127,12 @@ public class ResultComponent : MonoBehaviour
             //ボタンセット
             button[NowButton].Select();
 
-            //for (int i = 0; i < button.Length; i++)
-            //{
-            //    if (i == NowButton)
-            //    {
-            //        if (!button[i].GetComponent<Animation>().isPlaying)
-            //        {
-            //            buttonanimation[i].enabled = true;
-            //            buttonanimation[i].Play();
-            //            Debug.Log("play" + i);
-            //        }
-            //    }
-            //    else
-            //    {
-            //        Debug.Log("stop" + i);
-            //        buttonanimation[i].Stop();
-            //        buttonanimation[i].enabled = false;
-            //    }
-            //}
+            for (int i = 0; i < buttonanimation.Length; i++)
+            {
+                buttonanimation[i].SetBool("ScaleChange", false);
+            }
+            buttonanimation[NowButton].SetBool("ScaleChange", true);
+
         }
     }
 

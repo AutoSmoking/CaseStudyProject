@@ -24,13 +24,24 @@ public class PauseManager : MonoBehaviour
     static public PauseManager instance;
     public bool PauseFlag = false;
     public GameObject canvas;
+    public GameObject Explanation1;
+    public GameObject Explanation2;
     public Button[] button;
+    public Button[] button_Ex1;
+    public Button[] button_Ex2;
+    public Animator[] Ani;
+    public Animator[] Ani_Ex1;
+    public Animator[] Ani_Ex2;
+
     public SceneComponent Scene;
     public bool ChangeScene = false;
     bool AxisTrg = false;
     public int NowButton = 0;
     public bool ResetNow = false;
     public List<GameObject> BubbleList;
+    private int SetNumber;
+    private int pattern;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,12 +57,44 @@ public class PauseManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        pattern = 0;
+
         PauseFlag = false;
         canvas = transform.Find("Canvas").gameObject;
-        button= new Button[3];
+        Explanation1 = transform.Find("Explanation1").gameObject;
+        Explanation2 = transform.Find("Explanation2").gameObject;
+        Explanation1.SetActive(false);
+        Explanation2.SetActive(false);
+
+        button = new Button[5];
         button[0] = transform.Find("Canvas/Back").GetComponent<Button>();
         button[1] = transform.Find("Canvas/Reset").GetComponent<Button>();
         button[2] = transform.Find("Canvas/StageSelect").GetComponent<Button>();
+        button[3] = transform.Find("Canvas/0").GetComponent<Button>();
+        button[4] = transform.Find("Canvas/1").GetComponent<Button>();
+
+        button_Ex1 = new Button[2];
+        button_Ex2 = new Button[2];
+
+        button_Ex1[0] = transform.Find("Explanation1/0").GetComponent<Button>();
+        button_Ex1[1] = transform.Find("Explanation1/1").GetComponent<Button>();
+        button_Ex2[0] = transform.Find("Explanation2/0").GetComponent<Button>();
+        button_Ex2[1] = transform.Find("Explanation2/1").GetComponent<Button>();
+
+        Ani = new Animator[5];
+        Ani[0] = button[0].GetComponent<Animator>();
+        Ani[1] = button[1].GetComponent<Animator>();
+        Ani[2] = button[2].GetComponent<Animator>();
+        Ani[3] = button[3].GetComponent<Animator>();
+        Ani[4] = button[4].GetComponent<Animator>();
+
+        Ani_Ex1 = new Animator[2];
+        Ani_Ex1[0] = button_Ex1[0].GetComponent<Animator>();
+        Ani_Ex1[1] = button_Ex1[1].GetComponent<Animator>();
+        Ani_Ex2 = new Animator[2];
+        Ani_Ex2[0] = button_Ex2[0].GetComponent<Animator>();
+        Ani_Ex2[1] = button_Ex2[1].GetComponent<Animator>();
+
         canvas.SetActive(false);
         Scene = GameObject.Find("SceneManager").GetComponent<SceneComponent>();
     }
@@ -71,6 +114,7 @@ public class PauseManager : MonoBehaviour
                 StopStage();
                 canvas.SetActive(true);
                 button[NowButton].Select();
+                Ani[NowButton].SetBool("ScaleChange", true);
                 //Debug.Log("Selected");
             }
             else
@@ -86,62 +130,130 @@ public class PauseManager : MonoBehaviour
             //AxisTrg = false;
 
             //移動
-            //if ((Input.GetAxis(Controll.十字キー左右.ToString()) <= -1) && AxisTrg == false)
-            //{
-            //    AxisTrg = true;
-            //    if (NowButton != 1)
-            //    {
-            //        NowButton = 1;
-            //        SEManager.Instance.Play(Scene.EnterClip);
-            //    }
-            //}
-            //if ((Input.GetAxis(Controll.十字キー左右.ToString()) >= 1) && AxisTrg == false)
-            //{
-            //    AxisTrg = true;
-            //    if (NowButton == 1)
-            //    {
-            //        NowButton = 0;
-            //        SEManager.Instance.Play(Scene.EnterClip);
-            //    }
-            //}
-            if ((Input.GetAxis(Controll.十字キー上下.ToString()) <= -1) && AxisTrg == false)
+            if ((Input.GetAxis(Controll.十字キー左右.ToString()) <= -1) && AxisTrg == false)
             {
                 AxisTrg = true;
-                NowButton++;
-                if (NowButton >= 3)
+                if (pattern == 0)
                 {
-                    NowButton = 2;
+                    if (NowButton != 3)
+                    {
+                        SetNumber = NowButton;
+                        NowButton = 4;
+                        SEManager.Instance.Play(Scene.EnterClip);
+                    }
+                    else
+                    {
+                        NowButton = SetNumber;
+                        SEManager.Instance.Play(Scene.EnterClip);
+                    }
                 }
                 else
                 {
+                    NowButton = 1;
                     SEManager.Instance.Play(Scene.EnterClip);
                 }
-                //if (NowButton == 1 || NowButton == 0) 
-                //{
-                //    NowButton = 2;
-                //    SEManager.Instance.Play(Scene.EnterClip);
-                //}
             }
-            if ((Input.GetAxis(Controll.十字キー上下.ToString()) >= 1) && AxisTrg == false)
+            if ((Input.GetAxis(Controll.十字キー左右.ToString()) >= 1) && AxisTrg == false)
             {
                 AxisTrg = true;
-                NowButton--;
-                if (NowButton < 0)
+                if (pattern == 0)
+                {
+                    if (NowButton != 4)
+                    {
+                        SetNumber = NowButton;
+                        NowButton = 3;
+                        SEManager.Instance.Play(Scene.EnterClip);
+                    }
+                    else
+                    {
+                        NowButton = SetNumber;
+                        SEManager.Instance.Play(Scene.EnterClip);
+                    }
+                }
+                else
                 {
                     NowButton = 0;
-                }
-                else
-                {
                     SEManager.Instance.Play(Scene.EnterClip);
                 }
-                //if (NowButton == 2 || NowButton == 1) 
-                //{
-                //    NowButton = 0;
-                //    SEManager.Instance.Play(Scene.EnterClip);
-                //}
+            }
+            if (pattern == 0)
+            {
+
+                if ((Input.GetAxis(Controll.十字キー上下.ToString()) <= -1) && AxisTrg == false)
+                {
+                    AxisTrg = true;
+                    NowButton++;
+                    if (NowButton >= 3)
+                    {
+                        NowButton = 2;
+                    }
+                    else
+                    {
+                        SEManager.Instance.Play(Scene.EnterClip);
+                    }
+                    //if (NowButton == 1 || NowButton == 0) 
+                    //{
+                    //    NowButton = 2;
+                    //    SEManager.Instance.Play(Scene.EnterClip);
+                    //}
+                }
+                if ((Input.GetAxis(Controll.十字キー上下.ToString()) >= 1) && AxisTrg == false)
+                {
+                    AxisTrg = true;
+                    NowButton--;
+                    if (NowButton < 0)
+                    {
+                        NowButton = 0;
+                    }
+                    else if (NowButton == 3)
+                    {
+                        NowButton = 0;
+                        SEManager.Instance.Play(Scene.EnterClip);
+                    }
+                    else
+                    {
+                        SEManager.Instance.Play(Scene.EnterClip);
+                    }
+                    //if (NowButton == 2 || NowButton == 1) 
+                    //{
+                    //    NowButton = 0;
+                    //    SEManager.Instance.Play(Scene.EnterClip);
+                    //}
+                }
+            }
+            if (pattern == 0)
+            {
+                button[NowButton].Select();
+
+                for (int i = 0; i < 5; i++)
+                {
+                    Ani[i].SetBool("ScaleChange", false);
+                }
+
+                Ani[NowButton].SetBool("ScaleChange", true);
+            }else if (pattern == 1)
+            {
+                button_Ex1[NowButton].Select();
+
+                for (int i = 0; i < 2; i++)
+                {
+                    Ani_Ex1[i].SetBool("ScaleChange", false);
+                }
+
+                Ani_Ex1[NowButton].SetBool("ScaleChange", true);
+            }
+            else if (pattern == 2)
+            {
+                button_Ex2[NowButton].Select();
+
+                for (int i = 0; i < 2; i++)
+                {
+                    Ani_Ex2[i].SetBool("ScaleChange", false);
+                }
+
+                Ani_Ex2[NowButton].SetBool("ScaleChange", true);
             }
 
-            button[NowButton].Select();
         }
 
         if ((Input.GetAxis(Controll.十字キー左右.ToString()) <= 0.5 &&
@@ -304,5 +416,52 @@ public class PauseManager : MonoBehaviour
 
         ResetNow = true;
         return true;
+    }
+
+    public void PauseChange1()
+    {
+        if (NowButton == 0)
+        {
+            NowButton = 3;
+        }
+        else if (NowButton == 1)
+        {
+            NowButton = 4;
+        }
+
+        pattern = 0;
+        canvas.SetActive(true);
+        Explanation1.SetActive(false);
+        Explanation2.SetActive(false);
+    }
+    public void PauseChange2()
+    {
+        if (NowButton == 3)
+        {
+            NowButton = 0;
+        }else if (NowButton == 4)
+        {
+            NowButton = 1;
+        }
+        pattern = 1;
+        canvas.SetActive(false);
+        Explanation1.SetActive(true);
+        Explanation2.SetActive(false);
+    }
+    public void PauseChange3()
+    {
+        if (NowButton == 3)
+        {
+            NowButton = 0;
+        }
+        else if (NowButton == 4)
+        {
+            NowButton = 1;
+        }
+
+        pattern = 2;
+        canvas.SetActive(false);
+        Explanation1.SetActive(false);
+        Explanation2.SetActive(true);
     }
 }

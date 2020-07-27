@@ -14,6 +14,10 @@ public class SceneComponent : MonoBehaviour
 
     [SerializeField, Header("ゴール時にtrueにする")]
     public bool GameFrag;
+
+    [SerializeField, Header("ゲームオーバー時にtrueにする")]
+    public bool GameOverFlag;
+
     static public SceneComponent instance;
     public SceneName StageNameInstance;
     //public bool PauseFlag = false;
@@ -23,7 +27,12 @@ public class SceneComponent : MonoBehaviour
 
     public bool fade = false;
 
-    public GameObject Fadeobj = null;
+    [SerializeField, Header("フェードアニメーション")]
+    public GameObject Fadeobj_In = null;
+    public GameObject Fadeobj_Out = null;
+    public FadeAnim FadeAni_In;
+    //public FadeAnim FadeAni_Out;
+    public BubbleFadeOpe FadeAni_Out;
     public GameObject WhiteFadeobj = null;
     public bool WhiteFadeTrg = false;
     public bool AllFade = false;
@@ -33,6 +42,9 @@ public class SceneComponent : MonoBehaviour
     ResultComponent Result;
 
     public bool TitleFlag = false;
+    public bool FadeObjTrg = false;
+    //public bool FadeInTrg = false;
+
     void Awake()
     {
         if (instance == null)
@@ -54,6 +66,7 @@ public class SceneComponent : MonoBehaviour
     {
         SceneFlag = false;
         GameFrag = false;
+        GameOverFlag = false;
         StageNameInstance = instance.GetComponent<SceneName>();
         PauseManager = GameObject.Find("PauseManager").GetComponent<PauseManager>();
         WhiteFadeTrg = false;
@@ -62,10 +75,15 @@ public class SceneComponent : MonoBehaviour
         BGMManager.Instance.Play(TitleAndSelectBGM);
 
         //フェード初期処理
-        if (Fadeobj != null)
+        if (Fadeobj_In != null&& Fadeobj_Out != null)
         {
-            Fadeobj.GetComponent<Canvas>().enabled = false;
-        }else
+            //Fadeobj.GetComponent<Canvas>().enabled = false;
+            Fadeobj_Out.GetComponent<Canvas>().enabled = false;
+            FadeAni_In = Fadeobj_In.GetComponent<FadeAnim>();
+            //FadeAni_Out = Fadeobj_Out.GetComponent<FadeAnim>();
+            FadeAni_Out = Fadeobj_Out.GetComponent<BubbleFadeOpe>();
+        }
+        else
         {
             Debug.Log("Error");
         }
@@ -82,13 +100,17 @@ public class SceneComponent : MonoBehaviour
 
         if(GetSceneNow() != "Title Scene" && GetSceneNow() != "StageSelect")
         {
-            if (PauseManager.BubbleChack())
+            //if (PauseManager.BubbleChack())
+            if(GameOverFlag)
             {
                 ResetStage();
             }
         }
 
-
+        //if (FadeInTrg && FadeObjTrg)
+        //{
+        //    FadeOut();
+        //}
         //if (SceneName != "Title Scene" && SceneName != "StageSelect")
         //{
 
@@ -143,10 +165,16 @@ public class SceneComponent : MonoBehaviour
         }
 
         //シーン読み込み中のロック解除
+        //if (PauseManager.ChangeScene == true &&
+        //    Fadeobj.GetComponent<BubbleFadeOpe>().isFadeIn == false &&
+        //    Fadeobj.GetComponent<BubbleFadeOpe>().isFadeOut == false &&
+        //    Fadeobj.GetComponent<Canvas>().enabled == false && !GameFrag)
         if (PauseManager.ChangeScene == true &&
-            Fadeobj.GetComponent<BubbleFadeOpe>().isFadeIn == false &&
-            Fadeobj.GetComponent<BubbleFadeOpe>().isFadeOut == false &&
-            Fadeobj.GetComponent<Canvas>().enabled == false&&!GameFrag)   
+            FadeAni_In.isFadeIn == false &&
+            FadeAni_In.isFadeOut == false &&
+            FadeAni_Out.isFadeIn == false &&
+            FadeAni_Out.isFadeOut == false &&
+            !GameFrag)   
         {
             Debug.Log("StopPausecon");
             PauseManager.ChangeScene = false;
@@ -156,8 +184,10 @@ public class SceneComponent : MonoBehaviour
 
         if (fade)
         {
-            if(Fadeobj.GetComponent<Canvas>().enabled == false)
-            {
+            //if (Fadeobj.GetComponent<Canvas>().enabled == false)
+            if (FadeAni_In.isFadeIn == true && FadeAni_Out.isFadeOut == false) 
+                {
+                Debug.Log("false");
                 fade = false;
             }
         }
@@ -178,14 +208,18 @@ public class SceneComponent : MonoBehaviour
                 if (SceneName != "Title Scene")
                 {
                     GameFrag = false;
-                    if (Fadeobj != null && fade == false && !WhiteFadeTrg)
+                    //if (Fadeobj != null && fade == false && !WhiteFadeTrg)
+                    if (fade == false && !WhiteFadeTrg)
                     {
                         if (WhiteFadeobj.GetComponent<FadeOut>().FadeTrgIn)
                         {
-                            Fadeobj.GetComponent<BubbleFadeOpe>().isFadeIn = false;
-                            Fadeobj.GetComponent<BubbleFadeOpe>().isFadeOut = false;
+                            //Fadeobj.GetComponent<BubbleFadeOpe>().isFadeIn = false;
+                            //Fadeobj.GetComponent<BubbleFadeOpe>().isFadeOut = false;
+                            FadeAni_In.isFadeIn = false;
+                            FadeAni_Out.isFadeOut = false;
                             fade = true;
                             FadeIn();
+                            Debug.Log("1");
                         }
                     }
                 }
@@ -201,12 +235,16 @@ public class SceneComponent : MonoBehaviour
             else
             {
                 GameFrag = false;
-                if (Fadeobj != null && fade == false && !WhiteFadeTrg)
+                //if (Fadeobj != null && fade == false && !WhiteFadeTrg)
+                if (fade == false && !WhiteFadeTrg)
                 {
-                    Fadeobj.GetComponent<BubbleFadeOpe>().isFadeIn = false;
-                    Fadeobj.GetComponent<BubbleFadeOpe>().isFadeOut = false;
+                    //Fadeobj.GetComponent<BubbleFadeOpe>().isFadeIn = false;
+                    //Fadeobj.GetComponent<BubbleFadeOpe>().isFadeOut = false;
+                    FadeAni_In.isFadeIn = false;
+                    FadeAni_Out.isFadeOut = false;
                     fade = true;
                     FadeIn();
+                    Debug.Log("2");
                 }
             }
 
@@ -224,7 +262,7 @@ public class SceneComponent : MonoBehaviour
             //}
             if (fade == true)
             {
-                if (GameObject.Find("FadeManager").GetComponent<BubbleFadeOpe>().isFadeOut == false)
+                if (FadeAni_Out.isFadeOut == false)
                 {
                     LoadScene(SceneName);
                 }
@@ -295,6 +333,8 @@ public class SceneComponent : MonoBehaviour
             }else if (fade)
             {
                 //fade = false;
+                Debug.Log("ai");
+                //FadeInTrg = true;
                 FadeOut();
             }
 
@@ -307,8 +347,10 @@ public class SceneComponent : MonoBehaviour
         //if (SceneName != "Title Scene" && SceneName != "StageSelect")
         else
         {
+            Debug.Log("a");
             //シーン読み込み完了後
             //fade = false;
+            //FadeInTrg = true;
             FadeOut();
             PauseManager.GetPauseObject();
             PauseManager.ChangeScene = true;
@@ -345,28 +387,39 @@ public class SceneComponent : MonoBehaviour
     public void ResetStage()
     {
         SceneFlag = true;
+        GameOverFlag = false;
         //SceneManager.LoadScene(SceneName);
     }
 
     void FadeIn()
     {
-        if (Fadeobj != null)
+        if (Fadeobj_In != null)
         {
-            Fadeobj.SetActive(true);
-            Fadeobj.GetComponent<BubbleFadeOpe>().isFadeOut = true;
+            FadeObjTrg = true;
+            Fadeobj_Out.SetActive(true);
+            FadeAni_Out.isFadeOut = true;
+            FadeAni_Out.isFadeIn = false;
         }
     }
     void FadeOut()
     {
-        if (Fadeobj != null)
+        if (Fadeobj_Out != null)
         {
-            Fadeobj.SetActive(true);
-            Fadeobj.GetComponent<BubbleFadeOpe>().isFadeIn = true;
+            Debug.Log("out");
+            FadeObjTrg = false;
+            //FadeInTrg = false;
+            FadeAni_Out.isFadeOut = false;
+            FadeAni_Out.isFadeIn = false;
+            Fadeobj_Out.GetComponent<Canvas>().enabled = false;
+            Fadeobj_Out.SetActive(false);
+
+            Fadeobj_In.SetActive(true);
+            FadeAni_In.isFadeIn = true;
         }
     }
     bool IsFadeEnd()
     {
-        if (Fadeobj.GetComponent<Canvas>().enabled == false)
+        if (FadeAni_In.isFadeIn == false && FadeAni_Out.isFadeOut == false && FadeObjTrg == false)  
         {
             return true;
         }
