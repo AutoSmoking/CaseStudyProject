@@ -37,7 +37,7 @@ public class BubbleOperation : MonoBehaviour
         }
     }
 
-    public static int BubbleNum = 1;//泡の合計結合数（うまく言語化できない・・・）
+    private int BubbleNum = 1;//泡の合計結合数（うまく言語化できない・・・）
 
     public bool DeathFlg = false;
 
@@ -45,7 +45,7 @@ public class BubbleOperation : MonoBehaviour
 
     public static bool DeathBubble3 = false;
 
-    bool DB3;
+    bool DB3 = false;
 
     bool OnBubble2 = false;
     bool OnBubble3 = false;
@@ -91,7 +91,7 @@ public class BubbleOperation : MonoBehaviour
             {
                 Destroy(Bubble2.transform.parent.gameObject);
 
-                DB3 = BubbleOperation.GetDB3Flag();
+                //DB3 = BubbleOperation.GetDB3Flag();
 
                 if (DB3 == true)
                 {
@@ -114,7 +114,7 @@ public class BubbleOperation : MonoBehaviour
             {
                 Destroy(Bubble3.transform.parent.gameObject);
 
-                DB3 = BubbleOperation.GetDB3Flag();
+                //DB3 = BubbleOperation.GetDB3Flag();
 
                 if (DeathBubble3 == true)
                 {
@@ -183,17 +183,26 @@ public class BubbleOperation : MonoBehaviour
     }
 
     //フラグのゲッター
-    public static bool GetDB3Flag()
+    public bool GetDB3Flag
     {
-        return DeathBubble3;
+        get
+        {
+            return DeathBubble3;
+        }
     }
 
-    //泡の結合数のゲッター
-    public static int getBubbleNum()
-    {
-        return BubbleNum;
-    }
 
+    //泡の結合数のプロパティ
+    public int GetBubbleNum
+    {
+        get {
+            return BubbleNum;
+        }
+        private set {
+            BubbleNum = value;
+        }
+
+    }
 
     // Update is called once per frame
     void Update()
@@ -246,7 +255,7 @@ public class BubbleOperation : MonoBehaviour
             FloatAcceleration = MoveAcceleration;
             //Debug.Log("StageMoveNow");
         }
-        
+
     }
 
     void FixedUpdate()

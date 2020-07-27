@@ -11,26 +11,126 @@ public class KeyOperaion : MonoBehaviour
 
     KeyType keyType = KeyType.二分割;
 
-    private int keyIndex = 0;
-    public int KeyIndex
+    // 今持っている鍵のモデル
+    GameObject Key = null;
+
+    [SerializeField,Header("鍵のモデルを格納")]
+    List<GameObject> KeyModel = new List<GameObject>() { };
+
+    // Start is called before the first frame update
+    void Awake()
     {
-        get
+        // ここに鍵のモデルを子オブジェクトにするというしょりをいれる
+        switch(this.gameObject.tag)
         {
-            return keyIndex;
+            case "1":
+                {
+                    if (keyType == KeyType.二分割)
+                    {
+                        Key = Instantiate(KeyModel[0], this.transform);
+                    }
+                    else
+                    {
+                        Key = Instantiate(KeyModel[2], this.transform);
+                    }
+                }
+                break;
+
+            case "2":
+                {
+                    if (keyType == KeyType.二分割)
+                    {
+                        Key = Instantiate(KeyModel[1], this.transform);
+                    }
+                    else
+                    {
+                        Key = Instantiate(KeyModel[3], this.transform);
+                    }
+                }
+                break;
+
+            case "3":
+                {
+                    Key = Instantiate(KeyModel[4], this.transform);
+                }
+                break;
         }
     }
 
-
-
-    // Start is called before the first frame update
-    void Start()
+    // Update is called once per frame
+    void FixedUpdate()
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-        
+
+        /* 泡は一番に統合されるので無し */
+        //if(collision.gameObject.tag == "1")
+        //{
+        //}
+
+        if (collision.gameObject.tag == "2")
+        {
+            switch (this.gameObject.tag)
+            {
+                case "1":
+                    {
+                        // ここで鍵の子オブジェクトを変える
+                        Destroy(Key);
+
+                        if(keyType == KeyType.二分割)
+                        {
+                            Key = Instantiate(KeyModel[8], this.transform);
+                        }
+                        else
+                        {
+                            Key = Instantiate(KeyModel[5], this.transform);
+                        }
+                    }
+                    break;
+
+                //case "2":
+                //    {
+                //        // 同じタグなので無し
+                //    }
+                //    break;
+
+                //case "3":
+                //    {
+                //        // 統合されるので無し
+                //    }
+                //    break;
+            }
+        }
+        else if (collision.gameObject.tag == "3")
+        {
+            switch (this.gameObject.tag)
+            {
+                case "1":
+                    {
+                        // ここで鍵の子オブジェクトを変える
+                        Destroy(Key);
+
+                        Key = Instantiate(KeyModel[6], this.transform);
+                    }
+                    break;
+
+                case "2":
+                    {
+                        // ここで鍵の子オブジェクトを変える
+                        Destroy(Key);
+
+                        Key = Instantiate(KeyModel[7], this.transform);
+                    }
+                    break;
+
+                //case "3":
+                //    {
+                //        // 同じタグなので無し
+                //    }
+                //    break;
+            }
+        }
     }
 }

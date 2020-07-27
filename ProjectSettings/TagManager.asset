@@ -18,6 +18,7 @@ TagManager:
   - warp
   - fade
   - UI
+  - Key
   layers:
   - Default
   - TransparentFX
@@ -33,7 +34,7 @@ TagManager:
   - Light
   - Fade
   - StageUI
-  - 
+  - Key
   - 
   - 
   - 
