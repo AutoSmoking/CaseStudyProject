@@ -146,6 +146,7 @@ public class AnimationComponent : MonoBehaviour
                 Uptrg = true;
                 SEManager.Instance.Play(Scene.EnterClip);
                 Debug.Log("UP");
+                GameObject.Find("戻る").GetComponent<Animator>().SetBool("ScaleChange", true);
             }
             if ((Input.GetAxisRaw(Controll.十字キー上下.ToString()) <= -1) && trg == false && Uptrg) 
             {
@@ -153,6 +154,7 @@ public class AnimationComponent : MonoBehaviour
                 Uptrg = false;
                 SEManager.Instance.Play(Scene.EnterClip);
                 Debug.Log("Down");
+                GameObject.Find("戻る").GetComponent<Animator>().SetBool("ScaleChange", false);
             }
 
             if (Uptrg == false)
