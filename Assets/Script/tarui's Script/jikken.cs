@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class jikken : MonoBehaviour
 {
-    BubbleFadeOpe fade;
+    [SerializeField]
+    GameObject obj;
 
     // Start is called before the first frame update
     void Start()
     {
-        fade = this.GetComponent<BubbleFadeOpe>();
+
     }
 
     // Update is called once per frame
@@ -17,12 +18,10 @@ public class jikken : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            fade.isFadeIn = true;
-        }
+            KeyUse use;
+            use = obj.transform.GetChild(0).gameObject.AddComponent<KeyUse>();
 
-        if(Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            fade.isFadeOut = true;
+            use.Init(this.gameObject);
         }
     }
 }

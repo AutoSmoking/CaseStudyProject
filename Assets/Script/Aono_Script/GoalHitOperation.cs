@@ -17,6 +17,8 @@ public class GoalHitOperation : MonoBehaviour
 
     bool GameFlg = false;
 
+    bool HitFlg = false;
+
     // ゴールできるようになったらtrue
     [System.NonSerialized]
     public bool GoalFlg = false;
@@ -33,6 +35,20 @@ public class GoalHitOperation : MonoBehaviour
 
     // あかりを強くする
     Light light;
+
+    bool clearFlg = false;
+    public bool ClearFlg
+    {
+        get
+        {
+            return clearFlg;
+        }
+
+        set
+        {
+            clearFlg = value;
+        }
+    }
 
     // Start is called before the first frame update
 
@@ -84,19 +100,34 @@ public class GoalHitOperation : MonoBehaviour
 
             ani.Play("takara_opensoso");
         }
+
+        if(clearFlg)
+        {
+            CreateObjects();
+            clearFlg = false;
+        }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if(GoalFlg && other.gameObject.layer == LayerMask.NameToLayer("Bubble"))
+        if(GoalFlg && !HitFlg && other.gameObject.layer == LayerMask.NameToLayer("Bubble"))
         {
             GameFlg = SceneManager.GetComponent<SceneComponent>().GameFrag;
 
             if (!GameFlg)
             {
                 Debug.Log("GoalHit");
-                CreateObjects();
+                //CreateObjects();
+
+                other.transform.GetChild(3).GetComponent<UpAngle>().enabled = false;
+                other.transform.GetChild(3).GetChild(0).GetComponent<Animator>().enabled = false;
+
+                KeyUse use;
+                use = other.transform.GetChild(3).gameObject.AddComponent<KeyUse>();
+                use.Init(this.gameObject);
             }
+
+            HitFlg = true;
         }
     }
 
