@@ -99,6 +99,6 @@ public class BubbleBlast : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         // ここでフェードのフラグを立てる
-
+        GameObject.Find("SceneManager").GetComponent<SceneComponent>().GameOverFlag = true;
     }
 }

@@ -67,12 +67,16 @@ public class CameraOpe : MonoBehaviour
             foreach (var cams in cameras)
             {
                 Camera camera = cams.GetComponent<Camera>();
-                Vector3 pos = this.transform.position;
-                pos.z = cams.transform.position.z;
 
-                cams.transform.position = pos;
+                if (camera != null)
+                {
+                    Vector3 pos = this.transform.position;
+                    pos.z = cams.transform.position.z;
 
-                camera.orthographicSize = cam.orthographicSize;
+                    cams.transform.position = pos;
+
+                    camera.orthographicSize = cam.orthographicSize;
+                }
             }
         }
         else if (Bubble[0].GetComponent<BubbleOperation>().isFloat)

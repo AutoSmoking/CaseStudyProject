@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.Animations;
 
 public class KeyOperaion : MonoBehaviour
 {
@@ -16,6 +17,11 @@ public class KeyOperaion : MonoBehaviour
 
     [SerializeField,Header("鍵のモデルを格納")]
     List<GameObject> KeyModel = new List<GameObject>() { };
+
+    [SerializeField, Header("鍵のアニメーション")]
+    AnimatorController aniCon;
+
+    Animator anim;
 
     // Start is called before the first frame update
     void Awake()
@@ -55,6 +61,10 @@ public class KeyOperaion : MonoBehaviour
                 }
                 break;
         }
+
+        anim = Key.transform.GetChild(0).gameObject.AddComponent<Animator>();
+        anim.runtimeAnimatorController = aniCon;
+        anim.Play(0);
     }
 
     // Update is called once per frame
@@ -87,6 +97,10 @@ public class KeyOperaion : MonoBehaviour
                         {
                             Key = Instantiate(KeyModel[5], this.transform);
                         }
+
+                        anim = Key.transform.GetChild(0).gameObject.AddComponent<Animator>();
+                        anim.runtimeAnimatorController = aniCon;
+                        anim.Play(0);
                     }
                     break;
 
@@ -113,6 +127,10 @@ public class KeyOperaion : MonoBehaviour
                         Destroy(Key);
 
                         Key = Instantiate(KeyModel[6], this.transform);
+
+                        anim = Key.transform.GetChild(0).gameObject.AddComponent<Animator>();
+                        anim.runtimeAnimatorController = aniCon;
+                        anim.Play(0);
                     }
                     break;
 
@@ -122,6 +140,10 @@ public class KeyOperaion : MonoBehaviour
                         Destroy(Key);
 
                         Key = Instantiate(KeyModel[7], this.transform);
+
+                        anim = Key.transform.GetChild(0).gameObject.AddComponent<Animator>();
+                        anim.runtimeAnimatorController = aniCon;
+                        anim.Play(0);
                     }
                     break;
 
