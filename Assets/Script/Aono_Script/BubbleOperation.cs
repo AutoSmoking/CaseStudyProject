@@ -107,6 +107,8 @@ public class BubbleOperation : MonoBehaviour
                 );
 
                 BubbleNum = BubbleNum + 1;
+
+                SEManager.Instance.Play("SE_BubbleSex");
             }
 
             //3と衝突した場合
@@ -130,6 +132,8 @@ public class BubbleOperation : MonoBehaviour
                 );
 
                 BubbleNum = BubbleNum + 1;
+
+                SEManager.Instance.Play("SE_BubbleSex");
             }
         }
 
@@ -151,6 +155,8 @@ public class BubbleOperation : MonoBehaviour
                 DeathBubble3 = true;
 
                 BubbleNum = BubbleNum + 1;
+
+                SEManager.Instance.Play("SE_BubbleSex");
             }
         }
     }
