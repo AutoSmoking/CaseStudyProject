@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.Animations;
 
 public class KeyOperaion : MonoBehaviour
 {
@@ -19,7 +18,7 @@ public class KeyOperaion : MonoBehaviour
     List<GameObject> KeyModel = new List<GameObject>() { };
 
     [SerializeField, Header("鍵のアニメーション")]
-    AnimatorController aniCon;
+    RuntimeAnimatorController aniCon;
 
     Animator anim;
 

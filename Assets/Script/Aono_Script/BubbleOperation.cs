@@ -161,32 +161,32 @@ public class BubbleOperation : MonoBehaviour
         }
     }
 
-    void OnTriggerStay(Collider other)
-    {
-        if (this.gameObject.CompareTag("1"))
-        {
-            if (other.gameObject.tag == "2")
-            {
-                transform.position = Vector3.Lerp(Bub1Vec, Bub2Vec, 0.03f);
-            }
-            if (other.gameObject.tag == "3")
-            {
-                transform.position = Vector3.Lerp(Bub1Vec, Bub3Vec, 0.03f);
-            }
-        }
+    //void OnTriggerStay(Collider other)
+    //{
+    //    if (this.gameObject.CompareTag("1"))
+    //    {
+    //        if (other.gameObject.tag == "2")
+    //        {
+    //            transform.position = Vector3.Lerp(Bub1Vec, Bub2Vec, 0.03f);
+    //        }
+    //        if (other.gameObject.tag == "3")
+    //        {
+    //            transform.position = Vector3.Lerp(Bub1Vec, Bub3Vec, 0.03f);
+    //        }
+    //    }
 
-        if (this.gameObject.CompareTag("2"))
-        {
-            //if (other.gameObject.tag == "1")
-            //{
-            //    transform.position = Vector3.Lerp(Bub2Vec, Bub1Vec, 0.01f);
-            //}
-            if (other.gameObject.tag == "3")
-            {
-                transform.position = Vector3.Lerp(Bub1Vec, Bub3Vec, 0.03f);
-            }
-        }
-    }
+    //    if (this.gameObject.CompareTag("2"))
+    //    {
+    //        //if (other.gameObject.tag == "1")
+    //        //{
+    //        //    transform.position = Vector3.Lerp(Bub2Vec, Bub1Vec, 0.01f);
+    //        //}
+    //        if (other.gameObject.tag == "3")
+    //        {
+    //            transform.position = Vector3.Lerp(Bub1Vec, Bub3Vec, 0.03f);
+    //        }
+    //    }
+    //}
 
     //フラグのゲッター
     public bool GetDB3Flag
