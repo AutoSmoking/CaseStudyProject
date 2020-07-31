@@ -428,7 +428,7 @@ public class PauseManager : MonoBehaviour
         {
             NowButton = 4;
         }
-
+        SEManager.Instance.Play(Scene.EnterClip);
         pattern = 0;
         canvas.SetActive(true);
         Explanation1.SetActive(false);
@@ -443,6 +443,7 @@ public class PauseManager : MonoBehaviour
         {
             NowButton = 1;
         }
+        SEManager.Instance.Play(Scene.EnterClip);
         pattern = 1;
         canvas.SetActive(false);
         Explanation1.SetActive(true);
@@ -458,7 +459,7 @@ public class PauseManager : MonoBehaviour
         {
             NowButton = 1;
         }
-
+        SEManager.Instance.Play(Scene.EnterClip);
         pattern = 2;
         canvas.SetActive(false);
         Explanation1.SetActive(false);
