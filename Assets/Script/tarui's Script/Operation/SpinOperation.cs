@@ -103,6 +103,7 @@ public class SpinOperation : MonoBehaviour
         BubbleObj.Add(GameObject.FindGameObjectWithTag("3"));
         BubbleObj.AddRange(GameObject.FindGameObjectsWithTag("taru"));
         BubbleObj.AddRange(GameObject.FindGameObjectsWithTag("fish"));
+        BubbleObj.AddRange(GameObject.FindGameObjectsWithTag("ankou"));
     }
 
     private void FixedUpdate()
@@ -345,6 +346,11 @@ public class SpinOperation : MonoBehaviour
             {
                 foreach (var obj in StageObj)
                 {
+                    if(obj.tag == "fish" || obj.tag == "ankou")
+                    {
+                        continue;
+                    }
+
                     if (obj == collider.gameObject)
                     {
                         /* 回転の挙動 */

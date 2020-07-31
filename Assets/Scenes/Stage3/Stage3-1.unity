@@ -126,7 +126,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 177918401}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 477068523184780464, guid: 2863ac0177c8b96438b94473003a00c6,
         type: 3}
@@ -171,7 +171,7 @@ PrefabInstance:
     - target: {fileID: 925343785640902062, guid: 2863ac0177c8b96438b94473003a00c6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 925343785640902062, guid: 2863ac0177c8b96438b94473003a00c6,
         type: 3}
@@ -195,12 +195,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2863ac0177c8b96438b94473003a00c6, type: 3}
---- !u!4 &37476884 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 925343785640902062, guid: 2863ac0177c8b96438b94473003a00c6,
-    type: 3}
-  m_PrefabInstance: {fileID: 37476883}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &37476885 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2626936667782402460, guid: 2863ac0177c8b96438b94473003a00c6,
@@ -236,7 +230,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1313356204}
-  - {fileID: 37476884}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -683,12 +676,6 @@ PrefabInstance:
 --- !u!4 &389176162 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1126735106357502371, guid: ac4f974845861c042a1829aafca1cb64,
-    type: 3}
-  m_PrefabInstance: {fileID: 389176161}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &389176163 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3609852128041694079, guid: ac4f974845861c042a1829aafca1cb64,
     type: 3}
   m_PrefabInstance: {fileID: 389176161}
   m_PrefabAsset: {fileID: 0}
@@ -1860,7 +1847,7 @@ PrefabInstance:
     - target: {fileID: 7639970340101751101, guid: 79260046fe4d4f14cb5086c48d884c51,
         type: 3}
       propertyPath: StageObj.Array.size
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7639970340101751101, guid: 79260046fe4d4f14cb5086c48d884c51,
         type: 3}
@@ -1891,7 +1878,7 @@ PrefabInstance:
         type: 3}
       propertyPath: StageObj.Array.data[0]
       value: 
-      objectReference: {fileID: 1670154540}
+      objectReference: {fileID: 635484166}
     - target: {fileID: 7639970340101751101, guid: 79260046fe4d4f14cb5086c48d884c51,
         type: 3}
       propertyPath: StageObj.Array.data[1]
@@ -2571,12 +2558,6 @@ PrefabInstance:
       objectReference: {fileID: 393853889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21b95ae63447e904d89328801cb657a7, type: 3}
---- !u!1 &1313356203 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7508226353106337358, guid: 21b95ae63447e904d89328801cb657a7,
-    type: 3}
-  m_PrefabInstance: {fileID: 1313356202}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1313356204 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8320070110349831281, guid: 21b95ae63447e904d89328801cb657a7,
@@ -3115,7 +3096,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-91578
+  m_Name: pb_Mesh-351946
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3704,12 +3685,6 @@ PrefabInstance:
 --- !u!4 &1670154539 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6926228590368173556, guid: 1fd0408d3a0b5304c808a39e717bfc7b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1670154538}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1670154540 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6926228590368173552, guid: 1fd0408d3a0b5304c808a39e717bfc7b,
     type: 3}
   m_PrefabInstance: {fileID: 1670154538}
   m_PrefabAsset: {fileID: 0}
@@ -4428,7 +4403,7 @@ PrefabInstance:
         type: 3}
       propertyPath: StageObj.Array.data[0]
       value: 
-      objectReference: {fileID: 1313356203}
+      objectReference: {fileID: 177918400}
     - target: {fileID: 2267886859567542972, guid: 8e779debe9711584284706adb5d34090,
         type: 3}
       propertyPath: LeftSpinX
@@ -4807,7 +4782,7 @@ PrefabInstance:
         type: 3}
       propertyPath: StageObj.Array.data[0]
       value: 
-      objectReference: {fileID: 389176163}
+      objectReference: {fileID: 1612870175}
     - target: {fileID: 7837262783028762519, guid: ec0d53c6111d0ab4da4f79f3705d4755,
         type: 3}
       propertyPath: LeftSpinX
