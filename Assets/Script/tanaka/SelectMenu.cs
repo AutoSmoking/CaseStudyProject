@@ -140,7 +140,7 @@ public class SelectMenu : MonoBehaviour
                         SEManager.Instance.Play(Scene.EnterClip);
                     }
 
-                    if ((Input.GetAxis(Controll.十字キー左右.ToString()) <= -1) && AxisTrg == false)
+                    if ((Input.GetAxis(Controll.十字キー左右.ToString()) >= 1) && AxisTrg == false)
                     {
                         AxisTrg = true;
                         SEManager.Instance.Play(Scene.EnterClip);
@@ -161,7 +161,7 @@ public class SelectMenu : MonoBehaviour
                             childnumber = 0;
                         }
                     }
-                    if ((Input.GetAxis(Controll.十字キー左右.ToString()) >= 1) && AxisTrg == false)
+                    if ((Input.GetAxis(Controll.十字キー左右.ToString()) <= -1) && AxisTrg == false)
                     {
                         AxisTrg = true;
                         SEManager.Instance.Play(Scene.EnterClip);
