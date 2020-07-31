@@ -21,6 +21,9 @@ public class MiniMapOpe : MonoBehaviour
     [SerializeField, Header("ハリセンボン用のUI")]
     Transform UIF = null;
 
+    [SerializeField, Header("アンコウ用のUI")]
+    Transform UIA = null;
+
     [SerializeField, Header("シャコガイ用のUI")]
     Transform UIS = null;
 
@@ -39,6 +42,12 @@ public class MiniMapOpe : MonoBehaviour
     List<GameObject> NeedleFish = new List<GameObject>() { };
     // UI用
     List<GameObject> NeedleFishsUI = new List<GameObject>() { };
+
+
+    // アンコウ
+    List<GameObject> ankou = new List<GameObject>() { };
+    // UI用
+    List<GameObject> ankouUI = new List<GameObject>() { };
 
 
     // シャコガイ
@@ -60,6 +69,9 @@ public class MiniMapOpe : MonoBehaviour
         // ハリセンボンを格納
         NeedleFish.AddRange(GameObject.FindGameObjectsWithTag("fish"));
 
+        // アンコウを格納
+        ankou.AddRange(GameObject.FindGameObjectsWithTag("ankou"));
+
         // シャコガイを格納
         syako.AddRange(GameObject.FindGameObjectsWithTag("warp"));
         
@@ -77,6 +89,12 @@ public class MiniMapOpe : MonoBehaviour
         for (int i = 0; i < NeedleFish.Count; i++)
         {
             NeedleFishsUI.Add(GameObject.Instantiate(UIF.gameObject, this.transform));
+        }
+
+        // アンコウのUIを生成
+        for (int i = 0; i < ankou.Count; i++)
+        {
+            ankouUI.Add(GameObject.Instantiate(UIA.gameObject, this.transform));
         }
 
         // 宝箱のUIを生成
@@ -124,6 +142,21 @@ public class MiniMapOpe : MonoBehaviour
             }
 
             MiniMapFunction(NeedleFish[i].transform, NeedleFishsUI[i].transform);
+        }
+
+        // アンコウ
+        for (int i = 0; i < ankou.Count; i++)
+        {
+            if (ankou[i] == null)
+            {
+                if (ankouUI[i].gameObject.activeInHierarchy)
+                {
+                    ankouUI[i].gameObject.SetActive(false);
+                }
+                continue;
+            }
+
+            MiniMapFunction(ankou[i].transform, ankouUI[i].transform);
         }
 
         // シャコガイ

@@ -19,6 +19,7 @@ TagManager:
   - fade
   - UI
   - Key
+  - ankou
   layers:
   - Default
   - TransparentFX

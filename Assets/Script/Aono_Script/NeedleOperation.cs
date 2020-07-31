@@ -18,7 +18,7 @@ public class NeedleOperation : MonoBehaviour
         stageList.AddRange(GameObject.FindGameObjectsWithTag("stage"));
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision other)
     {
         //if (other.gameObject.tag == "1")
         //{

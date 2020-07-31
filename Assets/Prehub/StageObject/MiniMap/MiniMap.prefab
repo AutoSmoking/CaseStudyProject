@@ -238,6 +238,7 @@ MonoBehaviour:
   UIT: {fileID: 4996610310470404800, guid: 8c07585be702b9f4b8b31d66b0c55b00, type: 3}
   UIB: {fileID: 134081954389463279, guid: 108c3bfef0c5eef408ce8ed1c548a4b8, type: 3}
   UIF: {fileID: 221462422897393674, guid: 8c867a5f40332b6478a1c7c8145c9eea, type: 3}
+  UIA: {fileID: 5031847793619560529, guid: 36b8df5d2eadfea46bc598a0bda6db5f, type: 3}
   UIS: {fileID: 5726411987314437619, guid: 595006387aa1eaf418b4be64edb1ac70, type: 3}
 --- !u!1 &852059788173595928
 GameObject:

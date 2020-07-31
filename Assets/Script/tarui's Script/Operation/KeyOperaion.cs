@@ -6,9 +6,10 @@ public class KeyOperaion : MonoBehaviour
 {
     enum KeyType
     {
-        二分割,三分割
+        二分割,三分割,一分割
     }
 
+    [SerializeField]
     KeyType keyType = KeyType.二分割;
 
     // 今持っている鍵のモデル
@@ -25,40 +26,47 @@ public class KeyOperaion : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        // ここに鍵のモデルを子オブジェクトにするというしょりをいれる
-        switch(this.gameObject.tag)
+        if (keyType == KeyType.一分割)
         {
-            case "1":
-                {
-                    if (keyType == KeyType.二分割)
+            Key = Instantiate(KeyModel[8], this.transform);
+        }
+        else
+        {
+            // ここに鍵のモデルを子オブジェクトにするというしょりをいれる
+            switch (this.gameObject.tag)
+            {
+                case "1":
                     {
-                        Key = Instantiate(KeyModel[0], this.transform);
+                        if (keyType == KeyType.二分割)
+                        {
+                            Key = Instantiate(KeyModel[0], this.transform);
+                        }
+                        else
+                        {
+                            Key = Instantiate(KeyModel[2], this.transform);
+                        }
                     }
-                    else
-                    {
-                        Key = Instantiate(KeyModel[2], this.transform);
-                    }
-                }
-                break;
+                    break;
 
-            case "2":
-                {
-                    if (keyType == KeyType.二分割)
+                case "2":
                     {
-                        Key = Instantiate(KeyModel[1], this.transform);
+                        if (keyType == KeyType.二分割)
+                        {
+                            Key = Instantiate(KeyModel[1], this.transform);
+                        }
+                        else
+                        {
+                            Key = Instantiate(KeyModel[3], this.transform);
+                        }
                     }
-                    else
-                    {
-                        Key = Instantiate(KeyModel[3], this.transform);
-                    }
-                }
-                break;
+                    break;
 
-            case "3":
-                {
-                    Key = Instantiate(KeyModel[4], this.transform);
-                }
-                break;
+                case "3":
+                    {
+                        Key = Instantiate(KeyModel[4], this.transform);
+                    }
+                    break;
+            }
         }
 
         anim = Key.transform.GetChild(0).gameObject.AddComponent<Animator>();
