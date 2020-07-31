@@ -56,14 +56,14 @@ public class SelectMenu : MonoBehaviour
         SelectList = new RectTransform[10];
         if (gameObject.name == "1~10"|| gameObject.name == "11~20"|| gameObject.name == "21~30")
         {
-            Debug.Log(transform.FindChild("Select").name);
-            transform.FindChild("Select").gameObject.SetActive(true);
+            Debug.Log(transform.Find("Select").name);
+            transform.Find("Select").gameObject.SetActive(true);
             for (int i = 0; i < 10; i++)
             {
-                Debug.Log(transform.FindChild("Select").transform.GetChild(i).name);
-                SelectList[i] = transform.FindChild("Select").transform.GetChild(i).gameObject.GetComponent<RectTransform>();
+                Debug.Log(transform.Find("Select").transform.GetChild(i).name);
+                SelectList[i] = transform.Find("Select").transform.GetChild(i).gameObject.GetComponent<RectTransform>();
             }
-            transform.FindChild("Select").gameObject.SetActive(false);
+            transform.Find("Select").gameObject.SetActive(false);
             GetEndPos();
         }
 
@@ -212,7 +212,7 @@ public class SelectMenu : MonoBehaviour
                 else
                 {
                     Debug.Log("oooo");
-                    transform.FindChild("Select").GetChild(childnumber).GetComponent<Button>().Select();
+                    transform.Find("Select").GetChild(childnumber).GetComponent<Button>().Select();
                     GameObject.Find("戻る").GetComponent<Animator>().SetBool("ScaleChange", false);
                 }
 
