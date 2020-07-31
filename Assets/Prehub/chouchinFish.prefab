@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 2481545712663706037}
   m_Layer: 0
   m_Name: chouchinFish
-  m_TagString: ankou
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 3911298393549757724}
   m_Layer: 0
   m_Name: chouchinFish (1)
-  m_TagString: fish
+  m_TagString: ankou
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
